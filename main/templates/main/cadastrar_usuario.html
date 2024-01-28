@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h1 class="mb-4">Cadastro de Usuário</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </form>
+        <hr>
+        <p>Já tem uma conta? Faça <a href="{% url 'login' %}">login</a>.</p>
+    </div>
+{% endblock %}

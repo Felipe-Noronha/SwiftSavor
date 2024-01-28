@@ -1,0 +1,13 @@
+<!-- main/templates/main/cadastrar_receita.html -->
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h1 class="mb-4">Cadastrar Nova Receita</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Cadastrar Receita</button>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <div class="jumbotron mt-4">
+        <h1 class="display-4">Bem-vindo ao SwiftSavor!</h1>
+        <p class="lead">Encontre receitas incríveis para saborear.</p>
+        <hr class="my-4">
+        <p>Explorar receitas, cadastrar novas e muito mais!</p>
+        <a class="btn btn-primary btn-lg" href="{% url 'cadastrar_usuario' %}" role="button">Veja Nossas Receitas</a>
+    </div>
+{% endblock %}
