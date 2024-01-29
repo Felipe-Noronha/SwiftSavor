@@ -1,0 +1,15 @@
+<!-- main/templates/main/editar_ingrediente.html -->
+
+{% extends 'main/base.html' %}
+
+{% block title %}Editar Ingrediente{% endblock %}
+
+{% block content %}
+  <h2>Editar Ingrediente: {{ ingrediente.nome }}</h2>
+  <form method="post" action="{% url 'editar_ingrediente' ingrediente.id %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+    <a href="{% url 'lista_ingredientes' %}" class="btn btn-secondary">Cancelar</a>
+  </form>
+{% endblock %}

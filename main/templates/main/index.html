@@ -1,3 +1,4 @@
+<!-- main/templates/main/index.html -->
 {% extends 'main/base.html' %}
 
 {% block content %}
@@ -6,6 +7,10 @@
         <p class="lead">Encontre receitas incríveis para saborear.</p>
         <hr class="my-4">
         <p>Explorar receitas, cadastrar novas e muito mais!</p>
-        <a class="btn btn-primary btn-lg" href="{% url 'cadastrar_usuario' %}" role="button">Veja Nossas Receitas</a>
+        {% if user.is_authenticated %}
+            <a class="btn btn-primary btn-lg" href="{% url 'lista_receitas' %}" role="button">Veja Nossas Receitas</a>
+        {% else %}
+            <a class="btn btn-primary btn-lg" href="{% url 'cadastrar_usuario' %}" role="button">Veja Nossas Receitas</a>
+        {% endif %}
     </div>
 {% endblock %}

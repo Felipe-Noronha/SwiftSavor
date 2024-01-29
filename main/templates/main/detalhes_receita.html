@@ -1,0 +1,20 @@
+<!-- main/templates/main/detalhes_receita.html -->
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h1 class="mb-4">{{ receita.nome }}</h1>
+        
+        <h2>Ingredientes:</h2>
+        <ul>
+            {% for ingrediente in receita.ingredientes.all %}
+                <li>{{ ingrediente.nome }}</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Instruções:</h2>
+        <p>{{ receita.instrucoes }}</p>
+        
+        <!-- Adicione mais informações da receita conforme necessário -->
+    </div>
+{% endblock %}

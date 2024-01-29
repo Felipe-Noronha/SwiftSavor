@@ -1,0 +1,14 @@
+<!-- main/templates/main/excluir_ingrediente.html -->
+
+{% extends 'main/base.html' %}
+
+{% block title %}Confirmação de Exclusão{% endblock %}
+
+{% block content %}
+  <h2>Você tem certeza que deseja excluir o ingrediente "{{ ingrediente.nome }}"?</h2>
+  <form method="post" action="{% url 'excluir_ingrediente' ingrediente.id %}">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Confirmar Exclusão</button>
+    <a href="{% url 'lista_ingredientes' %}" class="btn btn-secondary">Cancelar</a>
+  </form>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h1 class="mb-4">Meus Ingredientes Selecionados</h1>
+        <form method="post" action="{% url 'selecionar_ingredientes' %}">
+            {% csrf_token %}
+            <ul class="list-group">
+                {% for ingrediente in ingredientes %}
+                    <li class="list-group-item">
+                        <label>
+                            <input type="checkbox" name="ingredientes_selecionados" value="{{ ingrediente.id }}">
+                            {{ ingrediente.nome }}
+                        </label>
+                    </li>
+                {% endfor %}
+            </ul>
+            <button type="submit">Salvar Ingredientes Selecionados</button>
+        </form>
+    </div>
+{% endblock %}

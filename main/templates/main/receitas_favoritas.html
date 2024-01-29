@@ -1,0 +1,25 @@
+<!-- main/templates/main/receitas_favoritas.html -->
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h1 class="mb-4">Receitas Favoritas</h1>
+        {% if receitas_favoritas %}
+            <ul class="list-group">
+                {% for receita_favorita in receitas_favoritas %}
+                    <li class="list-group-item">
+                        <a href="{% url 'detalhes_receita' receita_favorita.receita.id %}">
+                            {{ receita_favorita.receita.nome }}
+                        </a>
+                        <form method="post" action="{% url 'remover_favorito' receita_favorita.receita.id %}" class="d-inline">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger btn-sm">Remover dos Favoritos</button>
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Nenhuma receita favorita encontrada.</p>
+        {% endif %}
+    </div>
+{% endblock %}

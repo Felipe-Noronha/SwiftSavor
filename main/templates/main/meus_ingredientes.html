@@ -1,0 +1,17 @@
+<!-- main/templates/main/meus_ingredientes.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Meus Ingredientes</title>
+</head>
+<body>
+    <h1>Meus Ingredientes</h1>
+    <ul>
+        {% for ingrediente in ingredientes_selecionados %}
+            <li>{{ ingrediente.nome }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

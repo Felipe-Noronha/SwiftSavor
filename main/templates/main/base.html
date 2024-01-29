@@ -1,6 +1,6 @@
 <!-- main/templates/main/base.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,16 +20,39 @@
                         <a class="nav-link" href="{% url 'index' %}">Início</a>
                     </li>
                     {% if user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'lista_receitas' %}">Lista de Receitas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'cadastrar_receita' %}">Cadastrar Receita</a>
-                        </li>
+                        {% if user.is_staff %}
+                            <!-- Itens para usuários administradores -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'lista_receitas' %}">Lista de Receitas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'receitas_favoritas' %}">Favoritas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'admin_dashboard' %}">DashBoard</a>
+                            </li>
+                        {% else %}
+                            <!-- Itens para usuários comuns autenticados -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'lista_receitas' %}">Lista de Receitas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'receitas_favoritas' %}">Receitas Favoritas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'selecionar_ingredientes' %}">Ingredientes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'meus_ingredientes' %}">Meus Ingredientes</a>
+                            </li>
+                            
+                        {% endif %}
+                        <!-- Itens comuns para todos os usuários autenticados -->
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'logout' %}">Logout</a>
                         </li>
                     {% else %}
+                        <!-- Itens para usuários não autenticados -->
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'login' %}">Login</a>
                         </li>
