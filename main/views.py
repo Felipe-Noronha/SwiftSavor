@@ -1,8 +1,8 @@
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Receita, Ingrediente, ReceitaFavorita, UsuarioIngrediente
-from .forms import ReceitaForm,IngredienteForm
+from .models import ImagemReceita, Receita, Ingrediente, ReceitaFavorita, UsuarioIngrediente
+from .forms import ImagemReceitaFormSet, ReceitaForm,IngredienteForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.decorators import user_passes_test
@@ -21,19 +21,26 @@ def lista_receitas(request):
     receitas = Receita.objects.all()
     return render(request, 'main/lista_receitas.html', {'receitas': receitas})
 
-@user_passes_test(is_admin)
+@login_required
 def cadastrar_receita(request):
-    ingredientes = Ingrediente.objects.all()
-    
     if request.method == 'POST':
-        form = ReceitaForm(request.POST)
-        if form.is_valid():
-            form.save()
+        form = ReceitaForm(request.POST, request.FILES)
+        formset = ImagemReceitaFormSet(request.POST, request.FILES)
+
+        if form.is_valid() and formset.is_valid():
+            receita = form.save()
+
+            for form_imagem in formset:
+                imagem_receita = form_imagem.save(commit=False)
+                imagem_receita.receita = receita
+                imagem_receita.save()
+
             return redirect('lista_receitas')
     else:
         form = ReceitaForm()
+        formset = ImagemReceitaFormSet(queryset=ImagemReceita.objects.none())
 
-    return render(request, 'main/cadastrar_receita.html', {'form': form, 'ingredientes': ingredientes})
+    return render(request, 'main/cadastrar_receita.html', {'form': form, 'formset': formset})
 
 
 def editar_receita(request, receita_id):

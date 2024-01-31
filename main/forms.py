@@ -1,7 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
-from .models import Receita, Ingrediente, UsuarioIngrediente
+from .models import ImagemReceita, Receita, Ingrediente, UsuarioIngrediente
+from django.forms import modelformset_factory
 
 class ReceitaForm(forms.ModelForm):
     class Meta:
@@ -37,3 +38,11 @@ class UsuarioIngredienteForm(forms.ModelForm):
             self.fields['ingrediente'].queryset = Ingrediente.objects.exclude(
                 id__in=UsuarioIngrediente.objects.filter(usuario=usuario).values_list('ingrediente_id', flat=True)
             )
+
+
+ImagemReceitaFormSet = modelformset_factory(
+    ImagemReceita,
+    fields=('imagem', ),
+    extra=3,  # Número de campos de upload
+    max_num=5  # Número máximo de uploads permitidos
+)

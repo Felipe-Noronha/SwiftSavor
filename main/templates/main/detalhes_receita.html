@@ -1,9 +1,32 @@
-<!-- main/templates/main/detalhes_receita.html -->
 {% extends 'main/base.html' %}
 
 {% block content %}
     <div class="container mt-4">
         <h1 class="mb-4">{{ receita.nome }}</h1>
+
+                <!-- Carrossel de imagens -->
+        {% if receita.imagens_receita.all %}
+        <div id="carouselReceita" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                {% for imagem in receita.imagens_receita.all %}
+                    {% if imagem.imagem %}
+                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                            <img src="{{ imagem.imagem.url }}" class="d-block w-100" alt="{{ receita.nome }}">
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <a class="carousel-control-prev" href="#carouselReceita" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Anterior</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselReceita" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Próximo</span>
+            </a>
+        </div>
+        {% endif %}
+
         
         <h2>Ingredientes:</h2>
         <ul>

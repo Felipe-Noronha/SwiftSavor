@@ -1,4 +1,4 @@
-version: '3'
+version: '3.12'
 
 services:
   web:
@@ -8,5 +8,6 @@ services:
     command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/app/swiftsavor
+      - ./media:/app/media
     ports:
       - "8000:8000"
