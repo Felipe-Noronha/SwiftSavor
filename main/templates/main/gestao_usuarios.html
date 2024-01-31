@@ -1,0 +1,37 @@
+<!-- gestao_usuarios.html -->
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <h1>Gestão de Usuários</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Nome de Usuário</th>
+                <th>Email</th>
+                <th>Administrador</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for usuario in usuarios %}
+                <tr>
+                    <td>{{ usuario.username }}</td>
+                    <td>{{ usuario.email }}</td>
+                    <td>{{ usuario.is_staff }}</td>
+                    <td>
+                        {% if usuario.is_staff %}
+                            <!-- Adicionado botão para remover status de administrador se já for um administrador -->
+                            <a href="{% url 'remover_administrador' usuario.id %}">Remover Administrador</a>
+                        {% else %}
+                            <!-- Mantém o botão para tornar administrador se não for um administrador -->
+                            <a href="{% url 'tornar_administrador' usuario.id %}">Tornar Administrador</a>
+                        {% endif %}
+                        <!-- Botão de excluir usuário permanece para todos os usuários -->
+                        <a href="{% url 'excluir_usuario' usuario.id %}">Excluir</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

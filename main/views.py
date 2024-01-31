@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.decorators import user_passes_test
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 
 def is_admin(user):
@@ -182,9 +183,6 @@ def selecionar_ingredientes(request):
     })
 
 
-
-
-
 @login_required
 def buscar_receitas_com_ingredientes(request):
     ingredientes_usuario = Ingrediente.objects.filter(usuario=request.user, selecionado=True)
@@ -252,3 +250,79 @@ def excluir_ingrediente_usuario(request, usuario_ingrediente_id):
     else:
         return render(request, 'main/confirmar_exclusao_ingrediente.html', {'ingrediente': ingrediente})
 
+
+
+def gestao_usuarios(request):
+    # Verifica se o usuário atual é um administrador
+    if not request.user.is_authenticated or not request.user.is_staff:
+        messages.error(request, 'Você não tem permissão para acessar esta página.')
+        return redirect('index')
+    
+    # Lista todos os usuários
+    usuarios = User.objects.all()
+
+    return render(request, 'main/gestao_usuarios.html', {'usuarios': usuarios})
+
+@login_required
+def tornar_administrador(request, usuario_id):
+    # Verifica se o usuário atual é um administrador
+    if not request.user.is_authenticated or not request.user.is_staff:
+        messages.error(request, 'Você não tem permissão para realizar esta ação.')
+        return redirect('index')
+
+    # Obtém o usuário com base no ID fornecido
+    usuario = get_object_or_404(User, id=usuario_id)
+
+    # Torna o usuário um administrador (altera a propriedade is_staff)
+    usuario.is_staff = True
+    usuario.save()
+
+    messages.success(request, f'O usuário "{usuario.username}" agora é um administrador.')
+
+    return redirect('gestao_usuarios')
+
+@login_required
+def excluir_usuario(request, usuario_id):
+    # Verifica se o usuário atual é um administrador
+    if not request.user.is_authenticated or not request.user.is_staff:
+        messages.error(request, 'Você não tem permissão para realizar esta ação.')
+        return redirect('index')
+
+    # Obtém o usuário com base no ID fornecido
+    usuario = get_object_or_404(User, id=usuario_id)
+
+    # Verifica se o usuário não está tentando excluir a si mesmo
+    if usuario == request.user:
+        messages.error(request, 'Você não pode excluir a si mesmo.')
+        return redirect('gestao_usuarios')
+
+    # Remove o usuário do banco de dados
+    usuario.delete()
+
+    messages.success(request, f'O usuário "{usuario.username}" foi excluído com sucesso.')
+
+    return redirect('gestao_usuarios')
+
+
+@login_required
+def remover_administrador(request, usuario_id):
+    # Verifique se o usuário logado é um administrador
+    if not request.user.is_staff:
+        # Se não for administrador, redirecione ou mostre uma mensagem de erro
+        # Redirecionamento de exemplo:
+        return redirect('admin_dashboard')
+    
+    # Encontre o usuário pelo ID
+    try:
+        usuario = User.objects.get(id=usuario_id)
+    except User.DoesNotExist:
+        # Trate o caso em que o usuário não existe
+        # Pode redirecionar ou mostrar uma mensagem de erro
+        pass
+
+    # Remova as permissões de administrador do usuário
+    usuario.is_staff = False
+    usuario.save()
+
+    # Redirecione para a página de administração
+    return redirect('gestao_usuarios')
