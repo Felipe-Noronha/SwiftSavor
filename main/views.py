@@ -1,7 +1,7 @@
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Receita, Ingrediente, ReceitaFavorita
+from .models import Receita, Ingrediente, ReceitaFavorita, UsuarioIngrediente
 from .forms import ReceitaForm,IngredienteForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -100,27 +100,22 @@ def lista_ingredientes(request):
     ingredientes = Ingrediente.objects.all()
     return render(request, 'main/lista_ingredientes.html', {'ingredientes': ingredientes})
 
-@user_passes_test(is_admin)
+@login_required
 def editar_ingrediente(request, ingrediente_id):
     ingrediente = get_object_or_404(Ingrediente, id=ingrediente_id)
-
-    if request.method == 'POST':
-        form = IngredienteForm(request.POST, instance=ingrediente)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Ingrediente editado com sucesso.')
-            return redirect('lista_ingredientes')  # Alteração aqui
+    if request.user != ingrediente.usuario and not request.user.is_staff:
+        messages.error(request, 'Você não tem permissão para editar este ingrediente.')
+        return redirect('lista_ingredientes')
     else:
         form = IngredienteForm(instance=ingrediente)
     
     return render(request, 'main/editar_ingrediente.html', {'form': form, 'ingrediente': ingrediente})
 
-@user_passes_test(is_admin)
+@login_required
 def excluir_ingrediente(request, ingrediente_id):
     ingrediente = get_object_or_404(Ingrediente, id=ingrediente_id)
-    if request.method == 'POST':
-        ingrediente.delete()
-        messages.success(request, 'Ingrediente excluído com sucesso.')
+    if request.user != ingrediente.usuario and not request.user.is_staff:
+        messages.error(request, 'Você não tem permissão para excluir este ingrediente.')
         return redirect('lista_ingredientes')
     return render(request, 'main/excluir_ingrediente.html', {'ingrediente': ingrediente})
 
@@ -162,34 +157,98 @@ def admin_dashboard(request):
     return render(request, 'main/admin_dashboard.html')
 
 
+@login_required
 def selecionar_ingredientes(request):
+    usuario_ingredientes = UsuarioIngrediente.objects.filter(usuario=request.user).values_list('ingrediente_id', flat=True)
+
     if request.method == 'POST':
-        ingredientes_selecionados_ids = request.POST.getlist('ingredientes_selecionados')
+        ingrediente_id_para_adicionar = request.POST.get('ingrediente_id')
+        if ingrediente_id_para_adicionar:
+            _, created = UsuarioIngrediente.objects.get_or_create(
+                usuario=request.user,
+                ingrediente_id=ingrediente_id_para_adicionar
+            )
+            if created:
+                messages.success(request, 'Ingrediente adicionado com sucesso.')
+            return redirect('selecionar_ingredientes')
 
-        # Lógica para salvar os ingredientes selecionados (exemplo)
-        for ingrediente_id in ingredientes_selecionados_ids:
-            ingrediente = Ingrediente.objects.get(pk=ingrediente_id)
-            ingrediente.selecionado = True
-            ingrediente.save()
+    query = request.GET.get('q', '')
+    ingredientes = Ingrediente.objects.filter(nome__icontains=query) if query else Ingrediente.objects.all()
 
-        # Atualize esta parte para a lógica desejada
+    return render(request, 'main/selecionar_ingredientes.html', {
+        'ingredientes': ingredientes,
+        'usuario_ingredientes': usuario_ingredientes,
+        'query': query
+    })
 
-        # Obtém a lista atualizada de ingredientes
-        ingredientes = Ingrediente.objects.all()
-        
-        # Adiciona uma mensagem de sucesso (opcional)
-        messages.success(request, 'Ingredientes selecionados foram salvos com sucesso.')
 
-        # Renderiza a mesma página com a lista atualizada de ingredientes
-        return render(request, 'main/selecionar_ingredientes.html', {'ingredientes': ingredientes})
 
-    else:
-        # Se for uma requisição GET, simplesmente exibe a página
-        ingredientes = Ingrediente.objects.all()
-        return render(request, 'main/selecionar_ingredientes.html', {'ingredientes': ingredientes})
+
+
+@login_required
+def buscar_receitas_com_ingredientes(request):
+    ingredientes_usuario = Ingrediente.objects.filter(usuario=request.user, selecionado=True)
+    receitas = Receita.objects.filter(ingredientes__in=ingredientes_usuario).distinct()
+    return render(request, 'main/buscar_receitas.html', {'receitas': receitas})
+
     
     
 @login_required
 def meus_ingredientes(request):
-    ingredientes_selecionados = Ingrediente.objects.filter(usuario=request.user, selecionado=True)
-    return render(request, 'main/meus_ingredientes.html', {'ingredientes_selecionados': ingredientes_selecionados})
+    usuario_ingredientes = UsuarioIngrediente.objects.filter(usuario=request.user)
+    ingredientes = [ui.ingrediente for ui in usuario_ingredientes]
+
+    # Lógica de remoção baseada em uma ação de POST
+    if request.method == 'POST':
+        ingrediente_id_para_remover = request.POST.get('ingrediente_id')
+        if ingrediente_id_para_remover:
+            UsuarioIngrediente.objects.filter(
+                usuario=request.user, 
+                ingrediente_id=ingrediente_id_para_remover
+            ).delete()
+            return redirect('meus_ingredientes')
+
+    return render(request, 'main/meus_ingredientes.html', {'ingredientes_selecionados': ingredientes})
+
+
+@login_required
+def adicionar_ingrediente_usuario(request):
+    if request.method == 'POST':
+        form = IngredienteForm(request.POST)
+        if form.is_valid():
+            novo_ingrediente = form.save(commit=False)
+            novo_ingrediente.usuario = request.user  # Atribui o ingrediente ao usuário logado
+            novo_ingrediente.save()
+            messages.success(request, 'Ingrediente adicionado com sucesso!')
+            return redirect('lista_ingredientes')
+    else:
+        form = IngredienteForm()
+    return render(request, 'main/adicionar_ingrediente_usuario.html', {'form': form})
+
+
+@login_required
+def editar_ingrediente_usuario(request, usuario_ingrediente_id):
+    ingrediente = get_object_or_404(Ingrediente, id=usuario_ingrediente_id, usuario=request.user)  # Certifique-se de ajustar este código conforme seu modelo
+
+    if request.method == 'POST':
+        form = IngredienteForm(request.POST, instance=ingrediente)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Ingrediente atualizado com sucesso!')
+            return redirect('lista_ingredientes')
+    else:
+        form = IngredienteForm(instance=ingrediente)
+
+    return render(request, 'main/editar_ingrediente_usuario.html', {'form': form, 'ingrediente': ingrediente})
+
+
+@login_required
+def excluir_ingrediente_usuario(request, usuario_ingrediente_id):
+    ingrediente = get_object_or_404(Ingrediente, id=usuario_ingrediente_id, usuario=request.user)
+    if request.method == 'POST':
+        ingrediente.delete()
+        messages.success(request, 'Ingrediente excluído com sucesso!')
+        return redirect('lista_ingredientes')
+    else:
+        return render(request, 'main/confirmar_exclusao_ingrediente.html', {'ingrediente': ingrediente})
+

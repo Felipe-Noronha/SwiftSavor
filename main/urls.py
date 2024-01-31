@@ -18,6 +18,7 @@ from .views import (cadastrar_receita,
                     excluir_ingrediente,
                     selecionar_ingredientes,
                     meus_ingredientes,
+                    buscar_receitas_com_ingredientes,
                     )
 from django.contrib.auth.views import LoginView
 
@@ -42,7 +43,12 @@ urlpatterns = [
     path('detalhes_ingrediente/<int:ingrediente_id>/', views.detalhes_ingrediente, name='detalhes_ingrediente'),
     path('selecionar_ingredientes/', selecionar_ingredientes, name='selecionar_ingredientes'),
     path('meus_ingredientes/<str:ingredientes_ids>/', meus_ingredientes, name='meus_ingredientes'),
-    path('meus_ingredientes/', meus_ingredientes, name='meus_ingredientes'),
+    path('meus_ingredientes/', views.meus_ingredientes, name='meus_ingredientes'),
+    path('buscar_receitas_com_ingredientes/', buscar_receitas_com_ingredientes, name='buscar_receitas_com_ingredientes'),
+    path('adicionar_ingrediente_usuario/', views.adicionar_ingrediente_usuario, name='adicionar_ingrediente_usuario'),
+    path('editar_ingrediente_usuario/<int:usuario_ingrediente_id>/', views.editar_ingrediente_usuario, name='editar_ingrediente_usuario'),
+    path('excluir_ingrediente_usuario/<int:usuario_ingrediente_id>/', views.excluir_ingrediente_usuario, name='excluir_ingrediente_usuario'),
+
 
     path('adicionar_favoritos/<int:receita_id>/', adicionar_favoritos, name='adicionar_favoritos'),
     path('remover_favorito/<int:receita_id>/', remover_favorito, name='remover_favorito'),

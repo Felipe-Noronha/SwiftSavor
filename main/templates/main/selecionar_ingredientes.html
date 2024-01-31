@@ -1,21 +1,29 @@
 {% extends 'main/base.html' %}
 
 {% block content %}
-    <div class="container mt-4">
-        <h1 class="mb-4">Meus Ingredientes Selecionados</h1>
-        <form method="post" action="{% url 'selecionar_ingredientes' %}">
-            {% csrf_token %}
-            <ul class="list-group">
-                {% for ingrediente in ingredientes %}
-                    <li class="list-group-item">
-                        <label>
-                            <input type="checkbox" name="ingredientes_selecionados" value="{{ ingrediente.id }}">
-                            {{ ingrediente.nome }}
-                        </label>
-                    </li>
-                {% endfor %}
-            </ul>
-            <button type="submit">Salvar Ingredientes Selecionados</button>
-        </form>
-    </div>
+<div class="container mt-4">
+    <h1 class="mb-4">Selecionar Ingredientes</h1>
+    <!-- Formulário de pesquisa -->
+    <form method="get" action="">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Buscar ingredientes..." name="q" value="{{ query }}">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit">Buscar</button>
+            </div>
+        </div>
+    </form>
+    <!-- Lista de ingredientes -->
+    <ul class="list-group">
+        {% for ingrediente in ingredientes %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            {{ ingrediente.nome }}
+            <form method="post" action="{% url 'selecionar_ingredientes' %}">
+                {% csrf_token %}
+                <input type="hidden" name="ingrediente_id" value="{{ ingrediente.id }}">
+                <button type="submit" class="btn {% if ingrediente.id in usuario_ingredientes %}btn-secondary disabled{% else %}btn-primary{% endif %}">Salvar</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
 {% endblock %}

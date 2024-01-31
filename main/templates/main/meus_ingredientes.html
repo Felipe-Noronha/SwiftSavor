@@ -1,17 +1,24 @@
-<!-- main/templates/main/meus_ingredientes.html -->
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Meus Ingredientes</title>
-</head>
-<body>
+{% extends 'main/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
     <h1>Meus Ingredientes</h1>
-    <ul>
-        {% for ingrediente in ingredientes_selecionados %}
-            <li>{{ ingrediente.nome }}</li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+    {% if ingredientes_selecionados %}
+        <ul>
+            {% for ingrediente in ingredientes_selecionados %}
+                <li>
+                    {{ ingrediente.nome }}
+                    <!-- Formulário para remover um ingrediente específico -->
+                    <form method="post" action="{% url 'meus_ingredientes' %}" style="display:inline;">
+                        {% csrf_token %}
+                        <input type="hidden" name="ingrediente_id" value="{{ ingrediente.id }}">
+                        <button type="submit" class="btn btn-danger btn-sm">Remover</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Você ainda não selecionou nenhum ingrediente.</p>
+    {% endif %}
+</div>
+{% endblock %}
