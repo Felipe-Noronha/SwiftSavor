@@ -12,10 +12,10 @@ class Ingrediente(models.Model):
 class UsuarioIngrediente(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     ingrediente = models.ForeignKey(Ingrediente, on_delete=models.CASCADE)
-    quantidade = models.IntegerField(default=0)  # Opcional, se você quiser rastrear a quantidade
+    quantidade = models.IntegerField(default=0)
 
     class Meta:
-        unique_together = ('usuario', 'ingrediente')  # Isso garante que o par usuário-ingrediente seja único
+        unique_together = ('usuario', 'ingrediente')
 
     def __str__(self):
         return f"{self.usuario.username} - {self.ingrediente.nome}"    
@@ -31,17 +31,12 @@ class Receita(models.Model):
         return self.nome
 
     
-
 class ImagemReceita(models.Model):
     receita = models.ForeignKey(Receita, related_name='imagens_receita', on_delete=models.CASCADE)
     imagem = models.ImageField(upload_to='receitas/')
 
     def __str__(self):
         return f"Imagem para {self.receita.nome}"
-
-
-
-
 
 class ReceitaFavorita(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)

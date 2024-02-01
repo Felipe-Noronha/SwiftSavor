@@ -45,7 +45,10 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'meus_ingredientes' %}">Meus Ingredientes</a>
                             </li>
-                            
+                            <!-- Opção de Receitas Recomendadas apenas para usuários comuns -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'receitas_recomendadas' %}">Receitas Recomendadas</a>
+                            </li>
                         {% endif %}
                         <!-- Itens comuns para todos os usuários autenticados -->
                         <li class="nav-item">

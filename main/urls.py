@@ -19,6 +19,7 @@ from .views import (cadastrar_receita,
                     selecionar_ingredientes,
                     meus_ingredientes,
                     buscar_receitas_com_ingredientes,
+                    receitas_recomendadas,
                     )
 from django.contrib.auth.views import LoginView
 
@@ -66,5 +67,5 @@ urlpatterns = [
     path('excluir_usuario/<int:usuario_id>/', views.excluir_usuario, name='excluir_usuario'),
 
     path('remover_administrador/<int:usuario_id>/', views.remover_administrador, name='remover_administrador'),
-
+    path('receitas_recomendadas/', receitas_recomendadas, name='receitas_recomendadas'),
 ]

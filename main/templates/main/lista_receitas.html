@@ -3,16 +3,17 @@
 
 {% block content %}
 
-    {% if messages %}
+    <div class="container mt-4">
+        <h1 class="mb-4">Lista de Receitas</h1>
+
+        {% if messages %}
         <ul class="messages">
             {% for message in messages %}
                 <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
             {% endfor %}
         </ul>
-    {% endif %}
+        {% endif %}
 
-    <div class="container mt-4">
-        <h1 class="mb-4">Lista de Receitas</h1>
         <ul class="list-group">
             {% for receita in receitas %}
                 <li class="list-group-item">

@@ -28,19 +28,24 @@ def cadastrar_receita(request):
         formset = ImagemReceitaFormSet(request.POST, request.FILES)
 
         if form.is_valid() and formset.is_valid():
-            receita = form.save()
+            receita = form.save(commit=False)
+            receita.usuario = request.user  # Atribui o usuário logado à receita antes de salvá-la
+            receita.save()
+            form.save_m2m()  # Salva as relações ManyToMany depois de salvar o objeto principal
 
-            for form_imagem in formset:
-                imagem_receita = form_imagem.save(commit=False)
-                imagem_receita.receita = receita
-                imagem_receita.save()
+            for form_imagem in formset.cleaned_data:
+                imagem = form_imagem.get('imagem')  # Obtenha a imagem a partir do formset
+                if imagem:  # Verifique se a imagem existe antes de tentar salvar
+                    ImagemReceita.objects.create(receita=receita, imagem=imagem)
 
+            messages.success(request, 'Receita cadastrada com sucesso!')
             return redirect('lista_receitas')
     else:
         form = ReceitaForm()
         formset = ImagemReceitaFormSet(queryset=ImagemReceita.objects.none())
 
     return render(request, 'main/cadastrar_receita.html', {'form': form, 'formset': formset})
+
 
 
 def editar_receita(request, receita_id):
@@ -146,18 +151,22 @@ def receitas_favoritas(request):
 @login_required
 def adicionar_favoritos(request, receita_id):
     receita = get_object_or_404(Receita, id=receita_id)
+    pagina_atual = request.META.get('HTTP_REFERER')  # Obtém a URL da página anterior
 
     if ReceitaFavorita.objects.filter(usuario=request.user, receita=receita).exists():
         messages.warning(request, 'Esta receita já está nos seus favoritos.')
     else:
         ReceitaFavorita.objects.create(usuario=request.user, receita=receita)
         messages.success(request, f'Receita "{receita.nome}" adicionada aos favoritos com sucesso!')
-    return redirect('lista_receitas')
+
+    # Redireciona o usuário de volta para a página de onde veio
+    return redirect(pagina_atual) if pagina_atual else redirect('lista_receitas')
 
 def remover_favorito(request, receita_id):
     receita_favorita = get_object_or_404(ReceitaFavorita, receita__id=receita_id, usuario=request.user)
     receita_favorita.delete()
     return redirect('receitas_favoritas')
+
 
 @user_passes_test(is_admin)
 def admin_dashboard(request):
@@ -333,3 +342,26 @@ def remover_administrador(request, usuario_id):
 
     # Redirecione para a página de administração
     return redirect('gestao_usuarios')
+
+
+@login_required
+def receitas_recomendadas(request):
+    # Primeiro, obtenha todos os IDs dos ingredientes que o usuário selecionou.
+    ingredientes_usuario_ids = UsuarioIngrediente.objects.filter(
+        usuario=request.user
+    ).values_list('ingrediente_id', flat=True)
+
+    # Em seguida, encontre as receitas que contêm pelo menos um dos ingredientes do usuário.
+    # Note que isso pode retornar receitas para as quais o usuário não tem todos os ingredientes.
+    receitas_possiveis = Receita.objects.filter(
+        ingredientes__id__in=ingredientes_usuario_ids
+    ).distinct()
+
+    # Agora, filtre essas receitas para encontrar apenas aquelas para as quais o usuário tem todos os ingredientes.
+    receitas_completas = []
+    for receita in receitas_possiveis:
+        ingredientes_receita_ids = set(receita.ingredientes.values_list('id', flat=True))
+        if ingredientes_receita_ids.issubset(ingredientes_usuario_ids):
+            receitas_completas.append(receita)
+
+    return render(request, 'main/receitas_recomendadas.html', {'receitas': receitas_completas})

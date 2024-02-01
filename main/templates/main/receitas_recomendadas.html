@@ -1,0 +1,27 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<h2>Receitas Recomendadas</h2>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+{% if receitas %}
+    <ul>
+    {% for receita in receitas %}
+        <!-- Atualize a linha abaixo para incluir um link para a página de detalhes -->
+        <li>
+            <a href="{% url 'detalhes_receita' receita.id %}">{{ receita.nome }}</a>
+            <a href="{% url 'adicionar_favoritos' receita.id %}" class="btn btn-primary btn-sm float-right">Adicionar aos Favoritos</a>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Não foram encontradas receitas com os ingredientes que você possui.</p>
+{% endif %}
+{% endblock %}
