@@ -3,7 +3,6 @@
 {% block content %}
 <div class="container mt-4">
     <h1 class="mb-4">Selecionar Ingredientes</h1>
-    <!-- Formulário de pesquisa -->
     <form method="get" action="">
         <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Buscar ingredientes..." name="q" value="{{ query }}">
@@ -12,7 +11,6 @@
             </div>
         </div>
     </form>
-    <!-- Lista de ingredientes -->
     <ul class="list-group">
         {% for ingrediente in ingredientes %}
         <li class="list-group-item d-flex justify-content-between align-items-center">

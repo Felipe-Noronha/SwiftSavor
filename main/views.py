@@ -29,13 +29,13 @@ def cadastrar_receita(request):
 
         if form.is_valid() and formset.is_valid():
             receita = form.save(commit=False)
-            receita.usuario = request.user  # Atribui o usuário logado à receita antes de salvá-la
+            receita.usuario = request.user
             receita.save()
-            form.save_m2m()  # Salva as relações ManyToMany depois de salvar o objeto principal
+            form.save_m2m()
 
             for form_imagem in formset.cleaned_data:
-                imagem = form_imagem.get('imagem')  # Obtenha a imagem a partir do formset
-                if imagem:  # Verifique se a imagem existe antes de tentar salvar
+                imagem = form_imagem.get('imagem')
+                if imagem:
                     ImagemReceita.objects.create(receita=receita, imagem=imagem)
 
             messages.success(request, 'Receita cadastrada com sucesso!')
@@ -49,7 +49,6 @@ def cadastrar_receita(request):
 
 
 def editar_receita(request, receita_id):
-    # Verifica se o usuário está autenticado e é um administrador
     if not request.user.is_authenticated or not request.user.is_staff:
         messages.error(request, 'Você não tem permissão para acessar esta página.')
         return redirect('lista_receitas')
@@ -151,7 +150,7 @@ def receitas_favoritas(request):
 @login_required
 def adicionar_favoritos(request, receita_id):
     receita = get_object_or_404(Receita, id=receita_id)
-    pagina_atual = request.META.get('HTTP_REFERER')  # Obtém a URL da página anterior
+    pagina_atual = request.META.get('HTTP_REFERER')
 
     if ReceitaFavorita.objects.filter(usuario=request.user, receita=receita).exists():
         messages.warning(request, 'Esta receita já está nos seus favoritos.')
@@ -159,7 +158,6 @@ def adicionar_favoritos(request, receita_id):
         ReceitaFavorita.objects.create(usuario=request.user, receita=receita)
         messages.success(request, f'Receita "{receita.nome}" adicionada aos favoritos com sucesso!')
 
-    # Redireciona o usuário de volta para a página de onde veio
     return redirect(pagina_atual) if pagina_atual else redirect('lista_receitas')
 
 def remover_favorito(request, receita_id):
@@ -170,7 +168,6 @@ def remover_favorito(request, receita_id):
 
 @user_passes_test(is_admin)
 def admin_dashboard(request):
-    # Lógica da view (se necessário)
     return render(request, 'main/admin_dashboard.html')
 
 
@@ -212,7 +209,6 @@ def meus_ingredientes(request):
     usuario_ingredientes = UsuarioIngrediente.objects.filter(usuario=request.user)
     ingredientes = [ui.ingrediente for ui in usuario_ingredientes]
 
-    # Lógica de remoção baseada em uma ação de POST
     if request.method == 'POST':
         ingrediente_id_para_remover = request.POST.get('ingrediente_id')
         if ingrediente_id_para_remover:
@@ -231,7 +227,7 @@ def adicionar_ingrediente_usuario(request):
         form = IngredienteForm(request.POST)
         if form.is_valid():
             novo_ingrediente = form.save(commit=False)
-            novo_ingrediente.usuario = request.user  # Atribui o ingrediente ao usuário logado
+            novo_ingrediente.usuario = request.user
             novo_ingrediente.save()
             messages.success(request, 'Ingrediente adicionado com sucesso!')
             return redirect('lista_ingredientes')
@@ -242,7 +238,7 @@ def adicionar_ingrediente_usuario(request):
 
 @login_required
 def editar_ingrediente_usuario(request, usuario_ingrediente_id):
-    ingrediente = get_object_or_404(Ingrediente, id=usuario_ingrediente_id, usuario=request.user)  # Certifique-se de ajustar este código conforme seu modelo
+    ingrediente = get_object_or_404(Ingrediente, id=usuario_ingrediente_id, usuario=request.user)
 
     if request.method == 'POST':
         form = IngredienteForm(request.POST, instance=ingrediente)
@@ -269,27 +265,21 @@ def excluir_ingrediente_usuario(request, usuario_ingrediente_id):
 
 
 def gestao_usuarios(request):
-    # Verifica se o usuário atual é um administrador
     if not request.user.is_authenticated or not request.user.is_staff:
         messages.error(request, 'Você não tem permissão para acessar esta página.')
         return redirect('index')
     
-    # Lista todos os usuários
     usuarios = User.objects.all()
 
     return render(request, 'main/gestao_usuarios.html', {'usuarios': usuarios})
 
 @login_required
 def tornar_administrador(request, usuario_id):
-    # Verifica se o usuário atual é um administrador
     if not request.user.is_authenticated or not request.user.is_staff:
         messages.error(request, 'Você não tem permissão para realizar esta ação.')
         return redirect('index')
 
-    # Obtém o usuário com base no ID fornecido
     usuario = get_object_or_404(User, id=usuario_id)
-
-    # Torna o usuário um administrador (altera a propriedade is_staff)
     usuario.is_staff = True
     usuario.save()
 
@@ -299,20 +289,16 @@ def tornar_administrador(request, usuario_id):
 
 @login_required
 def excluir_usuario(request, usuario_id):
-    # Verifica se o usuário atual é um administrador
     if not request.user.is_authenticated or not request.user.is_staff:
         messages.error(request, 'Você não tem permissão para realizar esta ação.')
         return redirect('index')
 
-    # Obtém o usuário com base no ID fornecido
     usuario = get_object_or_404(User, id=usuario_id)
 
-    # Verifica se o usuário não está tentando excluir a si mesmo
     if usuario == request.user:
         messages.error(request, 'Você não pode excluir a si mesmo.')
         return redirect('gestao_usuarios')
 
-    # Remove o usuário do banco de dados
     usuario.delete()
 
     messages.success(request, f'O usuário "{usuario.username}" foi excluído com sucesso.')
@@ -322,42 +308,30 @@ def excluir_usuario(request, usuario_id):
 
 @login_required
 def remover_administrador(request, usuario_id):
-    # Verifique se o usuário logado é um administrador
     if not request.user.is_staff:
-        # Se não for administrador, redirecione ou mostre uma mensagem de erro
-        # Redirecionamento de exemplo:
         return redirect('admin_dashboard')
     
-    # Encontre o usuário pelo ID
     try:
         usuario = User.objects.get(id=usuario_id)
     except User.DoesNotExist:
-        # Trate o caso em que o usuário não existe
-        # Pode redirecionar ou mostrar uma mensagem de erro
         pass
 
-    # Remova as permissões de administrador do usuário
     usuario.is_staff = False
     usuario.save()
 
-    # Redirecione para a página de administração
     return redirect('gestao_usuarios')
 
 
 @login_required
 def receitas_recomendadas(request):
-    # Primeiro, obtenha todos os IDs dos ingredientes que o usuário selecionou.
     ingredientes_usuario_ids = UsuarioIngrediente.objects.filter(
         usuario=request.user
     ).values_list('ingrediente_id', flat=True)
 
-    # Em seguida, encontre as receitas que contêm pelo menos um dos ingredientes do usuário.
-    # Note que isso pode retornar receitas para as quais o usuário não tem todos os ingredientes.
     receitas_possiveis = Receita.objects.filter(
         ingredientes__id__in=ingredientes_usuario_ids
     ).distinct()
 
-    # Agora, filtre essas receitas para encontrar apenas aquelas para as quais o usuário tem todos os ingredientes.
     receitas_completas = []
     for receita in receitas_possiveis:
         ingredientes_receita_ids = set(receita.ingredientes.values_list('id', flat=True))

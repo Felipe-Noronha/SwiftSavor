@@ -1,13 +1,9 @@
-<!-- main/templates/main/detalhes_ingrediente.html -->
 {% extends 'main/base.html' %}
 
 {% block content %}
     <div class="container mt-4">
         <h1 class="mb-4">Detalhes do Ingrediente</h1>
         <p><strong>Nome:</strong> {{ ingrediente.nome }}</p>
-        <!-- Adicione mais informações sobre o ingrediente conforme necessário -->
-        
-        <!-- Botões para editar e excluir o ingrediente -->
         <a href="{% url 'editar_ingrediente' ingrediente.id %}" class="btn btn-warning">Editar</a>
         
         <form method="post" action="{% url 'excluir_ingrediente' ingrediente.id %}" class="d-inline">

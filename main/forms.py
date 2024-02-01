@@ -43,6 +43,6 @@ class UsuarioIngredienteForm(forms.ModelForm):
 ImagemReceitaFormSet = modelformset_factory(
     ImagemReceita,
     fields=('imagem', ),
-    extra=3,  # Número de campos de upload
-    max_num=5  # Número máximo de uploads permitidos
+    extra=3,
+    max_num=5
 )

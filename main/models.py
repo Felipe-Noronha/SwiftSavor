@@ -43,7 +43,7 @@ class ReceitaFavorita(models.Model):
     receita = models.ForeignKey(Receita, on_delete=models.CASCADE)
 
     class Meta:
-        unique_together = ('usuario', 'receita')  # Isso garante que o par usuário-receita seja único
+        unique_together = ('usuario', 'receita')
 
     def __str__(self):
         return f"{self.usuario.username} - {self.receita.nome}"

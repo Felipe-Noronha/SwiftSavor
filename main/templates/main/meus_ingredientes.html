@@ -8,7 +8,6 @@
             {% for ingrediente in ingredientes_selecionados %}
                 <li>
                     {{ ingrediente.nome }}
-                    <!-- Formulário para remover um ingrediente específico -->
                     <form method="post" action="{% url 'meus_ingredientes' %}" style="display:inline;">
                         {% csrf_token %}
                         <input type="hidden" name="ingrediente_id" value="{{ ingrediente.id }}">

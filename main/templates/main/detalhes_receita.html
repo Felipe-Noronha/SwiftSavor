@@ -3,8 +3,7 @@
 {% block content %}
     <div class="container mt-4">
         <h1 class="mb-4">{{ receita.nome }}</h1>
-
-        <!-- Carrossel de imagens -->
+        
         {% if receita.imagens_receita.all %}
         <div id="carouselReceita" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
@@ -36,8 +35,6 @@
 
         <h2>Instruções:</h2>
         <p>{{ receita.instrucoes }}</p>
-        
-        <!-- Novas informações adicionadas -->
         <h2>Informações Adicionais:</h2>
         <p><strong>Data de Cadastro:</strong> {{ receita.data_cadastro|date:"d/m/Y" }}</p>
         {% if receita.usuario %}

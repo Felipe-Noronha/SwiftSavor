@@ -56,14 +56,10 @@ urlpatterns = [
 
     path('admin_dashboard/', admin_dashboard, name='admin_dashboard'),
 
-
-    # URL para a página de gestão de usuários
     path('gestao_usuarios/', views.gestao_usuarios, name='gestao_usuarios'),
 
-    # URL para tornar um usuário comum em administrador
     path('tornar_administrador/<int:usuario_id>/', views.tornar_administrador, name='tornar_administrador'),
 
-    # URL para excluir um usuário
     path('excluir_usuario/<int:usuario_id>/', views.excluir_usuario, name='excluir_usuario'),
 
     path('remover_administrador/<int:usuario_id>/', views.remover_administrador, name='remover_administrador'),
