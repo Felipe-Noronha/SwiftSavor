@@ -1,14 +1,34 @@
 {% extends 'main/base.html' %}
 
 {% block content %}
-    <div class="container mt-4">
-        <h1 class="mb-4">Cadastro de Usuário</h1>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Cadastrar</button>
-        </form>
-        <hr>
-        <p>Já tem uma conta? Faça <a href="{% url 'login' %}">login</a>.</p>
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title mb-4">Cadastro de Usuário</h1>
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="{{ form.username.id_for_label }}" class="form-label text-black">Username:</label>
+                    {{ form.username }}
+                    {{ form.username.errors }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.password1.id_for_label }}" class="form-label text-black">Password:</label>
+                    {{ form.password1 }}
+                    {{ form.password1.errors }}
+                    <small class="form-text text-muted">Your password can’t be too similar to your other personal information. Your password must contain at least 8 characters. Your password can’t be a commonly used password. Your password can’t be entirely numeric.</small>
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.password2.id_for_label }}" class="form-label text-black">Password confirmation:</label>
+                    {{ form.password2 }}
+                    {{ form.password2.errors }}
+                    <small class="form-text text-muted">Enter the same password as before, for verification.</small>
+                </div>
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
+            </form>
+            <hr>
+            <p class="mt-2"><span class="text-black">Já tem uma conta? Faça</span> <a href="{% url 'login' %}" class="link-primary">login</a>.</p>
+        </div>
     </div>
+</div>
 {% endblock %}

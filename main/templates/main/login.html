@@ -1,14 +1,27 @@
 {% extends 'main/base.html' %}
 
 {% block content %}
-    <div class="container mt-4">
-        <h1 class="mb-4">Login</h1>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Login</button>
-        </form>
-        <hr>
-        <p>Ainda não tem uma conta? <a href="{% url 'cadastrar_usuario' %}">Cadastre-se</a>.</p>
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title mb-4" style="color: #000;">Login</h1>
+            <form method="post" class="mb-3">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="{{ form.username.id_for_label }}" class="form-label" style="color: #000;">Username:</label>
+                    {{ form.username }}
+                    <div class="text-danger">{{ form.username.errors }}</div>
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.password.id_for_label }}" class="form-label" style="color: #000;">Password:</label>
+                    {{ form.password }}
+                    <div class="text-danger">{{ form.password.errors }}</div>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+            <hr>
+            <p class="mt-2" style="color: #000;">Ainda não tem uma conta? <a href="{% url 'cadastrar_usuario' %}" class="link-primary" style="color: #000;">Cadastre-se</a>.</p>
+        </div>
     </div>
+</div>
 {% endblock %}

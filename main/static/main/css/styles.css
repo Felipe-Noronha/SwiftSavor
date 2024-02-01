@@ -1,0 +1,93 @@
+/* styles.css */
+body {
+    background-color: #06060d; /* Cor de fundo escura para o corpo do site */
+    color: #ffffff; /* Texto branco para alto contraste */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Uma fonte mais moderna */
+    font-size: 1rem; /* Tamanho base da fonte, geralmente 16px */
+    line-height: 1.6; /* Espaçamento da linha para melhorar a legibilidade */
+}
+
+.navbar {
+    background-color: #409094; /* Uma cor azul esverdeada para a navbar */
+    border-bottom: 3px solid #b84c29; /* Uma borda na parte inferior da navbar com a cor terracota */
+}
+
+.navbar .navbar-brand,
+.navbar .nav-link {
+    color: #de9842; /* Cor de texto dourada para os links da navbar */
+    transition: color 0.3s ease-in-out; /* Suaviza a transição de cores */
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus {
+    color: #b84c29; /* Cor terracota ao passar o mouse ou focar */
+    background-color: transparent; /* Mantém o fundo transparente */
+}
+
+a {
+    color: #409094; /* Cor azul esverdeada para links */
+    text-decoration: none; /* Remove o sublinhado dos links */
+}
+
+a:hover,
+a:focus {
+    color: #b84c29; /* Cor terracota para o estado hover/focus */
+    text-decoration: underline; /* Sublinha o link ao passar o mouse ou focar */
+}
+
+.navbar-toggler {
+    border-color: #de9842; /* Borda dourada para o botão de toggler */
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23de9842' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"); /* Ícone do toggler com a cor dourada */
+}
+
+.container {
+    padding: 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #de9842; /* Títulos com a cor dourada */
+    line-height: 1.2; /* Espaçamento da linha para títulos */
+}
+
+/* Estilos específicos para o jumbotron na página index */
+.jumbotron h1.display-4 {
+    font-size: 2.5rem; /* Aumenta o tamanho da fonte do título principal */
+    color: #de9842; /* Mantém o título principal dourado */
+}
+
+.jumbotron p.lead,
+.jumbotron p {
+    color: #000000; /* Texto preto para parágrafos dentro do jumbotron */
+    font-size: 1.25rem; /* Tamanho maior para texto introdutório */
+}
+
+.btn {
+    font-size: 1rem; /* Ajusta o tamanho da fonte para botões */
+    padding: 0.5rem 1rem; /* Aumenta o preenchimento para fazer os botões maiores */
+}
+
+.footer {
+    background-color: #409094;
+    color: #de9842;
+    padding: 10px 0;
+    text-align: center;
+    border-top: 3px solid #b84c29;
+    font-size: 0.9rem; /* Tamanho de fonte um pouco menor para o rodapé */
+}
+
+/* Altera a cor do texto dos itens da lista de ingredientes para preto */
+.list-group-item {
+    color: #000000; /* Preto */
+}
+
+.form-label, .account-query, .account-link {
+    color: #000000; /* Preto */
+}
+
+/* Garantir que o link permaneça preto mesmo após ser visitado */
+.account-link:visited {
+    color: #000000; /* Preto */
+}
