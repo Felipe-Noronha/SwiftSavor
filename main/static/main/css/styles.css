@@ -79,6 +79,23 @@ h1, h2, h3, h4, h5, h6 {
     margin-right: 0.5rem; /* Adicione margem direita para separar os botões horizontalmente */
 }
 
+/* Estilo para os botões da coluna "Ações" na tabela */
+.btn-action {
+    width: auto; /* Deixe a largura se ajustar ao conteúdo */
+    min-width: 150px; /* Defina uma largura mínima para os botões */
+    height: 38px; /* Defina a altura desejada para os botões */
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Evita que o texto saia dos botões */
+    white-space: nowrap; /* Impede que o texto quebre para a próxima linha */
+    text-overflow: ellipsis; /* Adiciona reticências (...) se o texto for muito longo */
+}
+
+
+
+
 /* Alinhe os botões à direita da lista de ingredientes */
 .list-group-item .btn {
     float: right;

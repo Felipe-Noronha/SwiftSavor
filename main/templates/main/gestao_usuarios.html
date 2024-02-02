@@ -22,11 +22,11 @@
                             <td>{{ usuario.is_staff|yesno:"Sim,Não" }}</td>
                             <td>
                                 {% if usuario.is_staff %}
-                                    <a href="{% url 'remover_administrador' usuario.id %}" class="btn btn-warning btn-sm">Remover Administrador</a>
+                                    <a href="{% url 'remover_administrador' usuario.id %}" class="btn btn-action btn-warning btn-sm">Remover Administrador</a>
                                 {% else %}
-                                    <a href="{% url 'tornar_administrador' usuario.id %}" class="btn btn-success btn-sm">Tornar Administrador</a>
+                                    <a href="{% url 'tornar_administrador' usuario.id %}" class="btn btn-action btn-success btn-sm">Tornar Administrador</a>
                                 {% endif %}
-                                <a href="{% url 'excluir_usuario' usuario.id %}" class="btn btn-danger btn-sm">Excluir</a>
+                                <a href="{% url 'excluir_usuario' usuario.id %}" class="btn btn-danger btn-sm btn-excluir">Excluir</a>
                             </td>
                         </tr>
                     {% endfor %}

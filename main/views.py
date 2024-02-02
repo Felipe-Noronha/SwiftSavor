@@ -8,6 +8,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import user_passes_test
 from django.urls import reverse
 from django.contrib.auth.models import User
+from .forms import CustomUserCreationForm
 
 
 def is_admin(user):
@@ -77,13 +78,13 @@ def excluir_receita(request, receita_id):
 
 def cadastrar_usuario(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
             return redirect('index')
     else:
-        form = UserCreationForm()
+        form = CustomUserCreationForm()
     
     return render(request, 'main/cadastrar_usuario.html', {'form': form})
 
