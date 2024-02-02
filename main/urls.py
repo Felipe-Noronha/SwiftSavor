@@ -64,4 +64,5 @@ urlpatterns = [
 
     path('remover_administrador/<int:usuario_id>/', views.remover_administrador, name='remover_administrador'),
     path('receitas_recomendadas/', receitas_recomendadas, name='receitas_recomendadas'),
+    path('configuracoes/', views.configuracoes, name='configuracoes'),
 ]

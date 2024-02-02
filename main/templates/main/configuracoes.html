@@ -1,0 +1,25 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Configurações{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+        <!-- Card de Configurações -->
+        <div class="card">
+            <div class="card-header">
+                Configurações
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Personalize sua experiência</h5>
+                <p class="card-text">Ajuste as configurações do site para atender às suas preferências.</p>
+                <!-- Botão para alternar o tema -->
+                <button id="toggle-theme-btn" class="btn btn-primary">Alternar Modo</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

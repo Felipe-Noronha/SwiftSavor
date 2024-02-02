@@ -340,3 +340,8 @@ def receitas_recomendadas(request):
             receitas_completas.append(receita)
 
     return render(request, 'main/receitas_recomendadas.html', {'receitas': receitas_completas})
+
+
+def configuracoes(request):
+    # Lógica para a página de configurações
+    return render(request, 'main/configuracoes.html')
