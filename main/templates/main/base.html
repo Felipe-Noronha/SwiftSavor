@@ -20,46 +20,46 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'index' %}">Início</a>
+                        <a class="nav-link px3" href="{% url 'index' %}">Início</a>
                     </li>
                     {% if user.is_authenticated %}
                         {% if user.is_staff %}
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'lista_receitas' %}">Lista de Receitas</a>
+                                <a class="nav-link px3" href="{% url 'lista_receitas' %}">Lista de Receitas</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'admin_dashboard' %}">DashBoard</a>
+                                <a class="nav-link px3" href="{% url 'admin_dashboard' %}">DashBoard</a>
                             </li>
                         {% else %}
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'lista_receitas' %}">Lista de Receitas</a>
+                                <a class="nav-link px3" href="{% url 'lista_receitas' %}">Lista de Receitas</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'receitas_favoritas' %}">Receitas Favoritas</a>
+                                <a class="nav-link px3" href="{% url 'receitas_favoritas' %}">Receitas Favoritas</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'selecionar_ingredientes' %}">Ingredientes</a>
+                                <a class="nav-link px3" href="{% url 'selecionar_ingredientes' %}">Ingredientes</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'meus_ingredientes' %}">Meus Ingredientes</a>
+                                <a class="nav-link px3" href="{% url 'meus_ingredientes' %}">Meus Ingredientes</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'receitas_recomendadas' %}">Receitas Recomendadas</a>
+                                <a class="nav-link px3" href="{% url 'receitas_recomendadas' %}">Receitas Recomendadas</a>
                             </li>
                         {% endif %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                            <a class="nav-link px3" href="{% url 'logout' %}">Logout</a>
                         </li>
                         <!-- Adicionando opção de Configurações -->
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'configuracoes' %}">Configurações</a>
+                            <a class="nav-link px3" href="{% url 'configuracoes' %}">Configurações</a>
                         </li>
                     {% else %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'login' %}">Login</a>
+                            <a class="nav-link px3" href="{% url 'login' %}">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'cadastrar_usuario' %}">Cadastrar</a>
+                            <a class="nav-link px3" href="{% url 'cadastrar_usuario' %}">Cadastrar</a>
                         </li>
                     {% endif %}
                     
