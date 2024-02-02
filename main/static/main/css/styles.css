@@ -182,3 +182,27 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: auto; /* Centraliza verticalmente */
 }
 
+/* Tema claro */
+.light-theme {
+    background-color: rgb(240, 231, 211); /* Fundo branco puro */
+    color: #333333; /* Texto cinza escuro para suavizar */
+    /* Adicione mais customizações para o tema claro aqui */
+}
+
+.light-theme .navbar {
+    background-color: wheat !important; /* Uma cor de fundo mais escura para a navbar, mas não muito escura */
+    /* Você pode ajustar a cor conforme necessário */
+}
+
+.light-theme .navbar a,
+.light-theme .navbar .navbar-brand {
+    color: #333333 !important; /* Cor do texto na navbar para garantir legibilidade */
+}
+
+.light-theme .navbar-toggler {
+    border-color: #cccccc; /* Cor da borda do toggler para visibilidade */
+}
+
+.light-theme .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23333333' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"); /* Ícone do toggler com cor ajustada para tema claro */
+}
