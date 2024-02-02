@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, PasswordChangeForm
 from django.contrib.auth.models import User
 from .models import ImagemReceita, Receita, Ingrediente, UsuarioIngrediente
 from django.forms import modelformset_factory
@@ -54,3 +54,17 @@ class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('username', 'email', 'password1', 'password2')
+
+class ChangeEmailForm(forms.Form):
+    new_email = forms.EmailField(
+        label='Novo E-mail',
+        widget=forms.EmailInput(attrs={'class': 'form-control'}),
+        required=True
+    )
+
+class ChangePasswordForm(PasswordChangeForm):
+    def __init__(self, user, *args, **kwargs):
+        super(ChangePasswordForm, self).__init__(user, *args, **kwargs)
+        self.fields['old_password'].widget.attrs['class'] = 'form-control'
+        self.fields['new_password1'].widget.attrs['class'] = 'form-control'
+        self.fields['new_password2'].widget.attrs['class'] = 'form-control'    

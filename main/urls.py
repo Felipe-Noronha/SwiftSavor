@@ -65,4 +65,8 @@ urlpatterns = [
     path('remover_administrador/<int:usuario_id>/', views.remover_administrador, name='remover_administrador'),
     path('receitas_recomendadas/', receitas_recomendadas, name='receitas_recomendadas'),
     path('configuracoes/', views.configuracoes, name='configuracoes'),
+
+    path('trocar_email/', views.trocar_email, name='trocar_email'),
+    path('trocar_senha/', views.trocar_senha, name='trocar_senha'),
+
 ]

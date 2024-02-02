@@ -1,5 +1,5 @@
 from django.contrib.auth import login, logout
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import update_session_auth_hash
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import ImagemReceita, Receita, Ingrediente, ReceitaFavorita, UsuarioIngrediente
 from .forms import ImagemReceitaFormSet, ReceitaForm,IngredienteForm
@@ -8,7 +8,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import user_passes_test
 from django.urls import reverse
 from django.contrib.auth.models import User
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm, ChangeEmailForm, ChangePasswordForm
 
 
 def is_admin(user):
@@ -345,3 +345,34 @@ def receitas_recomendadas(request):
 def configuracoes(request):
     # Lógica para a página de configurações
     return render(request, 'main/configuracoes.html')
+
+@login_required
+def trocar_email(request):
+    if request.method == 'POST':
+        form = ChangeEmailForm(request.POST)
+        if form.is_valid():
+            new_email = form.cleaned_data['new_email']
+            request.user.email = new_email
+            request.user.save()
+            # Redirecione para a página de configurações ou outra página de sua escolha
+            return redirect('configuracoes')  # Altere 'configuracoes' para a URL desejada
+    else:
+        form = ChangeEmailForm()
+
+    return render(request, 'main/trocar_email.html', {'form': form})
+
+
+@login_required
+def trocar_senha(request):
+    if request.method == 'POST':
+        form = ChangePasswordForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Atualize a sessão do usuário para evitar logout
+            messages.success(request, 'Senha alterada com sucesso!')
+            # Redirecione para a página de configurações ou outra página de sua escolha
+            return redirect('configuracoes')  # Altere 'configuracoes' para a URL desejada
+    else:
+        form = ChangePasswordForm(request.user)
+
+    return render(request, 'main/trocar_senha.html', {'form': form})

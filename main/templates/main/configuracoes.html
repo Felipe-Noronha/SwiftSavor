@@ -1,5 +1,6 @@
 {% extends 'main/base.html' %}
 {% load static %}
+
 {% block title %}Configurações{% endblock %}
 
 {% block content %}
@@ -10,6 +11,31 @@
                 Configurações
             </div>
             <div class="card-body">
+                <h5 class="card-title">Segurança</h5>
+                <p class="card-text">Ajuste as configurações de e-mail e senha.</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <form method="post" action="{% url 'trocar_email' %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary">Trocar Email</button>
+                        </form>
+                    </div>
+                    <div class="col-md-6">
+                        <form method="post" action="{% url 'trocar_senha' %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary">Trocar Senha</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-center mt-3">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
                 <h5 class="card-title">Personalize sua experiência</h5>
                 <p class="card-text">Ajuste as configurações do site para atender às suas preferências.</p>
                 <button id="toggle-theme-btn" class="btn btn-primary">Alternar Modo</button>
@@ -17,7 +43,4 @@
         </div>
     </div>
 </div>
-{% endblock %}
-
-{% block scripts %}
 {% endblock %}
