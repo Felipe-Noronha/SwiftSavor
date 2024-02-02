@@ -8,26 +8,32 @@
             <form method="post">
                 {% csrf_token %}
                 <div class="form-group">
-                    <label for="{{ form.username.id_for_label }}" class="form-label text-black">Username:</label>
-                    {{ form.username }}
-                    {{ form.username.errors }}
+                    <label for="{{ form.username.id_for_label }}" class="form-label">Username:</label>
+                    <input type="text" class="form-control {{ form.username.errors|yesno:'is-invalid,' }}" id="{{ form.username.id_for_label }}" name="{{ form.username.html_name }}" value="{{ form.username.value|default_if_none:'' }}">
+                    {% for error in form.username.errors %}
+                        <div class="invalid-feedback">{{ error }}</div>
+                    {% endfor %}
                 </div>
                 <div class="form-group">
-                    <label for="{{ form.password1.id_for_label }}" class="form-label text-black">Password:</label>
-                    {{ form.password1 }}
-                    {{ form.password1.errors }}
-                    <small class="form-text text-muted">Your password can’t be too similar to your other personal information. Your password must contain at least 8 characters. Your password can’t be a commonly used password. Your password can’t be entirely numeric.</small>
+                    <label for="{{ form.password1.id_for_label }}" class="form-label">Password:</label>
+                    <input type="password" class="form-control {{ form.password1.errors|yesno:'is-invalid,' }}" id="{{ form.password1.id_for_label }}" name="{{ form.password1.html_name }}">
+                    {% for error in form.password1.errors %}
+                        <div class="invalid-feedback">{{ error }}</div>
+                    {% endfor %}
+                    <small class="form-text text-muted">Sua senha não pode ser comum, não pode conter apenas números, deve conter pelo menos 8 caracteres e não pode ser parecida com suas informações pessoais.</small>
                 </div>
                 <div class="form-group">
-                    <label for="{{ form.password2.id_for_label }}" class="form-label text-black">Password confirmation:</label>
-                    {{ form.password2 }}
-                    {{ form.password2.errors }}
-                    <small class="form-text text-muted">Enter the same password as before, for verification.</small>
+                    <label for="{{ form.password2.id_for_label }}" class="form-label">Password confirmation:</label>
+                    <input type="password" class="form-control {{ form.password2.errors|yesno:'is-invalid,' }}" id="{{ form.password2.id_for_label }}" name="{{ form.password2.html_name }}">
+                    {% for error in form.password2.errors %}
+                        <div class="invalid-feedback">{{ error }}</div>
+                    {% endfor %}
+                    <small class="form-text text-muted">Digite a senha novamente, para verificação.</small>
                 </div>
                 <button type="submit" class="btn btn-primary">Cadastrar</button>
             </form>
             <hr>
-            <p class="mt-2"><span class="text-black">Já tem uma conta? Faça</span> <a href="{% url 'login' %}" class="link-primary">login</a>.</p>
+            <p class="mt-2 account-query"><span>Já tem uma conta?</span> <a href="{% url 'login' %}" class="link-primary">Faça login</a>.</p>
         </div>
     </div>
 </div>

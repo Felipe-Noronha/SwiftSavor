@@ -1,14 +1,35 @@
 {% extends 'main/base.html' %}
 
 {% block content %}
-    <div class="container mt-4">
-        <h1 class="mb-4">Cadastrar Receita</h1>
-        <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form.as_p }}
-            {{ formset }}
-            <button type="submit" class="btn btn-primary">Cadastrar</button>
-        </form>
-        
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title mb-4">Cadastrar Receita</h1>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for field in form %}
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}" class="form-label text-black">{{ field.label }}:</label>
+                    {{ field }}
+                    {% if field.help_text %}
+                    <small class="form-text text-muted">{{ field.help_text }}</small>
+                    {% endif %}
+                    {{ field.errors }}
+                </div>
+                {% endfor %}
+                
+                {% for formset_form in formset %}
+                <div class="form-group">
+                    {{ formset_form.as_p }}
+                    {% for field in formset_form %}
+                        {{ field.errors }}
+                    {% endfor %}
+                </div>
+                {% endfor %}
+                
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
+            </form>
+        </div>
     </div>
+</div>
 {% endblock %}

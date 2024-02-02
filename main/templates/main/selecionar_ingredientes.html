@@ -3,11 +3,11 @@
 {% block content %}
 <div class="container mt-4">
     <h1 class="mb-4">Selecionar Ingredientes</h1>
-    <form method="get" action="">
-        <div class="input-group mb-3">
+    <form method="get" action="" class="mb-3">
+        <div class="input-group">
             <input type="text" class="form-control" placeholder="Buscar ingredientes..." name="q" value="{{ query }}">
             <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="submit">Buscar</button>
+                <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
             </div>
         </div>
     </form>
