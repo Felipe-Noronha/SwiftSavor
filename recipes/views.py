@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib import messages
 from .models import Receita, ImagemReceita
 from .forms import PesquisaReceitaForm, ReceitaForm, ImagemReceitaFormSet
-from ingredients.models import UsuarioIngrediente
+from ingredients.models import Ingrediente,UsuarioIngrediente
 
 
 @login_required
@@ -73,9 +73,19 @@ def excluir_receita(request, receita_id):
     return render(request, 'recipes/excluir_receita.html', {'receita': receita})
 
 
+@login_required
 def detalhes_receita(request, receita_id):
     receita = get_object_or_404(Receita, pk=receita_id)
-    return render(request, 'recipes/detalhes_receita.html', {'receita': receita})
+
+    ingredientes_usuario_ids = UsuarioIngrediente.objects.filter(
+        usuario=request.user
+    ).values_list('ingrediente_id', flat=True)
+    
+    # Encontre os ingredientes que faltam
+    ingredientes_faltando = receita.ingredientes.exclude(id__in=ingredientes_usuario_ids)
+
+    return render(request, 'recipes/detalhes_receita.html', {'receita': receita, 'ingredientes_faltando': ingredientes_faltando})
+
 
 
 @login_required
@@ -95,3 +105,4 @@ def receitas_recomendadas(request):
             receitas_completas.append(receita)
 
     return render(request, 'recipes/receitas_recomendadas.html', {'receitas': receitas_completas})
+

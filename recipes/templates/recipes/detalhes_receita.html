@@ -3,6 +3,28 @@
 {% block content %}
     <div class="container mt-4">
         <h1 class="mb-4">{{ receita.nome }}</h1>
+
+
+        <h1>Lista de Compras</h1>
+        <p>Compre os itens abaixo:</p>
+        <div class="card-body">
+            {% if ingredientes_faltando %}
+                <ul>
+                    {% for ingrediente in ingredientes_faltando %}
+                        <li>{{ ingrediente.nome }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>Você tem todos os ingredientes para fazer esta receita!</p>
+            {% endif %}
+        </div>
+
+
+
+
+
+
+
         
         {% if receita.imagens_receita.all %}
         <div id="carouselReceita" class="carousel slide" data-ride="carousel">
