@@ -235,3 +235,13 @@ h1, h2, h3, h4, h5, h6 {
 .btn-primary:hover {
     background-color: #b84c29;
 }
+
+.custom-carousel {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.carousel-inner img {
+    max-width: 100%;
+    height: auto;
+}

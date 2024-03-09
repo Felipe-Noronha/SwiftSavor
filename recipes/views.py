@@ -4,6 +4,8 @@ from django.contrib import messages
 from .models import Receita, ImagemReceita
 from .forms import PesquisaReceitaForm, ReceitaForm, ImagemReceitaFormSet
 from ingredients.models import Ingrediente,UsuarioIngrediente
+from urllib.parse import quote
+from django.urls import reverse
 
 
 @login_required
@@ -62,7 +64,6 @@ def editar_receita(request, receita_id):
     return render(request, 'recipes/editar_receita.html', {'form': form})
 
 
-
 @user_passes_test(lambda u: u.is_staff, login_url='index')
 def excluir_receita(request, receita_id):
     receita = get_object_or_404(Receita, id=receita_id)
@@ -81,7 +82,6 @@ def detalhes_receita(request, receita_id):
         usuario=request.user
     ).values_list('ingrediente_id', flat=True)
     
-    # Encontre os ingredientes que faltam
     ingredientes_faltando = receita.ingredientes.exclude(id__in=ingredientes_usuario_ids)
 
     return render(request, 'recipes/detalhes_receita.html', {'receita': receita, 'ingredientes_faltando': ingredientes_faltando})
@@ -106,3 +106,11 @@ def receitas_recomendadas(request):
 
     return render(request, 'recipes/receitas_recomendadas.html', {'receitas': receitas_completas})
 
+
+@login_required
+def compartilhar_receita(request, receita_id):
+    receita = get_object_or_404(Receita, pk=receita_id)
+    link_unido = request.build_absolute_uri(reverse('detalhes_receita', args=[receita_id]))
+    link_whatsapp = f'https://api.whatsapp.com/send?text={quote(link_unido)}'
+
+    return render(request, 'recipes/compartilhar_receita.html', {'receita': receita, 'link_whatsapp': link_whatsapp})

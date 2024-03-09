@@ -4,11 +4,10 @@
     <div class="container mt-4">
         <h1 class="mb-4">{{ receita.nome }}</h1>
 
-
         <h1>Lista de Compras</h1>
-        <p>Compre os itens abaixo:</p>
         <div class="card-body">
             {% if ingredientes_faltando %}
+            <p>Compre os itens abaixo:</p>
                 <ul>
                     {% for ingrediente in ingredientes_faltando %}
                         <li>{{ ingrediente.nome }}</li>
@@ -17,17 +16,10 @@
             {% else %}
                 <p>Você tem todos os ingredientes para fazer esta receita!</p>
             {% endif %}
-        </div>
+        </div>        
 
-
-
-
-
-
-
-        
         {% if receita.imagens_receita.all %}
-        <div id="carouselReceita" class="carousel slide" data-ride="carousel">
+        <div id="carouselReceita" class="carousel slide custom-carousel" data-ride="carousel" data-interval="false">
             <div class="carousel-inner">
                 {% for imagem in receita.imagens_receita.all %}
                     {% if imagem.imagem %}
@@ -66,4 +58,9 @@
         {% endif %}
         
     </div>
+
+    <a href="https://api.whatsapp.com/send?text=Confira+a+receita:+{{ receita.nome }}+{{ request.build_absolute_uri }}">
+        Compartilhar no WhatsApp
+    </a>
+
 {% endblock %}
