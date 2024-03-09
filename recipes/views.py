@@ -34,8 +34,11 @@ def cadastrar_receita(request):
 
             for form_imagem in formset.cleaned_data:
                 imagem = form_imagem.get('imagem')
+                url = form_imagem.get('url')
                 if imagem:
                     ImagemReceita.objects.create(receita=receita, imagem=imagem)
+                elif url:
+                    ImagemReceita.objects.create(receita=receita, url=url)    
 
             messages.success(request, 'Receita cadastrada com sucesso!')
             return redirect('lista_receitas')
