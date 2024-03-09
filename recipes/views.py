@@ -8,8 +8,14 @@ from ingredients.models import UsuarioIngrediente
 
 @login_required
 def lista_receitas(request):
+    form_pesquisa = PesquisaReceitaForm(request.GET)
     receitas = Receita.objects.all()
-    return render(request, 'recipes/lista_receitas.html', {'receitas': receitas})
+
+    if form_pesquisa.is_valid():
+        termo_pesquisa = form_pesquisa.cleaned_data['pesquisa']
+        receitas = receitas.filter(nome__icontains=termo_pesquisa)
+
+    return render(request, 'recipes/lista_receitas.html', {'receitas': receitas, 'form_pesquisa': form_pesquisa})
 
 
 @login_required

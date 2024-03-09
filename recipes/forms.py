@@ -20,3 +20,7 @@ ImagemReceitaFormSet = modelformset_factory(
     max_num=5,
     widgets={'imagem': forms.FileInput(attrs={'class': 'form-control'})}
 )
+
+
+class PesquisaReceitaForm(forms.Form):
+    pesquisa = forms.CharField(max_length=100, required=False, label='Pesquisar')
