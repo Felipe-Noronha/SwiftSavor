@@ -143,6 +143,10 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #409094;
     border-bottom: 3px solid #b84c29;
     min-height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .navbar .navbar-brand,
@@ -172,19 +176,21 @@ h1, h2, h3, h4, h5, h6 {
     padding-left: .8rem;
     font-size: 1.1rem;
     padding: 0.5rem 1rem;
+    flex: 1;
 }
 
 .navbar-nav {
     align-items: center;
     display: flex;
-    justify-content: space-between;
     line-height: 20px;
     margin-top: auto;
     margin-bottom: auto;
+    flex-wrap: wrap;
 }
 
 .navbar-nav > .nav-item {
     margin-right: 20px;
+    margin-bottom: 10px;
 }
 
 .nav-item img {
