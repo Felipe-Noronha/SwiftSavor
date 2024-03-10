@@ -243,6 +243,14 @@ h1, h2, h3, h4, h5, h6 {
     color: #091d27;
 }
 
+.card-body p{
+    color: black
+}
+
+.card-body p label {
+    color: black;
+}
+
 .btn-primary {
     background-color: #409094;
     color: #fff;
