@@ -14,7 +14,7 @@
                 <form method="post">
                     {% csrf_token %}
                     <div class="form-group">
-                        <label for="{{ form.new_email.id_for_label }}" class="form-label">Novo E-mail</label>
+                        <label for="{{ form.new_email.id_for_label }}" class="form-label">Novo E-mail:</label>
                         {{ form.new_email }}
                     </div>
                     <button type="submit" class="btn btn-primary">Trocar Email</button>

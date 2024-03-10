@@ -14,18 +14,18 @@
                 <form method="post">
                     {% csrf_token %}
                     <div class="form-group">
-                        <label for="{{ form.old_password.id_for_label }}" class="form-label">Senha Atual</label>
+                        <label for="{{ form.old_password.id_for_label }}" class="form-label">Senha Atual:</label>
                         {{ form.old_password }}
                     </div>
                     <div class="form-group">
-                        <label for="{{ form.new_password1.id_for_label }}" class="form-label">Nova Senha</label>
+                        <label for="{{ form.new_password1.id_for_label }}" class="form-label">Nova Senha:</label>
                         {{ form.new_password1 }}
                         <small id="passwordHelp" class="form-text text-muted">
                             A senha deve conter pelo menos 8 caracteres.
                         </small>
                     </div>
                     <div class="form-group">
-                        <label for="{{ form.new_password2.id_for_label }}" class="form-label">Confirme a Nova Senha</label>
+                        <label for="{{ form.new_password2.id_for_label }}" class="form-label">Confirme a Nova Senha:</label>
                         {{ form.new_password2 }}
                     </div>
                     <button type="submit" class="btn btn-primary">Trocar Senha</button>

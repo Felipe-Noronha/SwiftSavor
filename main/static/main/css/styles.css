@@ -114,6 +114,11 @@ h1, h2, h3, h4, h5, h6 {
     color: #ffffff;
 }
 
+#id_ingredientes label{
+    color: #000000;
+}
+
+
 .form-group label.form-label {
     color: black;
 }
@@ -228,6 +233,10 @@ h1, h2, h3, h4, h5, h6 {
     color: #000000;
 }
 
+.light-theme .card-body p{
+    color: black
+}
+
 .card-title {
     font-size: 1.5rem;
     color: #409094;
@@ -244,8 +253,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .card-body p{
-    color: black
+    color: #ffffff;
 }
+
+#pBlack {
+    color: #000000;
+}
+
 
 .card-body p label {
     color: black;
