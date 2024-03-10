@@ -114,6 +114,10 @@ h1, h2, h3, h4, h5, h6 {
     color: #ffffff;
 }
 
+.form-group label.form-label {
+    color: black;
+}
+
 .form-group input,
 .form-group select,
 .form-group textarea {
