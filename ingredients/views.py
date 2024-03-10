@@ -14,7 +14,9 @@ def cadastrar_ingrediente(request):
     if request.method == 'POST':
         form = IngredienteForm(request.POST)
         if form.is_valid():
-            form.save()
+            ingrediente = form.save(commit=False)
+            ingrediente.user = request.user
+            ingrediente.save()
             messages.success(request, 'Ingrediente cadastrado com sucesso!')
             return redirect('lista_ingredientes')
     else:

@@ -6,6 +6,14 @@ class IngredienteForm(forms.ModelForm):
         model = Ingrediente
         fields = ['nome']
 
+    def clean_nome(self):
+        nome = self.cleaned_data['nome'].lower()
+    
+        if Ingrediente.objects.filter(nome__iexact=nome).exclude(id=self.instance.id).exists():
+            raise forms.ValidationError('Um ingrediente com esse nome já existe.')
+
+        return nome    
+
 class UsuarioIngredienteForm(forms.ModelForm):
     class Meta:
         model = UsuarioIngrediente
