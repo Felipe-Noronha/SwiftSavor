@@ -111,7 +111,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .form-group label {
-    color: #000000;
+    color: #ffffff;
 }
 
 .form-group input,
@@ -218,6 +218,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .light-theme .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23333333' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"); /* Ícone do toggler com cor ajustada para tema claro */
+}
+
+.light-theme .form-group label {
+    color: #000000;
 }
 
 .card-title {
