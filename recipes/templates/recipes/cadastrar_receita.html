@@ -6,6 +6,7 @@
         <div class="card-body">
             <h1 class="card-title mb-4">Cadastrar Receita</h1>
             <p>Após cadastrar a receita, ela ficará pendente de aprovação por um administrador.</p>
+            
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ formset.management_form }}
@@ -19,6 +20,8 @@
                     {{ field.errors }}
                 </div>
                 {% endfor %}
+
+                <input type="text" id="search-ingredient" class="form-control" placeholder="Pesquisar ingredientes">
                 
                 {% for formset_form in formset %}
                 <div class="form-group">
@@ -34,4 +37,38 @@
         </div>
     </div>
 </div>
+
+<!-- Adicione o script jQuery para a filtragem dinâmica -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function(){
+        // Adiciona um ouvinte de eventos ao campo de pesquisa
+        $("#search-ingredient").on("input", function() {
+            var searchTerm = $(this).val().toLowerCase();
+
+            console.log("Termo de pesquisa:", searchTerm);
+
+            // Oculta todas as divs filhas
+            $("div[id^='id_ingredientes'] > div").hide();
+
+            // Mostra as divs filhas que contêm o termo de pesquisa no texto
+            $("div[id^='id_ingredientes'] > div:contains-ci(" + searchTerm + ")").show();
+        });
+
+        // Extensão para realizar uma busca insensível a maiúsculas e minúsculas
+        $.extend($.expr[":"], {
+            "contains-ci": function(elem, i, match, array) {
+                return (elem.textContent || elem.innerText || "").toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
+            }
+        });
+
+        // Oculta todas as divs filhas no carregamento da página
+        $("div[id^='id_ingredientes'] > div").hide();
+    });
+</script>
+
+
+
+
+
 {% endblock %}
