@@ -11,7 +11,7 @@ from django.urls import reverse
 @login_required
 def lista_receitas(request):
     form_pesquisa = PesquisaReceitaForm(request.GET)
-    receitas = Receita.objects.all()
+    receitas = Receita.objects.filter(aprovada=True)
 
     if form_pesquisa.is_valid():
         termo_pesquisa = form_pesquisa.cleaned_data['pesquisa']
@@ -29,6 +29,7 @@ def cadastrar_receita(request):
         if form.is_valid() and formset.is_valid():
             receita = form.save(commit=False)
             receita.usuario = request.user
+            receita.aprovada = False
             receita.save()
             form.save_m2m()
 
@@ -40,7 +41,7 @@ def cadastrar_receita(request):
                 elif url:
                     ImagemReceita.objects.create(receita=receita, url=url)    
 
-            messages.success(request, 'Receita cadastrada com sucesso!')
+            messages.success(request, 'Receita cadastrada com sucesso! Aguardando aprovação.')
             return redirect('lista_receitas')
     else:
         form = ReceitaForm()
@@ -98,7 +99,8 @@ def receitas_recomendadas(request):
     ).values_list('ingrediente_id', flat=True)
 
     receitas_possiveis = Receita.objects.filter(
-        ingredientes__id__in=ingredientes_usuario_ids
+        ingredientes__id__in=ingredientes_usuario_ids,
+        aprovada=True
     ).distinct()
 
     receitas_completas = []
@@ -117,3 +119,23 @@ def compartilhar_receita(request, receita_id):
     link_whatsapp = f'https://api.whatsapp.com/send?text={quote(link_unido)}'
 
     return render(request, 'recipes/compartilhar_receita.html', {'receita': receita, 'link_whatsapp': link_whatsapp})
+
+
+
+@user_passes_test(lambda u: u.is_staff, login_url='index')
+def aprovar_receita(request, receita_id):
+    receita = get_object_or_404(Receita, id=receita_id)
+    
+    if request.method == 'POST':
+        receita.aprovada = True
+        receita.save()
+        messages.success(request, 'Receita aprovada com sucesso.')
+        return redirect('lista_pendentes')
+
+    return render(request, 'recipes/detalhes_receita.html', {'receita': receita})
+
+
+@user_passes_test(lambda u: u.is_staff, login_url='index')
+def lista_pendentes(request):
+    receitas_pendentes = Receita.objects.filter(aprovada=False)
+    return render(request, 'recipes/lista_pendentes.html', {'receitas_pendentes': receitas_pendentes})

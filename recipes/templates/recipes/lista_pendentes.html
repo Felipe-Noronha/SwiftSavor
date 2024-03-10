@@ -1,0 +1,23 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h1 class="mb-4">Receitas Pendentes de Aprovação</h1>
+
+        {% if receitas_pendentes %}
+            <ul class="list-group">
+                {% for receita in receitas_pendentes %}
+                    <li class="list-group-item">
+                        <a href="{% url 'detalhes_receita' receita.id %}">{{ receita.nome }}</a>
+                        <form method="post" action="{% url 'aprovar_receita' receita.id %}" class="d-inline">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-success btn-sm float-right">Aprovar Receita</button>
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Nenhuma receita pendente de aprovação no momento.</p>
+        {% endif %}
+    </div>
+{% endblock %}
