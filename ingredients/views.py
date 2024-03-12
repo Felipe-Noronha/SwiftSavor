@@ -90,7 +90,7 @@ def selecionar_ingredientes(request):
             return redirect('selecionar_ingredientes')
 
     query = request.GET.get('q', '')
-    ingredientes = Ingrediente.objects.filter(nome__icontains=query) if query else Ingrediente.objects.all()
+    ingredientes = Ingrediente.objects.filter(nome__icontains=query).order_by('nome') if query else Ingrediente.objects.all().order_by('nome')
 
     return render(request, 'ingredients/selecionar_ingredientes.html', {
         'ingredientes': ingredientes,
@@ -103,6 +103,7 @@ def selecionar_ingredientes(request):
 def meus_ingredientes(request):
     usuario_ingredientes = UsuarioIngrediente.objects.filter(usuario=request.user)
     ingredientes = [ui.ingrediente for ui in usuario_ingredientes]
+    ingredientes_selecionados = sorted(ingredientes, key=lambda x: x.nome)
 
     if request.method == 'POST':
         ingrediente_id_para_remover = request.POST.get('ingrediente_id')
@@ -113,7 +114,9 @@ def meus_ingredientes(request):
             ).delete()
             return redirect('meus_ingredientes')
 
-    return render(request, 'ingredients/meus_ingredientes.html', {'ingredientes_selecionados': ingredientes})
+    return render(request, 'ingredients/meus_ingredientes.html', {'ingredientes_selecionados': ingredientes_selecionados})
+
+
 
 
 @login_required
