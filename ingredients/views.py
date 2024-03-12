@@ -77,6 +77,17 @@ def detalhes_ingrediente(request, ingrediente_id):
 
 @login_required
 def selecionar_ingredientes(request):
+    if request.method == 'POST':
+        ingrediente_id = request.POST.get('ingrediente_id')
+        usuario_ingrediente = UsuarioIngrediente.objects.filter(usuario=request.user, ingrediente_id=ingrediente_id)
+
+        if usuario_ingrediente.exists():
+            usuario_ingrediente.delete()
+        else:
+            UsuarioIngrediente.objects.create(usuario=request.user, ingrediente_id=ingrediente_id)
+
+        return redirect('selecionar_ingredientes')
+
     usuario_ingredientes = UsuarioIngrediente.objects.filter(usuario=request.user).values_list('ingrediente_id', flat=True)
 
     query = request.GET.get('q', '')

@@ -1,45 +1,51 @@
 {% extends 'main/base.html' %}
 
 {% block content %}
-<div class="container mt-4">
-    <h1 class="mb-4">Selecionar Ingredientes</h1>
-    <form method="get" action="" class="mb-3">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Buscar ingredientes..." name="q" value="{{ query }}">
-            <div class="input-group-append">
-                <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+<div class="container-fluid mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 class="mb-4 text-center">Selecionar Ingredientes</h1>
+            <form method="get" action="" class="mb-3">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Buscar ingredientes..." name="q" value="{{ query }}">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </form>
+            <ul class="list-group">
+                {% for ingrediente in ingredientes %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        {{ ingrediente.nome }}
+                        <form method="post" action="{% url 'selecionar_ingredientes' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="ingrediente_id" value="{{ ingrediente.id }}">
+                            <button type="submit" class="btn {% if ingrediente.id in usuario_ingredientes %}btn-secondary{% else %}btn-primary{% endif %}">
+                                {% if ingrediente.id in usuario_ingredientes %}Remover{% else %}Salvar{% endif %}
+                            </button>
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <div class="pagination justify-content-center mt-4">
+                <span class="step-links">
+                    {% if ingredientes.has_previous %}
+                        <a href="?page=1">&laquo; first</a>
+                        <a href="?page={{ ingredientes.previous_page_number }}">previous</a>
+                    {% endif %}
+
+                    <span class="current">
+                        Página {{ ingredientes.number }} de {{ ingredientes.paginator.num_pages }}.
+                    </span>
+
+                    {% if ingredientes.has_next %}
+                        <a href="?page={{ ingredientes.next_page_number }}">next</a>
+                        <a href="?page={{ ingredientes.paginator.num_pages }}">last &raquo;</a>
+                    {% endif %}
+                </span>
             </div>
         </div>
-    </form>
-    <ul class="list-group">
-        {% for ingrediente in ingredientes %}
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-            {{ ingrediente.nome }}
-            <form method="post" action="{% url 'selecionar_ingredientes' %}">
-                {% csrf_token %}
-                <input type="hidden" name="ingrediente_id" value="{{ ingrediente.id }}">
-                <button type="submit" class="btn {% if ingrediente.id in usuario_ingredientes %}btn-secondary disabled{% else %}btn-primary{% endif %}">Salvar</button>
-            </form>
-        </li>
-        {% endfor %}
-    </ul>
-
-    <div class="pagination">
-        <span class="step-links">
-            {% if ingredientes.has_previous %}
-                <a href="?page=1">&laquo; first</a>
-                <a href="?page={{ ingredientes.previous_page_number }}">previous</a>
-            {% endif %}
-
-            <span class="current">
-                Página {{ ingredientes.number }} de {{ ingredientes.paginator.num_pages }}.
-            </span>
-
-            {% if ingredientes.has_next %}
-                <a href="?page={{ ingredientes.next_page_number }}">next</a>
-                <a href="?page={{ ingredientes.paginator.num_pages }}">last &raquo;</a>
-            {% endif %}
-        </span>
     </div>
 </div>
 {% endblock %}
