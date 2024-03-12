@@ -139,11 +139,18 @@ h1, h2, h3, h4, h5, h6 {
     color: #000000;
     border: 1px solid #cccccc;
     padding: .375rem .75rem;
+    box-sizing: border-box;
+    width: 100%;
+    padding: .375rem .75rem;
 }
 
-.form-group input[type="file"] {
-    background-color: #f8f9fa;
-    border-color: #ced4da;
+.form-group input[type="text"] {
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #cccccc;
+    padding: .375rem .75rem;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .errorlist {

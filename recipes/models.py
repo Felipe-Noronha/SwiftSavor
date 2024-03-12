@@ -6,7 +6,7 @@ from django.utils import timezone
 class Receita(models.Model):
     nome = models.CharField(max_length=200)
     ingredientes = models.ManyToManyField(Ingrediente)
-    instrucoes = models.TextField()
+    instruções = models.TextField()
     usuario = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     data_cadastro = models.DateField(auto_now_add=False, default=timezone.now)
     aprovada = models.BooleanField(default=False)

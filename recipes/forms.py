@@ -5,7 +5,7 @@ from django.forms import modelformset_factory
 class ReceitaForm(forms.ModelForm):
     class Meta:
         model = Receita
-        fields = ['nome', 'instrucoes', 'ingredientes']
+        fields = ['nome', 'instruções', 'ingredientes']
     
     ingredientes = forms.ModelMultipleChoiceField(
         queryset=Ingrediente.objects.all(),
