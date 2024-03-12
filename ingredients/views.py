@@ -29,6 +29,17 @@ def cadastrar_ingrediente(request):
 
 def lista_ingredientes(request):
     ingredientes = Ingrediente.objects.all()
+
+    paginator = Paginator(ingredientes, 10)
+    page = request.GET.get('page')
+
+    try:
+        ingredientes = paginator.page(page)
+    except PageNotAnInteger:
+        ingredientes = paginator.page(1)
+    except EmptyPage:
+        ingredientes = paginator.page(paginator.num_pages)
+
     return render(request, 'ingredients/lista_ingredientes.html', {'ingredientes': ingredientes})
 
 
@@ -77,7 +88,6 @@ def detalhes_ingrediente(request, ingrediente_id):
 
 @login_required
 def selecionar_ingredientes(request):
-    # Mantenha a informação da página antes da manipulação
     current_page = request.GET.get('page', 1)
 
     if request.method == 'POST':
@@ -88,8 +98,6 @@ def selecionar_ingredientes(request):
             usuario_ingrediente.delete()
         else:
             UsuarioIngrediente.objects.create(usuario=request.user, ingrediente_id=ingrediente_id)
-
-        # Redirecione para a mesma página com o parâmetro de página mantido
         return redirect(reverse('selecionar_ingredientes') + f'?page={current_page}')
 
     usuario_ingredientes = UsuarioIngrediente.objects.filter(usuario=request.user).values_list('ingrediente_id', flat=True)
