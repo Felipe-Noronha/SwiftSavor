@@ -17,11 +17,15 @@
                 {% for ingrediente in ingredientes %}
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         {{ ingrediente.nome }}
-                        <form method="post" action="{% url 'selecionar_ingredientes' %}">
+                        <form method="post" action="{% url 'selecionar_ingredientes' %}?page={{ ingredientes.number }}">
                             {% csrf_token %}
                             <input type="hidden" name="ingrediente_id" value="{{ ingrediente.id }}">
                             <button type="submit" class="btn {% if ingrediente.id in usuario_ingredientes %}btn-secondary{% else %}btn-primary{% endif %}">
-                                {% if ingrediente.id in usuario_ingredientes %}Remover{% else %}Salvar{% endif %}
+                                {% if ingrediente.id in usuario_ingredientes %}
+                                    <i class="fas fa-trash-alt"></i>
+                                {% else %}
+                                    <i class="fas fa-shopping-cart"></i>
+                                {% endif %}
                             </button>
                         </form>
                     </li>
@@ -31,17 +35,17 @@
             <div class="pagination justify-content-center mt-4">
                 <span class="step-links">
                     {% if ingredientes.has_previous %}
-                        <a href="?page=1">&laquo; first</a>
-                        <a href="?page={{ ingredientes.previous_page_number }}">previous</a>
+                        <a href="?page=1{% if query %}&q={{ query }}{% endif %}">&laquo; first</a>
+                        <a href="?page={{ ingredientes.previous_page_number }}{% if query %}&q={{ query }}{% endif %}">previous</a>
                     {% endif %}
-
+            
                     <span class="current">
                         Página {{ ingredientes.number }} de {{ ingredientes.paginator.num_pages }}.
                     </span>
-
+            
                     {% if ingredientes.has_next %}
-                        <a href="?page={{ ingredientes.next_page_number }}">next</a>
-                        <a href="?page={{ ingredientes.paginator.num_pages }}">last &raquo;</a>
+                        <a href="?page={{ ingredientes.next_page_number }}{% if query %}&q={{ query }}{% endif %}">next</a>
+                        <a href="?page={{ ingredientes.paginator.num_pages }}{% if query %}&q={{ query }}{% endif %}">last &raquo;</a>
                     {% endif %}
                 </span>
             </div>

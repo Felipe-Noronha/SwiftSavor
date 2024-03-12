@@ -4,6 +4,7 @@ from django.contrib import messages
 from .models import Ingrediente, UsuarioIngrediente
 from .forms import IngredienteForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.urls import reverse
 
 
 
@@ -74,9 +75,11 @@ def detalhes_ingrediente(request, ingrediente_id):
     }
     return render(request, 'ingredients/detalhes_ingrediente.html', context)
 
-
 @login_required
 def selecionar_ingredientes(request):
+    # Mantenha a informação da página antes da manipulação
+    current_page = request.GET.get('page', 1)
+
     if request.method == 'POST':
         ingrediente_id = request.POST.get('ingrediente_id')
         usuario_ingrediente = UsuarioIngrediente.objects.filter(usuario=request.user, ingrediente_id=ingrediente_id)
@@ -86,7 +89,8 @@ def selecionar_ingredientes(request):
         else:
             UsuarioIngrediente.objects.create(usuario=request.user, ingrediente_id=ingrediente_id)
 
-        return redirect('selecionar_ingredientes')
+        # Redirecione para a mesma página com o parâmetro de página mantido
+        return redirect(reverse('selecionar_ingredientes') + f'?page={current_page}')
 
     usuario_ingredientes = UsuarioIngrediente.objects.filter(usuario=request.user).values_list('ingrediente_id', flat=True)
 
