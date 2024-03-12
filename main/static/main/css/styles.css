@@ -132,7 +132,7 @@ h1, h2, h3, h4, h5, h6 {
     color: black;
 }
 
-.form-group input,
+
 .form-group select,
 .form-group textarea {
     background-color: #ffffff;
@@ -141,7 +141,6 @@ h1, h2, h3, h4, h5, h6 {
     padding: .375rem .75rem;
     box-sizing: border-box;
     width: 100%;
-    padding: .375rem .75rem;
 }
 
 .form-group input[type="text"] {
