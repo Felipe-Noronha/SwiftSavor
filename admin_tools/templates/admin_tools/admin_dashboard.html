@@ -1,12 +1,16 @@
 {% extends 'main/base.html' %}
 
 {% block content %}
-<div class="container mt-4">
-    <h1 class="mb-4">Painel do Administrador</h1>
-
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card mb-4">
+<div class="container-fluid mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-12 text-center">
+            <h1 class="mb-4">Painel do Administrador</h1>
+        </div>
+    </div>
+    
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card mb-4 mx-auto" style="max-width: 400px;">
                 <div class="card-body">
                     <h2 class="card-title">Receitas</h2>
                     <a href="{% url 'cadastrar_receita' %}" class="btn btn-primary mb-2">Cadastrar Receita</a>
@@ -16,16 +20,18 @@
             </div>
         </div>
 
-        <div class="col-md-6">
-            <div class="card mb-4">
+        <div class="col-md-4">
+            <div class="card mb-4 mx-auto" style="max-width: 400px;">
                 <div class="card-body">
                     <h2 class="card-title">Ingredientes</h2>
                     <a href="{% url 'cadastrar_ingrediente' %}" class="btn btn-primary mb-2">Cadastrar Ingrediente</a>
                     <a href="{% url 'lista_ingredientes' %}" class="btn btn-info mb-2">Lista de Ingredientes</a>
                 </div>
             </div>
+        </div>
 
-            <div class="card mb-4">
+        <div class="col-md-4">
+            <div class="card mb-4 mx-auto" style="max-width: 400px;">
                 <div class="card-body">
                     <h2 class="card-title">Gestão de Usuários</h2>
                     <a href="{% url 'gestao_usuarios' %}" class="btn btn-primary mb-2">Gerenciar Usuários</a>
@@ -35,4 +41,5 @@
         </div>
     </div>
 </div>
+
 {% endblock %}

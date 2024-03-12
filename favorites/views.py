@@ -3,6 +3,8 @@ from django.shortcuts import redirect, get_object_or_404, render
 from django.contrib import messages
 from recipes.models import Receita
 from .models import ReceitaFavorita
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 
 @login_required
 def adicionar_favoritos(request, receita_id):
@@ -27,4 +29,16 @@ def remover_favorito(request, receita_id):
 @login_required
 def receitas_favoritas(request):
     receitas_favoritas = ReceitaFavorita.objects.filter(usuario=request.user).select_related('receita')
+
+    # Configurando a paginação
+    paginator = Paginator(receitas_favoritas, 10)  # 10 itens por página
+    page = request.GET.get('page')
+
+    try:
+        receitas_favoritas = paginator.page(page)
+    except PageNotAnInteger:
+        receitas_favoritas = paginator.page(1)
+    except EmptyPage:
+        receitas_favoritas = paginator.page(paginator.num_pages)
+
     return render(request, 'favorites/receitas_favoritas.html', {'receitas_favoritas': receitas_favoritas})

@@ -6,7 +6,7 @@ from .forms import PesquisaReceitaForm, ReceitaForm, ImagemReceitaFormSet
 from ingredients.models import Ingrediente,UsuarioIngrediente
 from urllib.parse import quote
 from django.urls import reverse
-
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 @login_required
 def lista_receitas(request):
@@ -16,6 +16,18 @@ def lista_receitas(request):
     if form_pesquisa.is_valid():
         termo_pesquisa = form_pesquisa.cleaned_data['pesquisa']
         receitas = receitas.filter(nome__icontains=termo_pesquisa)
+
+    receitas = receitas.order_by('nome')
+
+    paginator = Paginator(receitas, 10)
+    page = request.GET.get('page')
+
+    try:
+        receitas = paginator.page(page)
+    except PageNotAnInteger:
+        receitas = paginator.page(1)
+    except EmptyPage:
+        receitas = paginator.page(paginator.num_pages)
 
     return render(request, 'recipes/lista_receitas.html', {'receitas': receitas, 'form_pesquisa': form_pesquisa})
 
@@ -91,7 +103,6 @@ def detalhes_receita(request, receita_id):
     return render(request, 'recipes/detalhes_receita.html', {'receita': receita, 'ingredientes_faltando': ingredientes_faltando})
 
 
-
 @login_required
 def receitas_recomendadas(request):
     ingredientes_usuario_ids = UsuarioIngrediente.objects.filter(
@@ -109,7 +120,17 @@ def receitas_recomendadas(request):
         if ingredientes_receita_ids.issubset(ingredientes_usuario_ids):
             receitas_completas.append(receita)
 
-    return render(request, 'recipes/receitas_recomendadas.html', {'receitas': receitas_completas})
+    paginator = Paginator(receitas_completas, 10)
+    page = request.GET.get('page')
+
+    try:
+        receitas = paginator.page(page)
+    except PageNotAnInteger:
+        receitas = paginator.page(1)
+    except EmptyPage:
+        receitas = paginator.page(paginator.num_pages)
+
+    return render(request, 'recipes/receitas_recomendadas.html', {'receitas': receitas})
 
 
 @login_required

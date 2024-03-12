@@ -1,24 +1,47 @@
 {% extends 'main/base.html' %}
 
 {% block content %}
-    <div class="container mt-4">
-        <h1 class="mb-4">Receitas Favoritas</h1>
-        {% if receitas_favoritas %}
-            <ul class="list-group">
-                {% for receita_favorita in receitas_favoritas %}
-                    <li class="list-group-item">
-                        <a href="{% url 'detalhes_receita' receita_favorita.receita.id %}">
-                            {{ receita_favorita.receita.nome }}
-                        </a>
-                        <form method="post" action="{% url 'favorites:remover_favorito' receita_favorita.receita.id %}" class="d-inline">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-danger btn-sm">Remover dos Favoritos</button>
-                        </form>                        
-                    </li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p>Nenhuma receita favorita encontrada.</p>
-        {% endif %}
+    <div class="container-fluid mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <h1 class="mb-4 text-center">Receitas Favoritas</h1>
+                {% if receitas_favoritas %}
+                    <ul class="list-group">
+                        {% for receita_favorita in receitas_favoritas %}
+                            <li class="list-group-item">
+                                <a href="{% url 'detalhes_receita' receita_favorita.receita.id %}">
+                                    {{ receita_favorita.receita.nome }}
+                                </a>
+                                <form method="post" action="{% url 'favorites:remover_favorito' receita_favorita.receita.id %}" class="d-inline">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger btn-sm">Remover dos Favoritos</button>
+                                </form>                        
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="text-center">Nenhuma receita favorita encontrada.</p>
+                {% endif %}
+                
+                <!-- Adicione abaixo ou onde desejar exibir a navegação -->
+                <div class="pagination justify-content-center mt-4">
+                    <span class="step-links">
+                        {% if receitas_favoritas.has_previous %}
+                            <a href="?page=1">&laquo; primeira</a>
+                            <a href="?page={{ receitas_favoritas.previous_page_number }}">anterior</a>
+                        {% endif %}
+
+                        <span class="current">
+                            Página {{ receitas_favoritas.number }} de {{ receitas_favoritas.paginator.num_pages }}.
+                        </span>
+
+                        {% if receitas_favoritas.has_next %}
+                            <a href="?page={{ receitas_favoritas.next_page_number }}">próxima</a>
+                            <a href="?page={{ receitas_favoritas.paginator.num_pages }}">última &raquo;</a>
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}

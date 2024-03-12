@@ -152,6 +152,16 @@ h1, h2, h3, h4, h5, h6 {
     box-sizing: border-box;
 }
 
+.form-group-listar {
+    color: #000000;
+    box-sizing: border-box;
+}
+
+.form-group-listar .form-control {
+    margin-right: 5px;
+}
+
+
 .errorlist {
     color: #dc3545;
     list-style-type: none;

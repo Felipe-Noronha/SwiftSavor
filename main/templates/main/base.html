@@ -18,7 +18,7 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link px3" href="{% url 'index' %}">Início</a>
@@ -45,6 +45,7 @@
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownReceitas">
                                     <a class="dropdown-item" href="{% url 'lista_receitas' %}">Lista de Receitas</a>
                                     <a class="dropdown-item" href="{% url 'cadastrar_receita' %}">Cadastrar Receita</a>
+                                    <a class="dropdown-item" href="{% url 'receitas_recomendadas' %}">Receitas Recomendadas</a>
                                     <a class="dropdown-item" href="{% url 'favorites:receitas_favoritas' %}">Receitas Favoritas</a>
                                 </div>
                             </li>
