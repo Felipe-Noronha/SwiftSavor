@@ -16,6 +16,24 @@
                 </li>
             {% endfor %}
         </ul>
+
+        <div class="pagination">
+            <span class="step-links">
+                {% if ingredientes_selecionados.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ ingredientes_selecionados.previous_page_number }}">previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Página {{ ingredientes_selecionados.number }} de {{ ingredientes_selecionados.paginator.num_pages }}.
+                </span>
+
+                {% if ingredientes_selecionados.has_next %}
+                    <a href="?page={{ ingredientes_selecionados.next_page_number }}">next</a>
+                    <a href="?page={{ ingredientes_selecionados.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
     {% else %}
         <p>Você ainda não selecionou nenhum ingrediente.</p>
     {% endif %}
