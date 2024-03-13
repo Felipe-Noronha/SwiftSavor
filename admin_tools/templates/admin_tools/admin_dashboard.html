@@ -9,33 +9,27 @@
     </div>
     
     <div class="row justify-content-center">
-        <div class="col-md-4">
-            <div class="card mb-4 mx-auto" style="max-width: 400px;">
+        <div class="col-md-8">
+            <div class="card mx-auto" style="max-width: 600px;">
                 <div class="card-body">
-                    <h2 class="card-title">Receitas</h2>
-                    <a href="{% url 'cadastrar_receita' %}" class="btn btn-primary mb-2">Cadastrar Receita</a>
-                    <a href="{% url 'lista_receitas' %}" class="btn btn-info mb-2">Lista de Receitas</a>
-                    <a href="{% url 'lista_pendentes' %}" class="btn btn-info mb-2">Receitas Pendentes</a>
-                </div>
-            </div>
-        </div>
+                    <div class="mb-4">
+                        <h2 class="card-title">Receitas</h2>
+                        <a href="{% url 'cadastrar_receita' %}" class="btn btn-primary mb-2">Cadastrar Receita</a>
+                        <a href="{% url 'lista_receitas' %}" class="btn btn-info mb-2">Lista de Receitas</a>
+                        <a href="{% url 'lista_pendentes' %}" class="btn btn-info mb-2">Receitas Pendentes</a>
+                    </div>
 
-        <div class="col-md-4">
-            <div class="card mb-4 mx-auto" style="max-width: 400px;">
-                <div class="card-body">
-                    <h2 class="card-title">Ingredientes</h2>
-                    <a href="{% url 'cadastrar_ingrediente' %}" class="btn btn-primary mb-2">Cadastrar Ingrediente</a>
-                    <a href="{% url 'lista_ingredientes' %}" class="btn btn-info mb-2">Lista de Ingredientes</a>
-                </div>
-            </div>
-        </div>
+                    <div class="mb-4">
+                        <h2 class="card-title">Ingredientes</h2>
+                        <a href="{% url 'cadastrar_ingrediente' %}" class="btn btn-primary mb-2">Cadastrar Ingrediente</a>
+                        <a href="{% url 'lista_ingredientes' %}" class="btn btn-info mb-2">Lista de Ingredientes</a>
+                    </div>
 
-        <div class="col-md-4">
-            <div class="card mb-4 mx-auto" style="max-width: 400px;">
-                <div class="card-body">
-                    <h2 class="card-title">Gestão de Usuários</h2>
-                    <a href="{% url 'gestao_usuarios' %}" class="btn btn-primary mb-2">Gerenciar Usuários</a>
-                    <a href="{% url 'cadastrar_usuario' %}" class="btn btn-info mb-2">Cadastrar Usuário</a>
+                    <div>
+                        <h2 class="card-title">Gestão de Usuários</h2>
+                        <a href="{% url 'gestao_usuarios' %}" class="btn btn-primary mb-2">Gerenciar Usuários</a>
+                        <a href="{% url 'cadastrar_usuario' %}" class="btn btn-info mb-2">Cadastrar Usuário</a>
+                    </div>
                 </div>
             </div>
         </div>
