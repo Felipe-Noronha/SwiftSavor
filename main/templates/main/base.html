@@ -25,21 +25,19 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
                     {% if user.is_authenticated %}
-                        <li class="nav-item">
-                            <span class="nav-link px3">Bem-vindo, {{ user.username }}</span>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle px3" href="#" id="navbarDropdownUsuario" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Bem-vindo, {{ user.username }}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownUsuario">
+                                <a class="dropdown-item" href="{% url 'configuracoes' %}">Configurações</a>
+                                <a class="dropdown-item" href="{% url 'logout' %}">Sair</a>
+                            </div>
                         </li>
+        
                         {% if user.is_staff %}
                             <li class="nav-item">
                                 <a class="nav-link px3" href="{% url 'admin_dashboard' %}">Dashboard</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle px3" href="#" id="navbarDropdownConfiguracoes" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Configurações
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdownConfiguracoes">
-                                    <a class="dropdown-item" href="{% url 'configuracoes' %}">Configurações</a>
-                                    <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
-                                </div>
                             </li>
                         {% else %}
                             <li class="nav-item dropdown">
@@ -58,17 +56,8 @@
                                     Ingredientes
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownIngredientes">
-                                    <a class="dropdown-item" href="{% url 'selecionar_ingredientes' %}">Ingredientes</a>
-                                    <a class="dropdown-item" href="{% url 'meus_ingredientes' %}">Meus Ingredientes</a>
-                                </div>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle px3" href="#" id="navbarDropdownConfiguracoes" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Configurações
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdownConfiguracoes">
-                                    <a class="dropdown-item" href="{% url 'configuracoes' %}">Configurações</a>
-                                    <a class="dropdown-item" href="{% url 'logout' %}">Sair</a>
+                                    <a class="dropdown-item" href="{% url 'selecionar_ingredientes' %}">Mercado</a>
+                                    <a class="dropdown-item" href="{% url 'meus_ingredientes' %}">Minha Dispensa</a>
                                 </div>
                             </li>
                         {% endif %}
