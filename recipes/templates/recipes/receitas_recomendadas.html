@@ -22,12 +22,16 @@
                             {% if receita.id in receitas_favoritas_ids %}
                                 <form method="post" action="{% url 'favorites:remover_favorito' receita.id %}" class="d-inline">
                                     {% csrf_token %}
-                                    <button type="submit" class="btn btn-danger btn-sm">Remover dos Favoritos</button>
+                                    <button type="submit" formaction="{% url 'favorites:remover_favorito' receita.id %}" class="btn btn-primary btn-sm float-right align-self-center">
+                                        <i class="fas fa-heart"></i>
+                                    </button>
                                 </form>
                             {% else %}
                                 <form method="post" action="{% url 'favorites:adicionar_favoritos' receita.id %}" class="d-inline">
                                     {% csrf_token %}
-                                    <button type="submit" class="btn btn-primary btn-sm">Adicionar aos Favoritos</button>
+                                    <button type="submit" formaction="{% url 'favorites:adicionar_favoritos' receita.id %}" class="btn btn-primary btn-sm float-right align-self-center">
+                                        <i class="far fa-heart"></i>
+                                    </button>
                                 </form>
                             {% endif %}
                         </li>
