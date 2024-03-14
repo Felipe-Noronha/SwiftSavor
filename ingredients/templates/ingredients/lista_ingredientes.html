@@ -19,17 +19,17 @@
                     <li class="list-group-item">
                         <a href="{% url 'detalhes_ingrediente' ingrediente.id %}">{{ ingrediente.nome }}</a>
                         
-                        <a href="{% url 'editar_ingrediente' ingrediente.id %}" class="btn btn-warning btn-sm float-right mr-2">Editar</a>
+                        <a href="{% url 'editar_ingrediente' ingrediente.id %}" class="btn btn-warning btn-sm float-right mr-2" aria-label="Editar ingrediente {{ ingrediente.nome }}">Editar</a>
             
                         <form method="post" action="{% url 'excluir_ingrediente' ingrediente.id %}" class="d-inline">
                             {% csrf_token %}
-                            <button type="submit" class="btn btn-danger btn-sm float-right">Excluir</button>
+                            <button type="submit" class="btn btn-danger btn-sm float-right" aria-label="Excluir ingrediente {{ ingrediente.nome }}">Excluir</button>
                         </form>
                     </li>
                 {% endfor %}
             </ul>
 
-            <div class="pagination mt-3">
+            <div class="pagination mt-3" aria-label="Navegação de páginas">
                 <span class="step-links">
                     {% if ingredientes.has_previous %}
                         <a href="?page=1">&laquo; first</a>

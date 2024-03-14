@@ -6,14 +6,14 @@
         <div class="col-md-4">
             <h1 class="mb-4 text-center">Minha Dispensa</h1>
             {% if ingredientes_selecionados %}
-                <ul class="list-group">
+                <ul class="list-group" aria-label="Ingredientes selecionados">
                     {% for ingrediente in ingredientes_selecionados %}
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             {{ ingrediente.nome }}
                             <form method="post" action="{% url 'meus_ingredientes' %}" style="display:inline;">
                                 {% csrf_token %}
                                 <input type="hidden" name="ingrediente_id" value="{{ ingrediente.id }}">
-                                <button type="submit" class="btn btn-danger btn-sm">
+                                <button type="submit" class="btn btn-danger btn-sm" aria-label="Remover ingrediente">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </form>
@@ -21,7 +21,7 @@
                     {% endfor %}
                 </ul>
 
-                <div class="pagination justify-content-center mt-4">
+                <div class="pagination justify-content-center mt-4" aria-label="Navegação de páginas">
                     <span class="step-links">
                         {% if ingredientes_selecionados.has_previous %}
                             <a href="?page=1">&laquo; first</a>

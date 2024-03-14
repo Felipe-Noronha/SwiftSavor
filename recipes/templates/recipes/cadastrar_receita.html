@@ -21,7 +21,8 @@
                 </div>
                 {% endfor %}
 
-                <input type="text" id="search-ingredient" class="form-control" placeholder="Pesquisar ingredientes">
+                <input type="text" id="search-ingredient" class="form-control" placeholder="Pesquisar ingredientes" aria-label="Pesquisar ingredientes" aria-describedby="search-ingredient-desc">
+                <small id="search-ingredient-desc" class="form-text text-muted">Use este campo para pesquisar ingredientes.</small>
                 
                 {% for formset_form in formset %}
                 <div class="form-group">
@@ -32,7 +33,7 @@
                 </div>
                 {% endfor %}
                 
-                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                <button type="submit" class="btn btn-primary" aria-label="Cadastrar">Cadastrar</button>
             </form>
         </div>
     </div>
@@ -66,8 +67,4 @@
         $("div[id^='id_ingredientes'] > div").hide();
     });
 </script>
-
-
-
-
 {% endblock %}

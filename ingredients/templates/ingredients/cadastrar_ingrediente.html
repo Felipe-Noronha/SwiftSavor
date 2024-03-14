@@ -9,16 +9,18 @@
                     <h1 class="card-title mb-4 text-center">Cadastrar Ingrediente</h1>        
                     <form method="post" action="{% url 'cadastrar_ingrediente' %}">
                         {% csrf_token %}
-                        <div class="form-group">
-                            {% for field in form %}
+                        {% for field in form %}
+                            <div class="form-group">
                                 <label for="{{ field.id_for_label }}" class="form-label text-black">{{ field.label }}</label>
                                 {{ field }}
                                 {% if field.help_text %}
-                                <small class="form-text text-muted">{{ field.help_text }}</small>
+                                    <small class="form-text text-muted">{{ field.help_text }}</small>
                                 {% endif %}
-                                {{ field.errors }}
-                            {% endfor %}
-                        </div>
+                                {% if field.errors %}
+                                    <div class="text-danger">{{ field.errors }}</div>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
                         <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
                     </form>
                 </div>

@@ -5,11 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-4">
             <h1 class="mb-4 text-center">Mercado</h1>
-            <form method="get" action="" class="mb-3">
+            <form method="get" action="" class="mb-3" aria-label="Busca de ingredientes">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Buscar ingredientes..." name="q" value="{{ query }}">
+                    <input type="text" class="form-control" placeholder="Buscar ingredientes..." name="q" value="{{ query }}" aria-label="Buscar ingredientes">
                     <div class="input-group-append">
-                        <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+                        <button class="btn btn-primary" type="submit" aria-label="Buscar"><i class="fas fa-search"></i></button>
                     </div>
                 </div>
             </form>
@@ -17,10 +17,10 @@
                 {% for ingrediente in ingredientes %}
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         {{ ingrediente.nome }}
-                        <form method="post" action="{% url 'selecionar_ingredientes' %}?page={{ ingredientes.number }}">
+                        <form method="post" action="{% url 'selecionar_ingredientes' %}?page={{ ingredientes.number }}" aria-label="Selecionar ingrediente">
                             {% csrf_token %}
                             <input type="hidden" name="ingrediente_id" value="{{ ingrediente.id }}">
-                            <button type="submit" class="btn {% if ingrediente.id in usuario_ingredientes %}btn-secondary{% else %}btn-primary{% endif %}">
+                            <button type="submit" class="btn {% if ingrediente.id in usuario_ingredientes %}btn-secondary{% else %}btn-primary{% endif %}" aria-label="Adicionar ou remover do carrinho">
                                 {% if ingrediente.id in usuario_ingredientes %}
                                     <i class="fas fa-trash-alt"></i>
                                 {% else %}
@@ -32,11 +32,11 @@
                 {% endfor %}
             </ul>
 
-            <div class="pagination justify-content-center mt-4">
+            <div class="pagination justify-content-center mt-4" aria-label="Navegação de páginas">
                 <span class="step-links">
                     {% if ingredientes.has_previous %}
-                        <a href="?page=1{% if query %}&q={{ query }}{% endif %}">&laquo; first</a>
-                        <a href="?page={{ ingredientes.previous_page_number }}{% if query %}&q={{ query }}{% endif %}">previous</a>
+                        <a href="?page=1{% if query %}&q={{ query }}{% endif %}" aria-label="Primeira página">&laquo; first</a>
+                        <a href="?page={{ ingredientes.previous_page_number }}{% if query %}&q={{ query }}{% endif %}" aria-label="Página anterior">previous</a>
                     {% endif %}
             
                     <span class="current">
@@ -44,8 +44,8 @@
                     </span>
             
                     {% if ingredientes.has_next %}
-                        <a href="?page={{ ingredientes.next_page_number }}{% if query %}&q={{ query }}{% endif %}">next</a>
-                        <a href="?page={{ ingredientes.paginator.num_pages }}{% if query %}&q={{ query }}{% endif %}">last &raquo;</a>
+                        <a href="?page={{ ingredientes.next_page_number }}{% if query %}&q={{ query }}{% endif %}" aria-label="Próxima página">next</a>
+                        <a href="?page={{ ingredientes.paginator.num_pages }}{% if query %}&q={{ query }}{% endif %}" aria-label="Última página">last &raquo;</a>
                     {% endif %}
                 </span>
             </div>

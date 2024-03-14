@@ -7,7 +7,7 @@
   <form method="post" action="{% url 'editar_ingrediente' ingrediente.id %}">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Salvar Alterações</button>
-    <a href="{% url 'lista_ingredientes' %}" class="btn btn-secondary">Cancelar</a>
+    <button type="submit" class="btn btn-primary" aria-label="Salvar alterações no ingrediente {{ ingrediente.nome }}">Salvar Alterações</button>
+    <a href="{% url 'lista_ingredientes' %}" class="btn btn-secondary" aria-label="Cancelar edição do ingrediente {{ ingrediente.nome }}">Cancelar</a>
   </form>
 {% endblock %}

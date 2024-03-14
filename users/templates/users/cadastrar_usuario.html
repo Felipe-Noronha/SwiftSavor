@@ -11,33 +11,33 @@
                         {% csrf_token %}
                         <div class="form-group">
                             <label for="{{ form.username.id_for_label }}" class="form-label">Username:</label>
-                            <input type="text" class="form-control {{ form.username.errors|yesno:'is-invalid,' }}" id="{{ form.username.id_for_label }}" name="{{ form.username.html_name }}" value="{{ form.username.value|default_if_none:'' }}">
+                            <input type="text" class="form-control {{ form.username.errors|yesno:'is-invalid,' }}" id="{{ form.username.id_for_label }}" name="{{ form.username.html_name }}" value="{{ form.username.value|default_if_none:'' }}" aria-describedby="username-error">
                             {% for error in form.username.errors %}
-                                <div class="invalid-feedback">{{ error }}</div>
+                                <div id="username-error" class="invalid-feedback">{{ error }}</div>
                             {% endfor %}
                         </div>
                         <div class="form-group">
                             <label for="{{ form.email.id_for_label }}" class="form-label">Email:</label>
-                            <input type="email" class="form-control {{ form.email.errors|yesno:'is-invalid,' }}" id="{{ form.email.id_for_label }}" name="{{ form.email.html_name }}" value="{{ form.email.value|default_if_none:'' }}">
+                            <input type="email" class="form-control {{ form.email.errors|yesno:'is-invalid,' }}" id="{{ form.email.id_for_label }}" name="{{ form.email.html_name }}" value="{{ form.email.value|default_if_none:'' }}" aria-describedby="email-error">
                             {% for error in form.email.errors %}
-                                <div class="invalid-feedback">{{ error }}</div>
+                                <div id="email-error" class="invalid-feedback">{{ error }}</div>
                             {% endfor %}
                         </div>
                         <div class="form-group">
                             <label for="{{ form.password1.id_for_label }}" class="form-label">Password:</label>
-                            <input type="password" class="form-control {{ form.password1.errors|yesno:'is-invalid,' }}" id="{{ form.password1.id_for_label }}" name="{{ form.password1.html_name }}">
+                            <input type="password" class="form-control {{ form.password1.errors|yesno:'is-invalid,' }}" id="{{ form.password1.id_for_label }}" name="{{ form.password1.html_name }}" aria-describedby="password1-error">
                             {% for error in form.password1.errors %}
-                                <div class="invalid-feedback">{{ error }}</div>
+                                <div id="password1-error" class="invalid-feedback">{{ error }}</div>
                             {% endfor %}
-                            <small class="form-text text-muted">Sua senha não pode ser comum, não pode conter apenas números, deve conter pelo menos 8 caracteres e não pode ser parecida com suas informações pessoais.</small>
+                            <small id="password-help" class="form-text text-muted">Sua senha não pode ser comum, não pode conter apenas números, deve conter pelo menos 8 caracteres e não pode ser parecida com suas informações pessoais.</small>
                         </div>
                         <div class="form-group">
                             <label for="{{ form.password2.id_for_label }}" class="form-label">Password confirmation:</label>
-                            <input type="password" class="form-control {{ form.password2.errors|yesno:'is-invalid,' }}" id="{{ form.password2.id_for_label }}" name="{{ form.password2.html_name }}">
+                            <input type="password" class="form-control {{ form.password2.errors|yesno:'is-invalid,' }}" id="{{ form.password2.id_for_label }}" name="{{ form.password2.html_name }}" aria-describedby="password2-error">
                             {% for error in form.password2.errors %}
-                                <div class="invalid-feedback">{{ error }}</div>
+                                <div id="password2-error" class="invalid-feedback">{{ error }}</div>
                             {% endfor %}
-                            <small class="form-text text-muted">Digite a senha novamente, para verificação.</small>
+                            <small id="password-confirm-help" class="form-text text-muted">Digite a senha novamente, para verificação.</small>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
                     </form>

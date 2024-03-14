@@ -6,7 +6,7 @@
   <h2>Você tem certeza que deseja excluir o ingrediente "{{ ingrediente.nome }}"?</h2>
   <form method="post" action="{% url 'excluir_ingrediente' ingrediente.id %}">
     {% csrf_token %}
-    <button type="submit" class="btn btn-danger">Confirmar Exclusão</button>
-    <a href="{% url 'lista_ingredientes' %}" class="btn btn-secondary">Cancelar</a>
+    <button type="submit" class="btn btn-danger" aria-label="Confirmar exclusão do ingrediente {{ ingrediente.nome }}">Confirmar Exclusão</button>
+    <a href="{% url 'lista_ingredientes' %}" class="btn btn-secondary" aria-label="Cancelar exclusão do ingrediente {{ ingrediente.nome }}">Cancelar</a>
   </form>
 {% endblock %}

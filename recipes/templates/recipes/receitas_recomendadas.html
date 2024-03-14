@@ -22,14 +22,14 @@
                             {% if receita.id in receitas_favoritas_ids %}
                                 <form method="post" action="{% url 'favorites:remover_favorito' receita.id %}" class="d-inline">
                                     {% csrf_token %}
-                                    <button type="submit" formaction="{% url 'favorites:remover_favorito' receita.id %}" class="btn btn-primary btn-sm float-right align-self-center">
+                                    <button type="submit" formaction="{% url 'favorites:remover_favorito' receita.id %}" class="btn btn-primary btn-sm float-right align-self-center" aria-label="Remover dos favoritos">
                                         <i class="fas fa-heart"></i>
                                     </button>
                                 </form>
                             {% else %}
                                 <form method="post" action="{% url 'favorites:adicionar_favoritos' receita.id %}" class="d-inline">
                                     {% csrf_token %}
-                                    <button type="submit" formaction="{% url 'favorites:adicionar_favoritos' receita.id %}" class="btn btn-primary btn-sm float-right align-self-center">
+                                    <button type="submit" formaction="{% url 'favorites:adicionar_favoritos' receita.id %}" class="btn btn-primary btn-sm float-right align-self-center" aria-label="Adicionar aos favoritos">
                                         <i class="far fa-heart"></i>
                                     </button>
                                 </form>
@@ -38,11 +38,11 @@
                     {% endfor %}
                 </ul>
                 
-                <div class="pagination justify-content-center mt-3">
+                <div aria-label="Navegação de páginas" class="pagination justify-content-center mt-3">
                     <span class="step-links">
                         {% if receitas.has_previous %}
-                            <a href="?page=1">&laquo; first</a>
-                            <a href="?page={{ receitas.previous_page_number }}">previous</a>
+                            <a href="?page=1" aria-label="Primeira página">&laquo; first</a>
+                            <a href="?page={{ receitas.previous_page_number }}" aria-label="Página anterior">previous</a>
                         {% endif %}
 
                         <span class="current">
@@ -50,8 +50,8 @@
                         </span>
 
                         {% if receitas.has_next %}
-                            <a href="?page={{ receitas.next_page_number }}">next</a>
-                            <a href="?page={{ receitas.paginator.num_pages }}">last &raquo;</a>
+                            <a href="?page={{ receitas.next_page_number }}" aria-label="Próxima página">next</a>
+                            <a href="?page={{ receitas.paginator.num_pages }}" aria-label="Última página">last &raquo;</a>
                         {% endif %}
                     </span>
                 </div>
