@@ -17,21 +17,21 @@ def adicionar_favoritos(request, receita_id):
         ReceitaFavorita.objects.create(usuario=request.user, receita=receita)
         messages.success(request, f'Receita "{receita.nome}" adicionada aos favoritos com sucesso!')
 
-    return redirect(pagina_atual) if pagina_atual else redirect('recipes:lista_receitas')
+    return redirect(pagina_atual) if pagina_atual else redirect(reverse('recipes:lista_receitas'))
 
 @login_required
 def remover_favorito(request, receita_id):
     receita_favorita = get_object_or_404(ReceitaFavorita, receita__id=receita_id, usuario=request.user)
+    pagina_atual = request.META.get('HTTP_REFERER')
     receita_favorita.delete()
     messages.success(request, 'Receita removida dos favoritos com sucesso.')
-    return redirect('favorites:receitas_favoritas')
+    return redirect(pagina_atual) if pagina_atual else redirect(reverse('recipes:lista_receitas'))
 
 @login_required
 def receitas_favoritas(request):
     receitas_favoritas = ReceitaFavorita.objects.filter(usuario=request.user).select_related('receita')
 
-    # Configurando a paginação
-    paginator = Paginator(receitas_favoritas, 10)  # 10 itens por página
+    paginator = Paginator(receitas_favoritas, 10)
     page = request.GET.get('page')
 
     try:

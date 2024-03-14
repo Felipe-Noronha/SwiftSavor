@@ -1,61 +1,73 @@
 {% extends 'main/base.html' %}
 
 {% block content %}
-    <div class="container-fluid mt-4">
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <h1 class="mb-4 text-center">Lista de Receitas</h1>
+<div class="container-fluid mt-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-4">
+            <h1 class="mb-4 text-center">Lista de Receitas</h1>
 
-                <form method="get" action="{% url 'lista_receitas' %}" class="form-group-listar">
-                    <div class="input-group d-flex">
-                        <input type="text" name="pesquisa" id="id_pesquisa" class="form-control" placeholder="Pesquisar">
-                        <button type="submit" class="btn btn-primary">Pesquisar</button>
-                    </div>
-                </form>
+            <form method="get" action="{% url 'lista_receitas' %}" class="form-group-listar">
+                <div class="input-group d-flex">
+                    <input type="text" name="pesquisa" id="id_pesquisa" class="form-control" placeholder="Pesquisar">
+                    <button type="submit" class="btn btn-primary">Pesquisar</button>
+                </div>
+            </form>
 
-                {% if messages %}
-                    <ul class="messages">
-                        {% for message in messages %}
-                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-
-                <ul class="list-group">
-                    {% for receita in receitas %}
-                        <li class="list-group-item">
-                            <a href="{% url 'detalhes_receita' receita.id %}">{{ receita.nome }}</a>
-                            <a href="{% url 'favorites:adicionar_favoritos' receita.id %}" class="btn btn-primary btn-sm float-right">Adicionar aos Favoritos</a>
-
-                            {% if user.is_authenticated and user.is_staff %}
-                                <a href="{% url 'editar_receita' receita.id %}" class="btn btn-warning btn-sm float-right mr-2">Editar Receita</a>
-                                <form method="post" action="{% url 'excluir_receita' receita.id %}" class="d-inline">
-                                    {% csrf_token %}
-                                    <button type="submit" class="btn btn-danger btn-sm float-right mr-2">Excluir Receita</button>
-                                </form>
-                            {% endif %}
-                        </li>
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
                     {% endfor %}
                 </ul>
+            {% endif %}
 
-                <div class="pagination justify-content-center mt-4">
-                    <span class="step-links">
-                        {% if receitas.has_previous %}
-                            <a href="?page=1">&laquo; primeira</a>
-                            <a href="?page={{ receitas.previous_page_number }}">anterior</a>
+            <ul class="list-group">
+                {% for receita in receitas %}
+                    <li class="list-group-item">
+                        <a href="{% url 'detalhes_receita' receita.id %}">{{ receita.nome }}</a>
+                        <form method="post" class="d-inline">
+                            {% csrf_token %}
+                            {% if receita.id in receitas_favoritas_ids %}
+                                <input type="hidden" name="receita_id" value="{{ receita.id }}">
+                                <button type="submit" formaction="{% url 'favorites:remover_favorito' receita.id %}" class="btn btn-primary btn-sm float-right align-self-center">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                            {% else %}
+                                <button type="submit" formaction="{% url 'favorites:adicionar_favoritos' receita.id %}" class="btn btn-primary btn-sm float-right align-self-center">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            {% endif %}
+                        </form>
+
+                        {% if user.is_authenticated and user.is_staff %}
+                            <a href="{% url 'editar_receita' receita.id %}" class="btn btn-warning btn-sm float-right mr-2">Editar Receita</a>
+                            <form method="post" action="{% url 'excluir_receita' receita.id %}" class="d-inline">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-sm float-right mr-2">Excluir Receita</button>
+                            </form>
                         {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
 
-                        <span class="current">
-                            Página {{ receitas.number }} de {{ receitas.paginator.num_pages }}.
-                        </span>
+            <div class="pagination justify-content-center mt-4">
+                <span class="step-links">
+                    {% if receitas.has_previous %}
+                        <a href="?page=1">&laquo; primeira</a>
+                        <a href="?page={{ receitas.previous_page_number }}">anterior</a>
+                    {% endif %}
 
-                        {% if receitas.has_next %}
-                            <a href="?page={{ receitas.next_page_number }}">próxima</a>
-                            <a href="?page={{ receitas.paginator.num_pages }}">última &raquo;</a>
-                        {% endif %}
+                    <span class="current">
+                        Página {{ receitas.number }} de {{ receitas.paginator.num_pages }}.
                     </span>
-                </div>
+
+                    {% if receitas.has_next %}
+                        <a href="?page={{ receitas.next_page_number }}">próxima</a>
+                        <a href="?page={{ receitas.paginator.num_pages }}">última &raquo;</a>
+                    {% endif %}
+                </span>
             </div>
         </div>
     </div>
+</div>
 {% endblock %}

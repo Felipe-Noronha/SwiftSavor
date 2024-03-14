@@ -7,6 +7,7 @@ from ingredients.models import Ingrediente,UsuarioIngrediente
 from urllib.parse import quote
 from django.urls import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from favorites.models import ReceitaFavorita
 
 @login_required
 def lista_receitas(request):
@@ -19,6 +20,13 @@ def lista_receitas(request):
 
     receitas = receitas.order_by('nome')
 
+    if request.user.is_authenticated:
+        receitas_favoritas_ids = list(
+            ReceitaFavorita.objects.filter(usuario=request.user).values_list('receita__id', flat=True)
+        )
+    else:
+        receitas_favoritas_ids = []
+
     paginator = Paginator(receitas, 10)
     page = request.GET.get('page')
 
@@ -29,7 +37,7 @@ def lista_receitas(request):
     except EmptyPage:
         receitas = paginator.page(paginator.num_pages)
 
-    return render(request, 'recipes/lista_receitas.html', {'receitas': receitas, 'form_pesquisa': form_pesquisa})
+    return render(request, 'recipes/lista_receitas.html', {'receitas': receitas, 'form_pesquisa': form_pesquisa, 'receitas_favoritas_ids': receitas_favoritas_ids})
 
 
 @login_required
@@ -130,8 +138,11 @@ def receitas_recomendadas(request):
     except EmptyPage:
         receitas = paginator.page(paginator.num_pages)
 
-    return render(request, 'recipes/receitas_recomendadas.html', {'receitas': receitas})
+    receitas_favoritas_ids = list(
+        ReceitaFavorita.objects.filter(usuario=request.user).values_list('receita__id', flat=True)
+    )
 
+    return render(request, 'recipes/receitas_recomendadas.html', {'receitas': receitas, 'receitas_favoritas_ids': receitas_favoritas_ids})
 
 @login_required
 def compartilhar_receita(request, receita_id):
