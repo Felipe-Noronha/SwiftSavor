@@ -36,13 +36,14 @@ a:focus {
 }
 
 .footer {
-    background-color: #409094;
-    color: #de9842;
+    background-color: #0f4c49;
+    color: #ffbe4f;
     padding: 10px 0;
     text-align: center;
     border-top: 3px solid #b84c29;
     font-size: 0.9rem;
 }
+
 
 .errorlist {
     color: #ff0000;
@@ -189,15 +190,15 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Estilos para Detalhes da Receita */
 .detalhes-receita .card {
-    background-color: #fff;
+    background-color: #f8f9fa;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
 }
 
 .detalhes-receita .card-header {
-    background-color: #409094;
-    color: #fff;
+    background-color: #0f4c49;
+    color: #ffbe4f;
     border-bottom: none;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -218,6 +219,7 @@ h1, h2, h3, h4, h5, h6 {
     color: #000;
     margin-bottom: 10px;
 }
+
 .detalhes-receita .card-title {
     font-size: 1.5rem;
     color: #409094;
@@ -235,7 +237,8 @@ h1, h2, h3, h4, h5, h6 {
 
 
 
-/* Compartilhar Whatsapp */
+
+/* Estilos para Compartilhar Whatsapp */
 .btn-whatsapp {
     background-color: #25d366;
     color: #fff;
@@ -251,35 +254,37 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #128C7E;
 }
 
+
 /* Estilos para o Jumbotron na página inicial */
 .index-jumbotron {
-    background-color: #f8f9fa;
+    background-color: #0f4c49;
     padding: 3rem;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .index-jumbotron h1 {
-    color: #409094;
+    color: #ffbe4f;
 }
 
 .index-jumbotron p {
-    color: #6c757d;
+    color: #d3d3d3;
 }
 
 .index-jumbotron hr {
-    border-color: #6c757d;
+    border-color: #d3d3d3;
 }
 
 .index-jumbotron a.btn-primary {
-    background-color: #409094;
-    border-color: #409094;
+    background-color: #ffbe4f;
+    border-color: #ffbe4f;
 }
 
 .index-jumbotron a.btn-primary:hover {
-    background-color: #307070;
-    border-color: #307070;
+    background-color: #e3a01d;
+    border-color: #e3a01d;
 }
+
 
 
 /* Estilos para a página de login */
@@ -485,8 +490,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-/* Estilos para a pagina de cadastro de receitas */
-
+/* Estilos para a página de cadastro de receitas */
 .cadastro-receita-card {
     max-width: 500px;
     border-radius: 10px;
@@ -494,7 +498,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cadastro-receita-card .card-title {
-    color: #409094;
+    color: #ffbe4f;
 }
 
 .cadastro-receita-card .card-text {
@@ -507,7 +511,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cadastro-receita-card .form-label {
-    color: #409094;
+    color: #0f4c49;
 }
 
 .cadastro-receita-card .form-control {
@@ -529,6 +533,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cadastro-receita-card .btn-primary {
+    background-color: #0f4c49;
+    border-color: #0f4c49;
     border-radius: 20px;
 }
 
@@ -537,14 +543,56 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-cadastrar {
-    background-color: #409094;
-    border-color: #409094;
+    background-color: #0f4c49;
+    border-color: #0f4c49;
 }
 
 .btn-cadastrar:hover {
-    background-color: #327d7d;
-    border-color: #327d7d;
+    background-color: #ffbe4f;
+    border-color: #ffbe4f;
 }
+
+
+.form-group.row input[type="file"]{
+    width: 100%;
+    height: 40px;
+    overflow: hidden; 
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.form-group.row input[type="file"]::file-selector-text {
+    position: absolute;
+    bottom: 0;
+    right: 0; /* Alinha o texto à direita */
+    padding: 8px 12px;
+    line-height: 24px; /* Ajuste conforme necessário */
+}
+
+.form-group.row input[type="file"]::file-selector-button {
+    background-color: #ffbe4f;
+    border: 2px solid #ffbe4f;
+    color: #0f4c49;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.form-group.row input[type="file"]::file-selector-button:hover {
+    background-color: #f9ab00;
+    border-color: #f9ab00;
+    color: #fff;
+}
+
+.form-group.row input[type="file"]::file-selector-button:active {
+    background-color: #e68e00;
+    border-color: #e68e00;
+}
+
+
 
 
 /* Estilos para a página de receitas recomendadas */
@@ -574,6 +622,7 @@ h1, h2, h3, h4, h5, h6 {
 .receitas-recomendadas-container .list-group-item:hover {
     background-color: #f8f9fa;
 }
+
 
 
 /* Estilos para a página de receitas favoritas */
@@ -692,8 +741,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .configuracoes-container .card-header {
-    background-color: #409094;
-    color: #fff;
+    background-color: #0f4c49;
+    color: #ffbe4f;
     text-align: center;
 }
 
@@ -707,20 +756,21 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .configuracoes-container #pBlack {
-    color: #343a40;
+    color: #c99b9b;
 }
 
 .configuracoes-container .btn-primary {
-    background-color: #409094;
-    border-color: #409094;
+    background-color: #ffbe4f;
+    border-color: #ffbe4f;
 }
 
 .configuracoes-container .btn-primary:hover {
-    background-color: #409094;
-    border-color: #409094;
+    background-color: #e3a01d;
+    border-color: #e3a01d;
 }
 
-/* Estilos para a página de Trocar Email */
+
+/* Estilos para a seção de troca de e-mail */
 .trocar-email-container {
     margin-top: 40px;
 }
@@ -731,8 +781,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .trocar-email-container .card-header {
-    background-color: #409094;
-    color: #fff;
+    background-color: #0f4c49;
+    color: #ffbe4f;
     text-align: center;
 }
 
@@ -746,13 +796,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .trocar-email-container .btn-primary {
-    background-color: #409094;
-    border-color: #409094;
+    background-color: #ffbe4f;
+    border-color: #ffbe4f;
 }
 
 .trocar-email-container .btn-primary:hover {
-    background-color: #409094;
-    border-color: #409094;
+    background-color: #e3a01d;
+    border-color: #e3a01d;
 }
 
 
@@ -767,8 +817,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .trocar-senha-container .card-header {
-    background-color: #409094;
-    color: #fff;
+    background-color: #0f4c49;
+    color: #ffbe4f;
     text-align: center;
 }
 
@@ -791,14 +841,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .trocar-senha-container .btn-primary {
-    background-color: #409094;
-    border-color: #409094;
+    background-color: #ffbe4f;
+    border-color: #ffbe4f;
 }
 
 .trocar-senha-container .btn-primary:hover {
-    background-color: #409094;
-    border-color: #409094;
+    background-color: #e3a01d;
+    border-color: #e3a01d;
 }
+
 
 
 /* Estilos para a página de Receitas Pendentes de Aprovação */
@@ -824,11 +875,11 @@ h1, h2, h3, h4, h5, h6 {
     border: none;
     border-radius: 5px;
     margin-bottom: 10px;
-    background-color: #f8f9fa;
+    background-color: #096b66;
 }
 
 .receitas-pendentes-container .list-group-item a {
-    color: #343a40;
+    color: #ffbe4f;
     font-weight: bold;
     text-decoration: none;
 }
@@ -838,18 +889,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .receitas-pendentes-container .btn-success {
-    background-color: #28a745;
-    border-color: #28a745;
+    background-color: #ffbe4f;
+    border-color: #ffbe4f;
 }
 
 .receitas-pendentes-container .btn-success:hover {
-    background-color: #218838;
-    border-color: #1e7e34;
+    background-color: #e3a01d;
+    border-color: #e3a01d;
 }
 
 .receitas-pendentes-container .no-receitas-message {
     color: #000000;
 }
+
 
 
 /* Estilos para a página de Cadastro de Ingrediente */
@@ -877,6 +929,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .cadastrar-ingrediente-container .form-label {
     font-weight: bold;
+    color: #000;
 }
 
 .cadastrar-ingrediente-container .form-control {
@@ -884,13 +937,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cadastrar-ingrediente-container .btn-primary {
-    background-color: #409094;
-    border-color: #409094;
+    background-color: #ffbe4f;
+    border-color: #ffbe4f;
+    color: #000;
 }
 
 .cadastrar-ingrediente-container .btn-primary:hover {
-    background-color: #2b686b;
-    border-color: #2b686b;
+    background-color: #e3a01d;
+    border-color: #e3a01d;
+    color: #000;
 }
 
 .cadastrar-ingrediente-container .text-black {
@@ -907,7 +962,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-/* Estilos para a página de lista de ingredientes */
+
+/* Estilos para a página de Lista de Ingredientes */
 .lista-ingredientes-container {
     padding-top: 20px;
 }
@@ -916,7 +972,7 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 30px;
     text-align: center;
     font-size: 32px;
-    color: #343a40;
+    color: #000000;
 }
 
 .list-group-item {
@@ -934,13 +990,12 @@ h1, h2, h3, h4, h5, h6 {
     gap: 5px;
 }
 
-
 .lista-ingredientes-list .list-group-item {
     border: none;
 }
 
 .lista-ingredientes-list .list-group-item a {
-    color: #343a40;
+    color: #000000; 
     font-weight: bold;
     text-decoration: none;
 }
@@ -949,29 +1004,6 @@ h1, h2, h3, h4, h5, h6 {
     text-decoration: underline;
 }
 
-.lista-ingredientes-pagination .pagination {
-    margin-top: 20px;
-}
-
-.lista-ingredientes-pagination .pagination .step-links {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.lista-ingredientes-pagination .pagination .step-links a {
-    color: #007bff;
-    margin: 0 5px;
-    text-decoration: none;
-}
-
-.lista-ingredientes-pagination .pagination .current {
-    margin: 0 10px;
-}
-
-.lista-ingredientes-pagination .pagination .step-links a:hover {
-    text-decoration: underline;
-}
 
 /* Estilos para a página de Gestão de Usuários */
 .gestao-usuarios-card .table-responsive {
@@ -1003,14 +1035,20 @@ h1, h2, h3, h4, h5, h6 {
 
 .gestao-usuarios-card .btn-action {
     margin-right: 5px;
+    background-color: #ffbe4f;
+    border-color: #ffbe4f;
+    color: #000;
 }
 
 .gestao-usuarios-card .btn-excluir {
     margin-left: 5px;
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: #fff;
 }
 
-/* detalhes ingredientes */
 
+/* Estilos para a página de Detalhes do Ingrediente */
 .detalhes-ingrediente-container .container-fluid {
     margin-top: 4rem;
 }
@@ -1026,8 +1064,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .detalhes-ingrediente-container .detalhes-ingrediente-container {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
     border-radius: 5px;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -1048,8 +1086,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .detalhes-ingrediente-container .btn-editar {
-    background-color: #ffc107;
-    border-color: #ffc107;
+    background-color: #ffbe4f;
+    border-color: #ffbe4f;
     border-radius: 5px;
     color: #000;
     padding: 10px 20px;
@@ -1058,8 +1096,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .detalhes-ingrediente-container .btn-editar:hover {
-    background-color: #ffca2c;
-    border-color: #ffca2c;
+    background-color: #e3a01d;
+    border-color: #e3a01d;
 }
 
 .detalhes-ingrediente-container .btn-excluir {
@@ -1076,6 +1114,7 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #c82333;
     border-color: #bd2130;
 }
+
 
 
 /* editar ingredientes*/
@@ -1146,8 +1185,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-/* admin dashboard */
-
+/* Estilos para o painel de administração */
 .admin-panel-container {
     margin-top: 4rem;
 }
@@ -1168,8 +1206,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .admin-panel-container .btn-primary {
-    background-color: #409094;
-    border-color: #409094;
+    background-color: #096b66;
+    border-color: #096b66;
     color: #fff;
     padding: 10px 20px;
     margin-bottom: 10px;
@@ -1178,8 +1216,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .admin-panel-container .btn-primary:hover {
-    background-color: #2b686b;
-    border-color: #2b686b;
+    background-color: #0b968f;
+    border-color: #0b968f;
 }
 
 
@@ -1289,11 +1327,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cadastro-usuario .cadastro-link a {
-    color: #007bff;
+    color: #2b686b;
 }
 
 .cadastro-usuario .cadastro-link a:hover {
-    color: #0056b3;
+    color: #2b686b;
 }
 
 .invalid-feedback {
