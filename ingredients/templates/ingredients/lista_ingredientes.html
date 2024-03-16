@@ -1,7 +1,7 @@
 {% extends 'main/base.html' %}
 
 {% block content %}
-<div class="container-fluid mt-4">
+<div class="container-fluid mt-4 lista-ingredientes-container">
     <div class="row justify-content-center">
         <div class="col-md-4">
             <h1 class="mb-4 text-center">Lista de Ingredientes</h1>
@@ -17,14 +17,16 @@
             <ul class="list-group">
                 {% for ingrediente in ingredientes %}
                     <li class="list-group-item">
-                        <a href="{% url 'detalhes_ingrediente' ingrediente.id %}">{{ ingrediente.nome }}</a>
-                        
-                        <a href="{% url 'editar_ingrediente' ingrediente.id %}" class="btn btn-warning btn-sm float-right mr-2" aria-label="Editar ingrediente {{ ingrediente.nome }}">Editar</a>
-            
-                        <form method="post" action="{% url 'excluir_ingrediente' ingrediente.id %}" class="d-inline">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-danger btn-sm float-right" aria-label="Excluir ingrediente {{ ingrediente.nome }}">Excluir</button>
-                        </form>
+                        <div class="ingredient-info">
+                            <a href="{% url 'detalhes_ingrediente' ingrediente.id %}">{{ ingrediente.nome }}</a>
+                        </div>
+                        <div class="ingredient-actions">
+                            <a href="{% url 'editar_ingrediente' ingrediente.id %}" class="btn btn-warning btn-sm" aria-label="Editar ingrediente {{ ingrediente.nome }}">Editar</a>
+                            <form method="post" action="{% url 'excluir_ingrediente' ingrediente.id %}" class="d-inline">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-sm" aria-label="Excluir ingrediente {{ ingrediente.nome }}">Excluir</button>
+                            </form>
+                        </div>
                     </li>
                 {% endfor %}
             </ul>

@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 
+/* Estilos Gerais */
 body {
     background-color: #091d27;
     color: #ffffff;
@@ -14,8 +15,6 @@ body {
     display: flex;
     flex-direction: column;
 }
-
-
 
 a {
     color: #409094;
@@ -28,65 +27,12 @@ a:focus {
     text-decoration: underline;
 }
 
-
 .container {
     flex: 1;
     padding-left: 0;
     padding-right: 0;
     width: 100%;
     margin: 0;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    color: #de9842;
-    line-height: 1.2;
-}
-
-
-.jumbotron h1.display-4 {
-    font-size: 2.5rem;
-    color: #de9842;
-}
-
-.jumbotron p.lead,
-.jumbotron p {
-    color: #000000;
-    font-size: 1.25rem;
-}
-
-.btn {
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
-    height: 2.4rem;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 0.5rem; 
-}
-
-.btn.btn-danger {
-    margin-right: 0.5rem;
-}
-
-.btn-action {
-    width: auto;
-    min-width: 150px;
-    height: 38px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-
-
-
-.list-group-item .btn {
-    float: right;
 }
 
 .footer {
@@ -98,19 +44,6 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.9rem;
 }
 
-.list-group-item {
-    color: #000000;
-}
-
-.form-label, .account-query, .account-link {
-    color: #000000;
-}
-
-.account-link:visited {
-    color: #000000;
-}
-
-
 .errorlist {
     color: #ff0000;
     background-color: #ffffff;
@@ -118,63 +51,39 @@ h1, h2, h3, h4, h5, h6 {
     padding: 5px;
     border-radius: 5px;
     margin-bottom: 10px;
-}
-
-.form-group label {
-    color: #ffffff;
-}
-
-#id_ingredientes label{
-    color: #000000;
-}
-
-
-.form-group label.form-label {
-    color: black;
-}
-
-
-.form-group select,
-.form-group textarea {
-    background-color: #ffffff;
-    color: #000000;
-    border: 1px solid #cccccc;
-    padding: .375rem .75rem;
-    box-sizing: border-box;
-    width: 100%;
-}
-
-.form-group input[type="text"],
-.form-group input[type="password"] {
-    background-color: #ffffff;
-    color: #000000;
-    border: 1px solid #cccccc;
-    padding: .375rem .75rem;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.form-group-listar {
-    color: #000000;
-    box-sizing: border-box;
-}
-
-.form-group-listar .form-control {
-    margin-right: 5px;
-}
-
-
-.errorlist {
-    color: #dc3545;
     list-style-type: none;
-    padding: 0;
     margin: 0 0 1rem 0;
 }
 
-.form-text.text-muted {
-    color: #02101c !important;
+.messages {
+    margin-bottom: 20px;
 }
 
+.messages .list-group-item {
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.info {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+}
+
+/* Navbar */
 .navbar {
     background-color: #409094;
     border-bottom: 3px solid #b84c29;
@@ -206,7 +115,6 @@ h1, h2, h3, h4, h5, h6 {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23de9842' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
-
 .navbar-nav .nav-link {
     padding-right: .8rem;
     padding-left: .8rem;
@@ -234,83 +142,1170 @@ h1, h2, h3, h4, h5, h6 {
     vertical-align: middle;
 }
 
-.light-theme {
-    background-color: rgb(240, 231, 211);
-    color: #333333;
+/* Estilos h */
+h1, h2, h3, h4, h5, h6 {
+    color: #de9842;
+    line-height: 1.2;
 }
 
-.light-theme .navbar {
-    background-color: wheat !important;
+/* Estilo btn */
+
+.btn {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    height: 2.4rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.5rem; 
 }
 
-.light-theme .navbar a,
-.light-theme .navbar .navbar-brand {
-    color: #333333 !important;
+.btn.btn-danger {
+    margin-right: 0.5rem;
 }
 
-.light-theme .navbar-toggler {
-    border-color: #cccccc;
+.btn-action {
+    width: auto;
+    min-width: 150px;
+    height: 38px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
-.light-theme .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23333333' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"); /* Ícone do toggler com cor ajustada para tema claro */
+
+
+/* Estilos para Detalhes da Receita */
+.detalhes-receita .card {
+    background-color: #fff; /* Cor de fundo do card */
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    margin-top: 20px; /* Espaço superior */
 }
 
-.light-theme .form-group label {
-    color: #000000;
+.detalhes-receita .card-header {
+    background-color: #409094; /* Cor de fundo do cabeçalho do card */
+    color: #fff; /* Cor do texto do cabeçalho */
+    border-bottom: none; /* Remover borda inferior do cabeçalho */
+    border-top-left-radius: 10px; /* Arredondar canto superior esquerdo */
+    border-top-right-radius: 10px; /* Arredondar canto superior direito */
+    padding: 10px 20px;
 }
 
-.light-theme .card-body p{
-    color: black
+.detalhes-receita .card-body {
+    color: #000; /* Cor do texto do corpo do card */
+    text-align: center; /* Centralizar o texto */
+    padding: 20px;
 }
 
-.card-title {
+.detalhes-receita .card-body ul {
+    list-style: none; /* Remover a marca de lista */
+}
+
+.detalhes-receita .card-body p {
+    color: #000; /* Cor do texto do parágrafo */
+    margin-bottom: 10px; /* Adicionar espaçamento entre os parágrafos */
+}
+.detalhes-receita .card-title {
     font-size: 1.5rem;
     color: #409094;
 }
 
-.card-header {
-    background-color: #409094;
-    color: #fff;
-    font-weight: bold;
-}
-
-.card-text {
-    color: #091d27;
-}
-
-.card-body p{
-    color: #ffffff;
-}
-
-#pBlack {
-    color: #000000;
-}
-
-
-.card-body p label {
-    color: black;
-}
-
-.btn-primary {
-    background-color: #409094;
-    color: #fff;
-    border: none;
-    font-weight: bold;
-}
-
-.btn-primary:hover {
-    background-color: #b84c29;
-}
-
-
-.custom-carousel {
-    max-width: 450px;
+.detalhes-receita .custom-carousel {
+    max-width: 600px;
     margin: 0 auto;
 }
 
-.carousel-inner img {
-    max-width: 100%;
-    height: auto;
+.detalhes-receita .carousel-inner img {
+    max-width: 100%; /* Definindo a largura máxima das imagens para ocupar no máximo a largura do contêiner */
+    height: auto; /* Mantendo a proporção da altura para evitar distorções */
 }
 
+
+
+/* Compartilhar Whatsapp */
+.btn-whatsapp {
+    background-color: #25d366;
+    color: #fff;
+    padding: 8px 16px; /* Ajuste o padding conforme necessário */
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    display: inline-block; /* Garante que o botão ocupe apenas o espaço necessário */
+    width: auto; /* Permite que a largura do botão seja definida pelo conteúdo */
+}
+
+.btn-whatsapp:hover {
+    background-color: #128C7E;
+}
+
+/* Estilos para o Jumbotron na página inicial */
+.index-jumbotron {
+    background-color: #f8f9fa; /* Cor de fundo */
+    padding: 3rem; /* Espaçamento interno */
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.index-jumbotron h1 {
+    color: #409094; /* Cor do título */
+}
+
+.index-jumbotron p {
+    color: #6c757d; /* Cor do texto principal */
+}
+
+.index-jumbotron hr {
+    border-color: #6c757d; /* Cor da linha horizontal */
+}
+
+.index-jumbotron a.btn-primary {
+    background-color: #409094; /* Cor de fundo do botão */
+    border-color: #409094; /* Cor da borda do botão */
+}
+
+.index-jumbotron a.btn-primary:hover {
+    background-color: #307070; /* Cor de fundo do botão ao passar o mouse */
+    border-color: #307070; /* Cor da borda do botão ao passar o mouse */
+}
+
+
+/* Estilos para a página de login */
+.login-container {
+    padding-top: 50px; /* Espaçamento superior */
+}
+
+.login-card {
+    background-color: #fff; /* Cor de fundo do card */
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.login-title {
+    color: #000; /* Cor do título */
+    text-align: center; /* Centralizar o texto */
+}
+
+.login-label {
+    color: #000; /* Cor das labels */
+}
+
+.login-link {
+    color: #6c757d; /* Cor do texto */
+    font-size: 16px; /* Tamanho da fonte */
+    text-align: center; /* Centralizar o texto */
+    margin-top: 20px; /* Espaçamento superior */
+}
+
+.login-link a {
+    color: #007bff; /* Cor dos links */
+    text-decoration: none; /* Remover sublinhado padrão */
+    transition: color 0.3s; /* Suavizar a transição de cor */
+    margin: 0 5px; /* Adicionar espaçamento entre os links */
+}
+
+.login-link a:hover {
+    color: #0056b3; /* Mudar a cor ao passar o mouse */
+}
+
+/* Estilos para os links "Cadastre-se" e "Recuperar senha" */
+.login-link a.btn {
+    padding: 10px 20px; /* Adicionar preenchimento */
+    background-color: #007bff; /* Cor de fundo */
+    border: none; /* Remover borda */
+    border-radius: 5px; /* Arredondar bordas */
+    color: #fff; /* Cor do texto */
+    text-decoration: none; /* Remover sublinhado */
+    transition: background-color 0.3s; /* Suavizar a transição de cor de fundo */
+}
+
+.login-link a.btn:hover {
+    background-color: #0056b3; /* Mudar a cor de fundo ao passar o mouse */
+}
+
+/* Estilos para o texto "Ainda não tem uma conta?" */
+.login-link.new-account {
+    margin-bottom: 10px; /* Espaçamento inferior */
+}
+
+/* Estilos para o texto "Esqueceu a senha?" */
+.login-link.forgot-password {
+    margin-top: 10px; /* Espaçamento superior */
+}
+
+/* Estilos para os inputs */
+.login-container .form-group input[type="text"],
+.login-container .form-group input[type="password"] {
+    width: 100%; /* Ocupar toda a largura disponível */
+    padding: 10px; /* Espaçamento interno */
+    margin-top: 5px; /* Espaçamento superior */
+    margin-bottom: 10px; /* Espaçamento inferior */
+    border: 1px solid #ced4da; /* Borda */
+    border-radius: 5px; /* Bordas arredondadas */
+}
+
+.login-container .form-group input[type="text"]:focus,
+.login-container .form-group input[type="password"]:focus {
+    outline: none; /* Remover o contorno ao focar */
+    border-color: #007bff; /* Cor da borda ao focar */
+}
+
+
+/* Estilos para o formulário de cadastro */
+.form-label {
+    color: #495057; /* Cor do texto do rótulo */
+}
+
+.form-control {
+    border-color: #ced4da; /* Cor da borda do campo de entrada */
+}
+
+.form-control:focus {
+    border-color: #80bdff; /* Cor da borda quando o campo de entrada está em foco */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Sombra ao redor do campo de entrada quando está em foco */
+}
+
+.invalid-feedback {
+    color: #dc3545; /* Cor do texto de feedback de erro */
+}
+
+.form-text {
+    color: #6c757d; /* Cor do texto de ajuda */
+}
+
+.btn-primary {
+    background-color: #007bff; /* Cor de fundo do botão primário */
+    border-color: #007bff; /* Cor da borda do botão primário */
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Cor de fundo do botão primário ao passar o mouse */
+    border-color: #0056b3; /* Cor da borda do botão primário ao passar o mouse */
+}
+
+.link-primary {
+    color: #007bff; /* Cor do texto do link primário */
+}
+
+.link-primary:hover {
+    color: #0056b3; /* Cor do texto do link primário ao passar o mouse */
+}
+
+/* Estilos para o texto "Já tem uma conta?" */
+.account-query {
+    margin-top: 20px; /* Espaçamento superior */
+    color: #6c757d; /* Cor do texto */
+    text-align: center; /* Centralizar o texto */
+}
+
+.account-query a {
+    color: #007bff; /* Cor do texto do link */
+    text-decoration: none; /* Remover sublinhado */
+    transition: color 0.3s; /* Suavizar a transição de cor */
+}
+
+.account-query a:hover {
+    color: #0056b3; /* Mudar a cor do link ao passar o mouse */
+}
+
+
+
+/* Estilos para a página de lista de receitas */
+.listagem-receitas .admin-actions {
+    margin-top: 10px;
+}
+
+.listagem-receitas .admin-actions .btn {
+    margin-right: 5px;
+}
+
+.listagem-receitas .list-group-item {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.listagem-receitas .list-group-item .recipe-info {
+    flex-grow: 1;
+}
+
+.listagem-receitas .list-group-item .admin-actions {
+    display: flex;
+    align-items: center;
+}
+
+.listagem-receitas .list-group-item .admin-actions .btn {
+    margin-left: 5px;
+}
+
+
+/* Estilos para a pagina de cadastro de receitas */
+
+/* Estilos para o card de cadastro de receita */
+.cadastro-receita-card {
+    max-width: 500px; /* Largura máxima do card */
+    border-radius: 10px; /* Borda arredondada */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.cadastro-receita-card .card-title {
+    color: #409094; /* Cor do título */
+}
+
+.cadastro-receita-card .card-text {
+    color: #6c757d; /* Cor do texto do parágrafo */
+    margin-bottom: 20px; /* Espaçamento inferior */
+}
+
+.cadastro-receita-card .form-group {
+    margin-bottom: 20px; /* Espaçamento inferior entre os campos do formulário */
+}
+
+.cadastro-receita-card .form-label {
+    color: #409094; /* Cor do rótulo do campo */
+}
+
+.cadastro-receita-card .form-control {
+    border-radius: 20px; /* Borda arredondada para os campos de entrada */
+}
+
+.cadastro-receita-card .col-12 input[type="text"] {
+    width: 100%;
+    border-radius: 20px;
+}
+
+.cadastro-receita-card .col-12 textarea {
+    width: 100%;
+    border-radius: 20px;
+}
+
+.cadastro-receita-card .form-text {
+    color: #6c757d; /* Cor do texto de ajuda */
+}
+
+.cadastro-receita-card .btn-primary {
+    border-radius: 20px; /* Borda arredondada para o botão de cadastro */
+}
+
+.cadastro-receita-card .form-group label {
+    color: black;
+}
+
+
+
+
+/* Estilos para a página de receitas recomendadas */
+.receitas-recomendadas-container {
+    margin-top: 40px;
+}
+
+.receitas-recomendadas-title {
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 24px;
+}
+
+.receitas-recomendadas-container .messages {
+    margin-bottom: 20px;
+}
+
+.receitas-recomendadas-container .list-group-item {
+    border: none;
+}
+
+.receitas-recomendadas-container .list-group-item a {
+    color: #343a40;
+    font-weight: bold;
+}
+
+.receitas-recomendadas-container .list-group-item:hover {
+    background-color: #f8f9fa;
+}
+
+
+
+/* Estilos para a página de receitas favoritas */
+.receitas-favoritas-container {
+    margin-top: 40px;
+}
+
+.receitas-favoritas-title {
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 32px;
+    color: #343a40;
+}
+
+.receitas-favoritas-container .list-group-item {
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #f8f9fa;
+}
+
+.receitas-favoritas-container .list-group-item a {
+    color: #343a40;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.receitas-favoritas-container .list-group-item a:hover {
+    text-decoration: underline;
+}
+
+
+/* Estilos para a página de Mercado */
+.mercado-container {
+    margin-top: 40px;
+}
+
+.mercado-title {
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 32px;
+    color: #343a40;
+}
+
+.mercado-list .list-group-item {
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #f8f9fa;
+}
+
+.mercado-list .list-group-item a {
+    color: #343a40;
+    font-weight: bold;
+}
+
+.mercado-list .list-group-item:hover {
+    background-color: #f8f9fa;
+}
+
+.mercado-list .list-group-item.mercado-item {
+    color: #000; /* Define a cor do texto como preto */
+}
+
+
+
+/* Estilos para a página Minha Dispensa */
+.minha-dispensa-container {
+    padding: 20px;
+}
+
+.minha-dispensa-content {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.minha-dispensa-title {
+    color: #333;
+}
+
+.minha-dispensa-list {
+    list-style: none;
+    padding: 0;
+}
+
+.minha-dispensa-item {
+    margin-bottom: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    color: #000;
+}
+
+.minha-dispensa-form {
+    display: inline;
+}
+
+.minha-dispensa-btn {
+    margin-left: 10px;
+}
+
+
+
+
+
+
+
+/* Estilos para a página de Configurações */
+.configuracoes-container {
+    margin-top: 40px;
+}
+
+.configuracoes-container .card {
+    border: none;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.configuracoes-container .card-header {
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+}
+
+.configuracoes-container .card-body {
+    padding: 20px;
+}
+
+.configuracoes-container .card-title {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.configuracoes-container #pBlack {
+    color: #343a40;
+}
+
+.configuracoes-container .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.configuracoes-container .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+/* Estilos para a página de Trocar Email */
+.trocar-email-container {
+    margin-top: 40px;
+}
+
+.trocar-email-container .card {
+    border: none;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.trocar-email-container .card-header {
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+}
+
+.trocar-email-container .card-body {
+    padding: 20px;
+}
+
+.trocar-email-container .form-label {
+    font-weight: bold;
+}
+
+.trocar-email-container .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.trocar-email-container .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+
+/* Estilos para a página de Trocar Senha */
+.trocar-senha-container {
+    margin-top: 40px;
+}
+
+.trocar-senha-container .card {
+    border: none;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.trocar-senha-container .card-header {
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+}
+
+.trocar-senha-container .card-body {
+    padding: 20px;
+}
+
+.trocar-senha-container .form-group {
+    margin-bottom: 20px;
+}
+
+.trocar-senha-container .form-label {
+    font-weight: bold;
+}
+
+.trocar-senha-container .form-control {
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+.trocar-senha-container .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.trocar-senha-container .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+
+/* Estilos para a página de Receitas Pendentes de Aprovação */
+.receitas-pendentes-container {
+    margin-top: 40px;
+}
+
+.receitas-pendentes-container .card {
+    border: none;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.receitas-pendentes-container .card-body {
+    padding: 20px;
+}
+
+.receitas-pendentes-container .card-title {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.receitas-pendentes-container .list-group-item {
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #f8f9fa;
+}
+
+.receitas-pendentes-container .list-group-item a {
+    color: #343a40;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.receitas-pendentes-container .list-group-item a:hover {
+    text-decoration: underline;
+}
+
+.receitas-pendentes-container .btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.receitas-pendentes-container .btn-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+.receitas-pendentes-container .no-receitas-message {
+    color: #000000; /* Cor preta */
+}
+
+
+
+
+/* Estilos para a página de Cadastro de Ingrediente */
+.cadastrar-ingrediente-container {
+    margin-top: 40px;
+}
+
+.cadastrar-ingrediente-container .card {
+    border: none;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.cadastrar-ingrediente-container .card-body {
+    padding: 20px;
+}
+
+.cadastrar-ingrediente-container .card-title {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.cadastrar-ingrediente-container .form-group {
+    margin-bottom: 20px;
+}
+
+.cadastrar-ingrediente-container .form-label {
+    font-weight: bold;
+}
+
+.cadastrar-ingrediente-container .form-control {
+    border-radius: 5px;
+}
+
+.cadastrar-ingrediente-container .btn-primary {
+    background-color: #409094; /* Cor #409094 */
+    border-color: #409094; /* Cor #409094 */
+}
+
+.cadastrar-ingrediente-container .btn-primary:hover {
+    background-color: #2b686b; /* Cor #2b686b */
+    border-color: #2b686b; /* Cor #2b686b */
+}
+
+.cadastrar-ingrediente-container .text-black {
+    color: #000000; /* Cor preta */
+}
+
+.cadastrar-ingrediente-container .text-danger {
+    color: #dc3545; /* Cor vermelha */
+}
+
+.cadastrar-ingrediente-container input[type="text"] {
+    width: 100%;
+    border-radius: 20px;
+}
+
+
+
+/* Estilos para a página de lista de ingredientes */
+.lista-ingredientes-container {
+    padding-top: 20px;
+}
+
+.lista-ingredientes-title {
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 32px;
+    color: #343a40;
+}
+
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ingredient-info {
+    flex: 1;
+}
+
+.ingredient-actions {
+    display: flex;
+    gap: 5px;
+}
+
+
+.lista-ingredientes-list .list-group-item {
+    border: none;
+}
+
+.lista-ingredientes-list .list-group-item a {
+    color: #343a40;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.lista-ingredientes-list .list-group-item a:hover {
+    text-decoration: underline;
+}
+
+.lista-ingredientes-pagination .pagination {
+    margin-top: 20px;
+}
+
+.lista-ingredientes-pagination .pagination .step-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lista-ingredientes-pagination .pagination .step-links a {
+    color: #007bff;
+    margin: 0 5px;
+    text-decoration: none;
+}
+
+.lista-ingredientes-pagination .pagination .current {
+    margin: 0 10px;
+}
+
+.lista-ingredientes-pagination .pagination .step-links a:hover {
+    text-decoration: underline;
+}
+
+
+/* Estilos para a página de Gestão de Usuários */
+.gestao-usuarios-card .table-responsive {
+    margin-top: 20px;
+}
+
+.gestao-usuarios-card .usuarios-table {
+    width: 100%;
+}
+
+.gestao-usuarios-card .usuarios-table caption {
+    caption-side: top;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.gestao-usuarios-card .usuarios-table th {
+    font-weight: bold;
+}
+
+.gestao-usuarios-card .usuarios-table td,
+.gestao-usuarios-card .usuarios-table th {
+    padding: 8px;
+}
+
+.gestao-usuarios-card .usuarios-table td {
+    vertical-align: middle;
+}
+
+.gestao-usuarios-card .btn-action {
+    margin-right: 5px;
+}
+
+.gestao-usuarios-card .btn-excluir {
+    margin-left: 5px;
+}
+
+/* detalhes ingredientes */
+
+.detalhes-ingrediente-container .container-fluid {
+    margin-top: 4rem;
+}
+
+.detalhes-ingrediente-container .card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.detalhes-ingrediente-container .card-body {
+    padding: 2rem;
+}
+
+.detalhes-ingrediente-container .detalhes-ingrediente-container {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.detalhes-ingrediente-container .card-title {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.detalhes-ingrediente-container .black-text {
+    color: #000;
+}
+
+.detalhes-ingrediente-container .text-center {
+    text-align: center;
+}
+
+.detalhes-ingrediente-container .btn-editar {
+    background-color: #ffc107; /* Amarelo */
+    border-color: #ffc107;
+    border-radius: 5px;
+    color: #000;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.detalhes-ingrediente-container .btn-editar:hover {
+    background-color: #ffca2c; /* Amarelo mais claro */
+    border-color: #ffca2c;
+}
+
+.detalhes-ingrediente-container .btn-excluir {
+    background-color: #dc3545; /* Vermelho */
+    border-color: #dc3545;
+    border-radius: 5px;
+    color: #fff;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.detalhes-ingrediente-container .btn-excluir:hover {
+    background-color: #c82333; /* Vermelho mais escuro */
+    border-color: #bd2130;
+}
+
+
+/* editar ingredientes*/
+
+/* Adicione este código ao seu arquivo CSS */
+
+.editar-ingrediente-container {
+    margin: 4rem auto;
+    padding: 2rem;
+    max-width: 600px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.editar-ingrediente-container h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.editar-ingrediente-container .form-group {
+    margin-bottom: 20px;
+}
+
+.editar-ingrediente-container .black-text {
+    color: #000;
+}
+
+.editar-ingrediente-container .btn-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.editar-ingrediente-container .button-space {
+    width: 10px; /* Espaço entre os botões */
+}
+
+.editar-ingrediente-container .btn {
+    border-radius: 5px; /* Arredonda todos os cantos */
+}
+
+.editar-ingrediente-container .btn-success {
+    background-color: #28a745; /* Verde */
+    border-color: #28a745;
+    color: #fff;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.editar-ingrediente-container .btn-success:hover {
+    background-color: #218838; /* Verde mais escuro */
+    border-color: #1e7e34;
+}
+
+.editar-ingrediente-container .btn-danger {
+    background-color: #dc3545; /* Vermelho */
+    border-color: #dc3545;
+    color: #fff;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.editar-ingrediente-container .btn-danger:hover {
+    background-color: #c82333; /* Vermelho mais escuro */
+    border-color: #bd2130;
+}
+
+
+/* admin dashboard */
+
+/* Adicione este código ao seu arquivo CSS */
+
+.admin-panel-container {
+    margin-top: 4rem;
+}
+
+.admin-panel-container .card {
+    border: none;
+    max-width: 600px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.admin-panel-container .card-body {
+    padding: 20px;
+}
+
+.admin-panel-container .card-title {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.admin-panel-container .btn-primary {
+    background-color: #409094; /* Cor #409094 */
+    border-color: #409094; /* Cor #409094 */
+    color: #fff;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.admin-panel-container .btn-primary:hover {
+    background-color: #2b686b; /* Cor #2b686b */
+    border-color: #2b686b; /* Cor #2b686b */
+}
+
+
+
+/* gestao usuario css */
+
+/* Adicione este código ao seu arquivo CSS */
+
+.gestao-usuarios-container {
+    margin-top: 4rem;
+}
+
+.gestao-usuarios-card {
+    border: none;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.gestao-usuarios-card .card-body {
+    padding: 20px;
+}
+
+.gestao-usuarios-card .card-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.gestao-usuarios-card .table-responsive {
+    margin-top: 20px;
+}
+
+.gestao-usuarios-card .btn-action {
+    padding: 5px 10px;
+    margin-right: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.gestao-usuarios-card .btn-action.btn-warning {
+    background-color: #ffc107; /* Amarelo */
+    border-color: #ffc107;
+    color: #212529; /* Cor escura */
+}
+
+.gestao-usuarios-card .btn-action.btn-warning:hover {
+    background-color: #e0a800; /* Amarelo mais escuro */
+    border-color: #d39e00;
+}
+
+.gestao-usuarios-card .btn-action.btn-success {
+    background-color: #28a745; /* Verde */
+    border-color: #28a745;
+    color: #fff;
+}
+
+.gestao-usuarios-card .btn-action.btn-success:hover {
+    background-color: #218838; /* Verde mais escuro */
+    border-color: #1e7e34;
+}
+
+.gestao-usuarios-card .btn-action.btn-excluir {
+    background-color: #dc3545; /* Vermelho */
+    border-color: #dc3545;
+    color: #fff;
+}
+
+.gestao-usuarios-card .btn-action.btn-excluir:hover {
+    background-color: #c82333; /* Vermelho mais escuro */
+    border-color: #bd2130;
+}
+
+
+/* cadastro de usuario css */
+
+/* Adicione este código ao seu arquivo CSS */
+
+.cadastro-usuario {
+    margin-top: 4rem;
+}
+
+.cadastro-usuario .card {
+    border: none;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.cadastro-usuario .card-body {
+    padding: 20px;
+}
+
+.cadastro-usuario .card-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.cadastro-usuario .cadastro-input {
+    border-radius: 5px;
+}
+
+.cadastro-usuario .btn-primary {
+    background-color: #409094; /* Cor #409094 */
+    border-color: #409094; /* Cor #409094 */
+}
+
+.cadastro-usuario .btn-primary:hover {
+    background-color: #2b686b; /* Cor #2b686b */
+    border-color: #2b686b; /* Cor #2b686b */
+}
+
+.cadastro-usuario .cadastro-link {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.cadastro-usuario .cadastro-link a {
+    color: #007bff; /* Cor do link padrão */
+}
+
+.cadastro-usuario .cadastro-link a:hover {
+    color: #0056b3; /* Cor do link ao passar o mouse */
+}
+
+.invalid-feedback {
+    display: block;
+    width: 100%;
+    margin-top: .25rem;
+    font-size: 80%;
+    color: #dc3545; /* Cor vermelha */
+}
+
+
+/* Estilos para o card de navegação de páginas */
+.pagination-card {
+    max-width: 300px; /* Defina a largura máxima do card */
+    margin: 0 auto; /* Centralize o card horizontalmente */
+    border: none; /* Remova a borda do card */
+    background-color: transparent; /* Torne o card transparente */
+}
+
+.pagination-card .card-body {
+    padding: 0; /* Remova todo o preenchimento interno do corpo do card */
+}
+
+.pagination-card .pagination-list {
+    list-style: none; /* Remova os marcadores de lista */
+    padding: 0; /* Remova o preenchimento padrão da lista */
+    margin: 0; /* Remova as margens padrão da lista */
+    display: flex; /* Use flexbox para alinhar os itens horizontalmente */
+    justify-content: space-between; /* Alinhe os itens horizontalmente com espaçamento igual */
+}
+
+.pagination-card .pagination-list .page-item {
+    margin-right: 5px; /* Adicione um pequeno espaçamento entre os itens da lista */
+}
+
+.pagination-card .pagination-list .page-item:last-child {
+    margin-right: 0; /* Remova a margem direita do último item da lista */
+    flex-grow: 1; /* Faça o último item ocupar todo o espaço disponível */
+}
+
+.pagination-card .pagination-list .page-item.disabled .page-link {
+    color: #6c757d; /* Cor do link desativado */
+}
+
+.pagination-card .pagination-list .page-item.disabled .page-link:hover {
+    text-decoration: none; /* Remova o sublinhado no hover do link desativado */
+}
+
+/* Se desejar, você pode adicionar mais estilos para personalizar ainda mais o card de navegação de páginas */

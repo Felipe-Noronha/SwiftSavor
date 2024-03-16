@@ -1,47 +1,51 @@
 {% extends 'main/base.html' %}
 
 {% block content %}
-<div class="container-fluid mt-4">
+<div class="container-fluid mt-4 minha-dispensa-container">
     <div class="row justify-content-center">
         <div class="col-md-4">
-            <h1 class="mb-4 text-center">Minha Dispensa</h1>
-            {% if ingredientes_selecionados %}
-                <ul class="list-group" aria-label="Ingredientes selecionados">
-                    {% for ingrediente in ingredientes_selecionados %}
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            {{ ingrediente.nome }}
-                            <form method="post" action="{% url 'meus_ingredientes' %}" style="display:inline;">
-                                {% csrf_token %}
-                                <input type="hidden" name="ingrediente_id" value="{{ ingrediente.id }}">
-                                <button type="submit" class="btn btn-danger btn-sm" aria-label="Remover ingrediente">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </form>
-                        </li>
-                    {% endfor %}
-                </ul>
-
-                <div class="pagination justify-content-center mt-4" aria-label="Navegação de páginas">
-                    <span class="step-links">
-                        {% if ingredientes_selecionados.has_previous %}
-                            <a href="?page=1">&laquo; first</a>
-                            <a href="?page={{ ingredientes_selecionados.previous_page_number }}">previous</a>
-                        {% endif %}
-
-                        <span class="current">
-                            Página {{ ingredientes_selecionados.number }} de {{ ingredientes_selecionados.paginator.num_pages }}.
-                        </span>
-
-                        {% if ingredientes_selecionados.has_next %}
-                            <a href="?page={{ ingredientes_selecionados.next_page_number }}">next</a>
-                            <a href="?page={{ ingredientes_selecionados.paginator.num_pages }}">last &raquo;</a>
-                        {% endif %}
-                    </span>
+            <div class="card minha-dispensa-card">
+                <div class="card-body">
+                    <h1 class="mb-4 text-center">Minha Dispensa</h1>
+                    {% if ingredientes_selecionados %}
+                        <ul class="list-group minha-dispensa-list" aria-label="Ingredientes selecionados">
+                            {% for ingrediente in ingredientes_selecionados %}
+                                <li class="list-group-item d-flex justify-content-between align-items-center minha-dispensa-item">
+                                    {{ ingrediente.nome }}
+                                    <form method="post" action="{% url 'meus_ingredientes' %}" class="minha-dispensa-form">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="ingrediente_id" value="{{ ingrediente.id }}">
+                                        <button type="submit" class="btn btn-danger btn-sm minha-dispensa-btn" aria-label="Remover ingrediente">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p class="text-center">Você ainda não selecionou nenhum ingrediente.</p>
+                    {% endif %}
                 </div>
-            {% else %}
-                <p class="text-center">Você ainda não selecionou nenhum ingrediente.</p>
-            {% endif %}
+            </div>
         </div>
     </div>
+</div>
+
+<div class="pagination justify-content-center mt-4 minha-dispensa-pagination" aria-label="Navegação de páginas">
+    <span class="step-links minha-dispensa-pagination-links">
+        {% if ingredientes_selecionados.has_previous %}
+            <a href="?page=1" class="minha-dispensa-pagination-link">&laquo; Primeira</a>
+            <a href="?page={{ ingredientes_selecionados.previous_page_number }}" class="minha-dispensa-pagination-link">Anterior</a>
+        {% endif %}
+
+        <span class="current minha-dispensa-pagination-current">
+            Página {{ ingredientes_selecionados.number }} de {{ ingredientes_selecionados.paginator.num_pages }}.
+        </span>
+
+        {% if ingredientes_selecionados.has_next %}
+            <a href="?page={{ ingredientes_selecionados.next_page_number }}" class="minha-dispensa-pagination-link">Próxima</a>
+            <a href="?page={{ ingredientes_selecionados.paginator.num_pages }}" class="minha-dispensa-pagination-link">Última &raquo;</a>
+        {% endif %}
+    </span>
 </div>
 {% endblock %}

@@ -1,31 +1,31 @@
 {% extends 'main/base.html' %}
 
 {% block content %}
-<div class="container-fluid mt-4">
+<div class="container-fluid mt-4 cadastro-usuario">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
-                    <h1 class="card-title mb-4 text-center">Cadastro de Usuário</h1>
+                    <h1 class="card-title mb-4 text-center cadastro-titulo">Cadastro de Usuário</h1>
                     <form method="post">
                         {% csrf_token %}
                         <div class="form-group">
                             <label for="{{ form.username.id_for_label }}" class="form-label">Username:</label>
-                            <input type="text" class="form-control {{ form.username.errors|yesno:'is-invalid,' }}" id="{{ form.username.id_for_label }}" name="{{ form.username.html_name }}" value="{{ form.username.value|default_if_none:'' }}" aria-describedby="username-error">
+                            <input type="text" class="form-control {% if form.username.errors %}is-invalid{% endif %} cadastro-input" id="{{ form.username.id_for_label }}" name="{{ form.username.html_name }}" value="{{ form.username.value|default_if_none:'' }}" aria-describedby="username-error">
                             {% for error in form.username.errors %}
                                 <div id="username-error" class="invalid-feedback">{{ error }}</div>
                             {% endfor %}
                         </div>
                         <div class="form-group">
                             <label for="{{ form.email.id_for_label }}" class="form-label">Email:</label>
-                            <input type="email" class="form-control {{ form.email.errors|yesno:'is-invalid,' }}" id="{{ form.email.id_for_label }}" name="{{ form.email.html_name }}" value="{{ form.email.value|default_if_none:'' }}" aria-describedby="email-error">
+                            <input type="email" class="form-control {% if form.email.errors %}is-invalid{% endif %} cadastro-input" id="{{ form.email.id_for_label }}" name="{{ form.email.html_name }}" value="{{ form.email.value|default_if_none:'' }}" aria-describedby="email-error">
                             {% for error in form.email.errors %}
                                 <div id="email-error" class="invalid-feedback">{{ error }}</div>
                             {% endfor %}
                         </div>
                         <div class="form-group">
                             <label for="{{ form.password1.id_for_label }}" class="form-label">Password:</label>
-                            <input type="password" class="form-control {{ form.password1.errors|yesno:'is-invalid,' }}" id="{{ form.password1.id_for_label }}" name="{{ form.password1.html_name }}" aria-describedby="password1-error">
+                            <input type="password" class="form-control {% if form.password1.errors %}is-invalid{% endif %} cadastro-input" id="{{ form.password1.id_for_label }}" name="{{ form.password1.html_name }}" aria-describedby="password1-error">
                             {% for error in form.password1.errors %}
                                 <div id="password1-error" class="invalid-feedback">{{ error }}</div>
                             {% endfor %}
@@ -33,16 +33,16 @@
                         </div>
                         <div class="form-group">
                             <label for="{{ form.password2.id_for_label }}" class="form-label">Password confirmation:</label>
-                            <input type="password" class="form-control {{ form.password2.errors|yesno:'is-invalid,' }}" id="{{ form.password2.id_for_label }}" name="{{ form.password2.html_name }}" aria-describedby="password2-error">
+                            <input type="password" class="form-control {% if form.password2.errors %}is-invalid{% endif %} cadastro-input" id="{{ form.password2.id_for_label }}" name="{{ form.password2.html_name }}" aria-describedby="password2-error">
                             {% for error in form.password2.errors %}
                                 <div id="password2-error" class="invalid-feedback">{{ error }}</div>
                             {% endfor %}
                             <small id="password-confirm-help" class="form-text text-muted">Digite a senha novamente, para verificação.</small>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+                        <button type="submit" class="btn btn-primary btn-block cadastro-btn">Cadastrar</button>
                     </form>
                     <hr>
-                    <p class="mt-2 account-query text-dark"><span>Já tem uma conta?</span> <a href="{% url 'login' %}" class="link-primary">Faça login</a>.</p>
+                    <p class="mt-2 account-query text-dark cadastro-link">Já tem uma conta? <a href="{% url 'login' %}" class="link-primary">Faça login</a>.</p>
                 </div>
             </div>
         </div>

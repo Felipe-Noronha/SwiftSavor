@@ -1,14 +1,23 @@
 {% extends 'main/base.html' %}
 
 {% block content %}
-    <div class="container mt-4">
-        <h1 class="mb-4">Detalhes do Ingrediente</h1>
-        <p><strong>Nome:</strong> {{ ingrediente.nome }}</p>
-        <a href="{% url 'editar_ingrediente' ingrediente.id %}" class="btn btn-warning" aria-label="Editar o ingrediente {{ ingrediente.nome }}">Editar</a>
-        
-        <form method="post" action="{% url 'excluir_ingrediente' ingrediente.id %}" class="d-inline">
-            {% csrf_token %}
-            <button type="submit" class="btn btn-danger" aria-label="Excluir o ingrediente {{ ingrediente.nome }}">Excluir</button>
-        </form>
+    <div class="container-fluid mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body detalhes-ingrediente-container">
+                        <h1 class="card-title mb-4">Detalhes do Ingrediente</h1>
+                        <p class="black-text">Nome: {{ ingrediente.nome }}</p>
+                        <div class="text-center">
+                            <a href="{% url 'editar_ingrediente' ingrediente.id %}" class="btn btn-editar btn-block mb-2" aria-label="Editar o ingrediente {{ ingrediente.nome }}">Editar</a>
+                            <form method="post" action="{% url 'excluir_ingrediente' ingrediente.id %}" class="d-inline">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-excluir btn-block" aria-label="Excluir o ingrediente {{ ingrediente.nome }}">Excluir</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}

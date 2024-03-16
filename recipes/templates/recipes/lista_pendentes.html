@@ -1,7 +1,7 @@
 {% extends 'main/base.html' %}
 
 {% block content %}
-<div class="container-fluid mt-4">
+<div class="container-fluid mt-4 receitas-pendentes-container">
     <div class="row justify-content-center">
         <div class="col-md-4">
             <h1 class="mb-4 text-center">Receitas Pendentes de Aprovação</h1>
@@ -21,7 +21,7 @@
                             {% endfor %}
                         </ul>
                     {% else %}
-                        <p class="text-center">Nenhuma receita pendente de aprovação no momento.</p>
+                        <p class="text-center no-receitas-message">Nenhuma receita pendente de aprovação no momento.</p>
                     {% endif %}
                 </div>
             </div>

@@ -3,11 +3,19 @@
 {% block title %}Editar Ingrediente{% endblock %}
 
 {% block content %}
-  <h2>Editar Ingrediente: {{ ingrediente.nome }}</h2>
-  <form method="post" action="{% url 'editar_ingrediente' ingrediente.id %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary" aria-label="Salvar alterações no ingrediente {{ ingrediente.nome }}">Salvar Alterações</button>
-    <a href="{% url 'lista_ingredientes' %}" class="btn btn-secondary" aria-label="Cancelar edição do ingrediente {{ ingrediente.nome }}">Cancelar</a>
-  </form>
+  <div class="editar-ingrediente-container">
+    <h2>Editar Ingrediente: {{ ingrediente.nome }}</h2>
+    <form method="post" action="{% url 'editar_ingrediente' ingrediente.id %}">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="id_nome" class="black-text">Nome:</label>
+        {{ form.nome }}
+      </div>
+      <div class="btn-group">
+        <button type="submit" class="btn btn-success" aria-label="Salvar alterações no ingrediente {{ ingrediente.nome }}">Salvar Alterações</button>
+        <span class="button-space"></span>
+        <a href="{% url 'lista_ingredientes' %}" class="btn btn-danger" aria-label="Cancelar edição do ingrediente {{ ingrediente.nome }}">Cancelar</a>
+      </div>
+    </form>
+  </div>
 {% endblock %}

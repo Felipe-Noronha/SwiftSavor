@@ -1,10 +1,10 @@
 {% extends 'main/base.html' %}
 
 {% block content %}
-<div class="container-fluid mt-4">
+<div class="container-fluid mt-4 receitas-recomendadas-container">
     <div class="row justify-content-center">
         <div class="col-md-4">
-            <h2 class="mb-4 text-center">Receitas Recomendadas</h2>
+            <h2 class="mb-4 text-center receitas-recomendadas-title">Receitas Recomendadas</h2>
 
             {% if messages %}
                 <ul class="messages list-group">
@@ -38,22 +38,34 @@
                     {% endfor %}
                 </ul>
                 
-                <div aria-label="Navegação de páginas" class="pagination justify-content-center mt-3">
-                    <span class="step-links">
-                        {% if receitas.has_previous %}
-                            <a href="?page=1" aria-label="Primeira página">&laquo; first</a>
-                            <a href="?page={{ receitas.previous_page_number }}" aria-label="Página anterior">previous</a>
-                        {% endif %}
-
-                        <span class="current">
-                            Página {{ receitas.number }} de {{ receitas.paginator.num_pages }}.
-                        </span>
-
-                        {% if receitas.has_next %}
-                            <a href="?page={{ receitas.next_page_number }}" aria-label="Próxima página">next</a>
-                            <a href="?page={{ receitas.paginator.num_pages }}" aria-label="Última página">last &raquo;</a>
-                        {% endif %}
-                    </span>
+                <div class="card pagination-card">
+                    <div class="card-body">
+                        <nav aria-label="Navegação de páginas" class="pagination justify-content-center">
+                            <ul class="pagination-list">
+                                {% if receitas.has_previous %}
+                                    <li class="page-item">
+                                        <a href="?page=1">&laquo; primeira</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a href="?page={{ receitas.previous_page_number }}">anterior</a>
+                                    </li>
+                                {% endif %}
+                        
+                                <li class="page-item">
+                                    <span class="current">Página {{ receitas.number }} de {{ receitas.paginator.num_pages }}.</span>
+                                </li>
+                        
+                                {% if receitas.has_next %}
+                                    <li class="page-item">
+                                        <a href="?page={{ receitas.next_page_number }}">próxima</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a href="?page={{ receitas.paginator.num_pages }}">última &raquo;</a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
             {% else %}
                 <p>Não foram encontradas receitas com os ingredientes que você possui.</p>

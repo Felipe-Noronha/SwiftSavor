@@ -1,29 +1,29 @@
 {% extends 'main/base.html' %}
 
 {% block content %}
-<div class="container-fluid mt-4">
+<div class="container-fluid mt-4 login-container">
     <div class="row justify-content-center">
         <div class="col-lg-4 col-md-6 col-sm-8">
-            <div class="card">
+            <div class="card login-card">
                 <div class="card-body">
-                    <h1 class="card-title mb-4" style="color: #000; text-align: center;">Login</h1>
+                    <h1 class="card-title mb-4 login-title">Login</h1>
                     <form method="post" class="mb-3">
                         {% csrf_token %}
                         <div class="form-group">
-                            <label for="{{ form.username.id_for_label }}" class="form-label" style="color: #000;">Username:</label>
+                            <label for="{{ form.username.id_for_label }}" class="form-label login-label">Username:</label>
                             {{ form.username }}
                             <div class="text-danger">{{ form.username.errors }}</div>
                         </div>
                         <div class="form-group">
-                            <label for="{{ form.password.id_for_label }}" class="form-label" style="color: #000;">Password:</label>
+                            <label for="{{ form.password.id_for_label }}" class="form-label login-label">Password:</label>
                             {{ form.password }}
                             <div class="text-danger">{{ form.password.errors }}</div>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block">Login</button>
                     </form>
                     <hr>
-                    <p class="mt-2" style="color: #000; text-align: center;">Ainda não tem uma conta? <a href="{% url 'cadastrar_usuario' %}" class="link-primary" style="color: #000;">Cadastre-se</a>.</p>
-                    <p class="mt-2" style="color: #000; text-align: center;">Esqueceu a senha?<a href="" class="link-primary" style="color: #000;"> Recuperar senha</a>.</p>
+                    <p class="mt-2 login-link">Ainda não tem uma conta? <a href="{% url 'cadastrar_usuario' %}" class="link-primary">Cadastre-se</a>.</p>
+                    <p class="mt-2 login-link">Esqueceu a senha?<a href="" class="link-primary"> Recuperar senha</a>.</p>
                 </div>
             </div>
         </div>

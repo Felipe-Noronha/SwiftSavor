@@ -1,7 +1,7 @@
 {% extends 'main/base.html' %}
 
 {% block content %}
-    <div class="container-fluid mt-4">
+    <div class="container-fluid mt-4 receitas-favoritas-container">
         <div class="row justify-content-center">
             <div class="col-md-4">
                 <h1 class="mb-4 text-center">Receitas Favoritas</h1>
@@ -24,24 +24,29 @@
                 {% else %}
                     <p class="text-center">Nenhuma receita favorita encontrada.</p>
                 {% endif %}
-                
-                <div class="pagination justify-content-center mt-4" aria-label="Navegação de páginas">
-                    <span class="step-links">
-                        {% if receitas_favoritas.has_previous %}
-                            <a href="?page=1" aria-label="Primeira página">&laquo; primeira</a>
-                            <a href="?page={{ receitas_favoritas.previous_page_number }}" aria-label="Página anterior">anterior</a>
-                        {% endif %}
 
-                        <span class="current">
-                            Página {{ receitas_favoritas.number }} de {{ receitas_favoritas.paginator.num_pages }}.
-                        </span>
-
-                        {% if receitas_favoritas.has_next %}
-                            <a href="?page={{ receitas_favoritas.next_page_number }}" aria-label="Próxima página">próxima</a>
-                            <a href="?page={{ receitas_favoritas.paginator.num_pages }}" aria-label="Última página">última &raquo;</a>
-                        {% endif %}
-                    </span>
+                <div class="card pagination-card">
+                    <div class="card-body">
+                        <nav aria-label="Navegação de páginas" class="pagination justify-content-center">
+                            <ul class="pagination-list">
+                                {% if receitas_favoritas.has_previous %}
+                                <a href="?page=1" aria-label="Primeira página">&laquo; primeira</a>
+                                <a href="?page={{ receitas_favoritas.previous_page_number }}" aria-label="Página anterior">anterior</a>
+                            {% endif %}
+                        
+                            <span class="current">
+                                Página {{ receitas_favoritas.number }} de {{ receitas_favoritas.paginator.num_pages }}.
+                            </span>
+                        
+                                {% if receitas_favoritas.has_next %}
+                                <a href="?page={{ receitas_favoritas.next_page_number }}" aria-label="Próxima página">próxima</a>
+                                <a href="?page={{ receitas_favoritas.paginator.num_pages }}" aria-label="Última página">última &raquo;</a>
+                            {% endif %}
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>

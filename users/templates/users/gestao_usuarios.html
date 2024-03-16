@@ -1,14 +1,14 @@
 {% extends 'main/base.html' %}
 
 {% block content %}
-<div class="container-fluid mt-4">
+<div class="container-fluid mt-4 gestao-usuarios-container">
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <div class="card">
+            <div class="card gestao-usuarios-card">
                 <div class="card-body">
                     <h1 class="card-title text-center">Gestão de Usuários</h1>
                     <div class="table-responsive">
-                        <table class="table table-striped table-bordered table-hover table-dark">
+                        <table class="table table-striped table-bordered table-hover table-dark usuarios-table">
                             <caption>Listagem de usuários</caption>
                             <thead>
                                 <tr>
@@ -26,11 +26,11 @@
                                         <td>{{ usuario.is_staff|yesno:"Sim,Não" }}</td>
                                         <td>
                                             {% if usuario.is_staff %}
-                                                <a href="{% url 'remover_administrador' usuario.id %}" class="btn btn-action btn-warning btn-sm">Remover Administrador</a>
+                                                <a href="{% url 'remover_administrador' usuario.id %}" class="btn btn-action btn-warning btn-sm" aria-label="Remover Administrador">Remover Administrador</a>
                                             {% else %}
-                                                <a href="{% url 'tornar_administrador' usuario.id %}" class="btn btn-action btn-success btn-sm">Tornar Administrador</a>
+                                                <a href="{% url 'tornar_administrador' usuario.id %}" class="btn btn-action btn-success btn-sm" aria-label="Tornar Administrador">Tornar Administrador</a>
                                             {% endif %}
-                                            <a href="{% url 'excluir_usuario' usuario.id %}" class="btn btn-danger btn-sm btn-excluir">Excluir</a>
+                                            <a href="{% url 'excluir_usuario' usuario.id %}" class="btn btn-action btn-sm btn-excluir" aria-label="Excluir Usuário">Excluir</a>
                                         </td>
                                     </tr>
                                 {% endfor %}

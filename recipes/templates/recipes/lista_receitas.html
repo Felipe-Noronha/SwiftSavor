@@ -24,60 +24,70 @@
                 </ul>
             {% endif %}
 
-            <ul class="list-group">
+            <ul class="list-group listagem-receitas">
                 {% for receita in receitas %}
                     <li class="list-group-item">
-                        <a href="{% url 'detalhes_receita' receita.id %}">{{ receita.nome }}</a>
-                        <form method="post" class="d-inline">
-                            {% csrf_token %}
-                            {% if receita.id in receitas_favoritas_ids %}
-                                <input type="hidden" name="receita_id" value="{{ receita.id }}">
-                                <button type="submit" formaction="{% url 'favorites:remover_favorito' receita.id %}" class="btn btn-primary btn-sm float-right align-self-center" aria-label="Remover dos favoritos">
-                                    <i class="fas fa-heart" aria-hidden="true"></i>
-                                </button>
-                            {% else %}
-                                <button type="submit" formaction="{% url 'favorites:adicionar_favoritos' receita.id %}" class="btn btn-primary btn-sm float-right align-self-center" aria-label="Adicionar aos favoritos">
-                                    <i class="far fa-heart" aria-hidden="true"></i>
-                                </button>
-                            {% endif %}
-                        </form>
-
-                        {% if user.is_authenticated and user.is_staff %}
-                            <a href="{% url 'editar_receita' receita.id %}" class="btn btn-warning btn-sm float-right mr-2">Editar Receita</a>
-                            <form method="post" action="{% url 'excluir_receita' receita.id %}" class="d-inline">
+                        <div class="recipe-info">
+                            <a href="{% url 'detalhes_receita' receita.id %}">{{ receita.nome }}</a>
+                        </div>
+                        {% if not user.is_authenticated or not user.is_staff %}
+                            <form method="post" class="d-inline">
                                 {% csrf_token %}
-                                <button type="submit" class="btn btn-danger btn-sm float-right mr-2" aria-label="Excluir Receita">Excluir Receita</button>
+                                {% if receita.id in receitas_favoritas_ids %}
+                                    <input type="hidden" name="receita_id" value="{{ receita.id }}">
+                                    <button type="submit" formaction="{% url 'favorites:remover_favorito' receita.id %}" class="btn btn-primary btn-sm align-self-center" aria-label="Remover dos favoritos">
+                                        <i class="fas fa-heart" aria-hidden="true"></i>
+                                    </button>
+                                {% else %}
+                                    <button type="submit" formaction="{% url 'favorites:adicionar_favoritos' receita.id %}" class="btn btn-primary btn-sm align-self-center" aria-label="Adicionar aos favoritos">
+                                        <i class="far fa-heart" aria-hidden="true"></i>
+                                    </button>
+                                {% endif %}
                             </form>
+                        {% endif %}
+                        {% if user.is_authenticated and user.is_staff %}
+                            <div class="admin-actions">
+                                <a href="{% url 'editar_receita' receita.id %}" class="btn btn-warning btn-sm" aria-label="Editar Receita">Editar Receita</a>
+                                <form method="post" action="{% url 'excluir_receita' receita.id %}" class="d-inline">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger btn-sm ml-2" aria-label="Excluir Receita">Excluir Receita</button>
+                                </form>
+                            </div>
                         {% endif %}
                     </li>
                 {% endfor %}
             </ul>
 
-            <nav aria-label="Navegação de páginas" class="pagination justify-content-center mt-4">
-                <ul class="step-links">
-                    {% if receitas.has_previous %}
-                        <li class="page-item">
-                            <a href="?page=1" class="page-link">&laquo; primeira</a>
-                        </li>
-                        <li class="page-item">
-                            <a href="?page={{ receitas.previous_page_number }}" class="page-link">anterior</a>
-                        </li>
-                    {% endif %}
+                <div class="card pagination-card">
+                    <div class="card-body">
+                        <nav aria-label="Navegação de páginas" class="pagination justify-content-center">
+                            <ul class="pagination-list">
+                                {% if receitas.has_previous %}
+                                    <li class="page-item">
+                                        <a href="?page=1">&laquo; primeira</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a href="?page={{ receitas.previous_page_number }}">anterior</a>
+                                    </li>
+                                {% endif %}
+                        
+                                <li class="page-item">
+                                    <span class="current">Página {{ receitas.number }} de {{ receitas.paginator.num_pages }}.</span>
+                                </li>
+                        
+                                {% if receitas.has_next %}
+                                    <li class="page-item">
+                                        <a href="?page={{ receitas.next_page_number }}">próxima</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a href="?page={{ receitas.paginator.num_pages }}">última &raquo;</a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
 
-                    <li class="page-item disabled">
-                        <span class="current page-link">Página {{ receitas.number }} de {{ receitas.paginator.num_pages }}.</span>
-                    </li>
-
-                    {% if receitas.has_next %}
-                        <li class="page-item">
-                            <a href="?page={{ receitas.next_page_number }}" class="page-link">próxima</a>
-                        </li>
-                        <li class="page-item">
-                            <a href="?page={{ receitas.paginator.num_pages }}" class="page-link">última &raquo;</a>
-                        </li>
-                    {% endif %}
-                </ul>
-            </nav>
         </div>
     </div>
 </div>
