@@ -348,8 +348,9 @@ h1, h2, h3, h4, h5, h6 {
     padding: 10px;
     margin-top: 5px;
     margin-bottom: 10px;
-    border: 1px solid #ced4da;
+    border: 1px solid #409094;
     border-radius: 5px;
+    color: #000;
 }
 
 .login-container .form-group input[type="text"]:focus,
