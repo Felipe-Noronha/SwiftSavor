@@ -1346,3 +1346,52 @@ h1, h2, h3, h4, h5, h6 {
 .pagination-card .pagination-list .page-item.disabled .page-link:hover {
     text-decoration: none;
 }
+
+
+/* Estilos específicos para a página de edição de receita */
+.edit-receita {
+    max-width: 600px; /* Define a largura máxima do contêiner */
+    margin: 0 auto; /* Centraliza o contêiner na página */
+    padding: 20px; /* Adiciona um pouco de espaço interno */
+}
+
+.edit-receita .edit-receita-title {
+    color: #ffbe4f;
+    text-align: center;
+    margin-bottom: 20px; /* Adiciona espaço abaixo do título */
+}
+
+.edit-receita .edit-receita-form {
+    background-color: #0f4c49;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.edit-receita .edit-receita-form label {
+    color: #d3d3d3;
+}
+
+.edit-receita .edit-receita-form input[type="text"],
+.edit-receita .edit-receita-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ffbe4f;
+    border-radius: 5px;
+    color: #000;
+    box-sizing: border-box;
+}
+
+.edit-receita .edit-receita-form .btn-primary {
+    background-color: #ffbe4f;
+    border-color: #ffbe4f;
+    color: #fff;
+    width: 100%;
+}
+
+.edit-receita .edit-receita-form .btn-primary:hover {
+    background-color: #e3a01d;
+    border-color: #e3a01d;
+}

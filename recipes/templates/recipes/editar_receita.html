@@ -3,12 +3,12 @@
 {% block title %}Editar Receita{% endblock %}
 
 {% block content %}
-    <div class="container mt-4">
-        <h1 class="mb-4">Editar Receita</h1>
-        <form method="post">
+    <div class="container mt-4 edit-receita">
+        <h1 class="mb-4 edit-receita-title">Editar Receita</h1>
+        <form method="post" class="edit-receita-form">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+            <button type="submit" class="btn btn-primary edit-receita-btn">Salvar Alterações</button>
         </form>
     </div>
 {% endblock %}
