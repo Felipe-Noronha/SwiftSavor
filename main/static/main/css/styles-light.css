@@ -1,0 +1,168 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos Gerais */
+body {
+    background-color: #f5f5f5; /* Fundo claro */
+    color: #333; /* Texto escuro */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    color: #007bff; /* Link azul */
+    text-decoration: none;
+}
+
+a:hover,
+a:focus {
+    color: #0056b3; /* Link azul escuro ao passar o mouse */
+    text-decoration: underline;
+}
+
+.container {
+    flex: 1;
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+    margin: 0;
+}
+
+.footer {
+    background-color: #007bff; /* Fundo do rodapé azul */
+    color: #fff; /* Texto branco */
+    padding: 10px 0;
+    text-align: center;
+    border-top: 3px solid #0056b3; /* Linha superior do rodapé azul escuro */
+    font-size: 0.9rem;
+}
+
+.errorlist {
+    color: #dc3545; /* Vermelho para mensagens de erro */
+    background-color: #fff; /* Fundo branco */
+    border: 1px solid #dc3545; /* Borda vermelha */
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    list-style-type: none;
+    margin: 0 0 1rem 0;
+}
+
+.messages {
+    margin-bottom: 20px;
+}
+
+.messages .list-group-item {
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.success {
+    color: #155724; /* Verde para mensagens de sucesso */
+    background-color: #d4edda; /* Fundo verde claro */
+    border-color: #c3e6cb; /* Borda verde */
+}
+
+.error {
+    color: #721c24; /* Vermelho escuro para mensagens de erro */
+    background-color: #f8d7da; /* Fundo vermelho claro */
+    border-color: #f5c6cb; /* Borda vermelha */
+}
+
+.info {
+    color: #0c5460; /* Azul escuro para mensagens de informação */
+    background-color: #d1ecf1; /* Fundo azul claro */
+    border-color: #bee5eb; /* Borda azul */
+}
+
+/* Navbar */
+.navbar {
+    background-color: #007bff; /* Fundo da barra de navegação azul */
+    border-bottom: 3px solid #0056b3; /* Linha inferior da barra de navegação azul escuro */
+    min-height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .navbar-brand,
+.navbar .nav-link,
+.navbar .dropdown-item,
+.navbar .nav-item.dropdown > .nav-link {
+    color: #333; /* Texto escuro */
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus,
+.navbar .dropdown-item:hover,
+.navbar .nav-item.dropdown > .nav-link:hover {
+    color: #0056b3; /* Texto azul escuro ao passar o mouse */
+    background-color: transparent;
+}
+
+.navbar .dropdown-menu .dropdown-item {
+    color: #333; /* Texto escuro */
+}
+
+.navbar .dropdown-menu .dropdown-item:hover {
+    background-color: #e9ecef; /* Fundo cinza claro ao passar o mouse */
+    color: #333; /* Texto escuro */
+}
+
+.navbar-nav {
+    align-items: center;
+    display: flex;
+    line-height: 20px;
+}
+
+.navbar-toggler {
+    border-color: #fff; /* Borda branca para o botão de alternância da barra de navegação */
+}
+
+/* Botões */
+.btn-primary {
+    background-color: #007bff; /* Botão azul */
+    border-color: #007bff; /* Borda azul */
+    color: #fff; /* Texto branco */
+    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #0056b3; /* Botão azul escuro ao passar o mouse */
+    border-color: #0056b3; /* Borda azul escuro */
+}
+
+.btn-secondary {
+    background-color: #6c757d; /* Botão cinza */
+    border-color: #6c757d; /* Borda cinza */
+    color: #fff; /* Texto branco */
+    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+    background-color: #5a6268; /* Botão cinza escuro ao passar o mouse */
+    border-color: #5a6268; /* Borda cinza escuro */
+}
+
+/* Formulário */
+.form-control {
+    border-color: #ced4da; /* Borda cinza clara para o controle de formulário */
+}
+
+.form-control:focus {
+    border-color: #007bff; /* Borda azul ao focar no controle de formulário */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Sombra azul ao focar no controle de formulário */
+}
