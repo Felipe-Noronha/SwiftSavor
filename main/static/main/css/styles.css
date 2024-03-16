@@ -95,32 +95,37 @@ a:focus {
 }
 
 .navbar .navbar-brand,
-.navbar .nav-link {
+.navbar .nav-link,
+.navbar .dropdown-item,
+.navbar .nav-item.dropdown > .nav-link {
     color: #de9842;
     transition: color 0.3s ease-in-out;
 }
 
 .navbar .nav-link:hover,
-.navbar .nav-link:focus {
+.navbar .nav-link:focus,
+.navbar .dropdown-item:hover,
+.navbar .nav-item.dropdown > .nav-link:hover {
     color: #b84c29;
     background-color: transparent;
 }
 
-.navbar-toggler {
-    border-color: #de9842;
-    align-items: center;
+.navbar .dropdown-menu .dropdown-item {
+    color: #de9842;
 }
 
-.navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23de9842' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+.navbar .dropdown-menu .dropdown-item:hover {
+    background-color: #20545c;
+    color: #fff;
 }
 
-.navbar-nav .nav-link {
-    padding-right: .8rem;
-    padding-left: .8rem;
-    font-size: 1.1rem;
-    padding: 0.5rem 1rem;
-    flex: 1;
+.navbar .dropdown-menu .dropdown-item {
+    color: #de9842;
+}
+
+.navbar .dropdown-menu .dropdown-item:hover {
+    background-color: #20545c;
+    color: #fff;
 }
 
 .navbar-nav {
@@ -141,6 +146,8 @@ a:focus {
     height: 20px; 
     vertical-align: middle;
 }
+
+
 
 /* Estilos h */
 h1, h2, h3, h4, h5, h6 {
@@ -182,34 +189,34 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Estilos para Detalhes da Receita */
 .detalhes-receita .card {
-    background-color: #fff; /* Cor de fundo do card */
-    border-radius: 10px; /* Bordas arredondadas */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    margin-top: 20px; /* Espaço superior */
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
 }
 
 .detalhes-receita .card-header {
-    background-color: #409094; /* Cor de fundo do cabeçalho do card */
-    color: #fff; /* Cor do texto do cabeçalho */
-    border-bottom: none; /* Remover borda inferior do cabeçalho */
-    border-top-left-radius: 10px; /* Arredondar canto superior esquerdo */
-    border-top-right-radius: 10px; /* Arredondar canto superior direito */
+    background-color: #409094;
+    color: #fff;
+    border-bottom: none;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     padding: 10px 20px;
 }
 
 .detalhes-receita .card-body {
-    color: #000; /* Cor do texto do corpo do card */
-    text-align: center; /* Centralizar o texto */
+    color: #000;
+    text-align: center;
     padding: 20px;
 }
 
 .detalhes-receita .card-body ul {
-    list-style: none; /* Remover a marca de lista */
+    list-style: none;
 }
 
 .detalhes-receita .card-body p {
-    color: #000; /* Cor do texto do parágrafo */
-    margin-bottom: 10px; /* Adicionar espaçamento entre os parágrafos */
+    color: #000;
+    margin-bottom: 10px;
 }
 .detalhes-receita .card-title {
     font-size: 1.5rem;
@@ -222,8 +229,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .detalhes-receita .carousel-inner img {
-    max-width: 100%; /* Definindo a largura máxima das imagens para ocupar no máximo a largura do contêiner */
-    height: auto; /* Mantendo a proporção da altura para evitar distorções */
+    max-width: 100%;
+    height: auto;
 }
 
 
@@ -232,12 +239,12 @@ h1, h2, h3, h4, h5, h6 {
 .btn-whatsapp {
     background-color: #25d366;
     color: #fff;
-    padding: 8px 16px; /* Ajuste o padding conforme necessário */
+    padding: 8px 16px;
     border-radius: 5px;
     text-decoration: none;
     transition: background-color 0.3s;
-    display: inline-block; /* Garante que o botão ocupe apenas o espaço necessário */
-    width: auto; /* Permite que a largura do botão seja definida pelo conteúdo */
+    display: inline-block;
+    width: auto;
 }
 
 .btn-whatsapp:hover {
@@ -246,178 +253,210 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Estilos para o Jumbotron na página inicial */
 .index-jumbotron {
-    background-color: #f8f9fa; /* Cor de fundo */
-    padding: 3rem; /* Espaçamento interno */
-    border-radius: 10px; /* Bordas arredondadas */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    background-color: #f8f9fa;
+    padding: 3rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .index-jumbotron h1 {
-    color: #409094; /* Cor do título */
+    color: #409094;
 }
 
 .index-jumbotron p {
-    color: #6c757d; /* Cor do texto principal */
+    color: #6c757d;
 }
 
 .index-jumbotron hr {
-    border-color: #6c757d; /* Cor da linha horizontal */
+    border-color: #6c757d;
 }
 
 .index-jumbotron a.btn-primary {
-    background-color: #409094; /* Cor de fundo do botão */
-    border-color: #409094; /* Cor da borda do botão */
+    background-color: #409094;
+    border-color: #409094;
 }
 
 .index-jumbotron a.btn-primary:hover {
-    background-color: #307070; /* Cor de fundo do botão ao passar o mouse */
-    border-color: #307070; /* Cor da borda do botão ao passar o mouse */
+    background-color: #307070;
+    border-color: #307070;
 }
 
 
 /* Estilos para a página de login */
 .login-container {
-    padding-top: 50px; /* Espaçamento superior */
+    padding-top: 50px;
 }
 
 .login-card {
-    background-color: #fff; /* Cor de fundo do card */
-    border-radius: 10px; /* Bordas arredondadas */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .login-title {
-    color: #000; /* Cor do título */
-    text-align: center; /* Centralizar o texto */
+    color: #000;
+    text-align: center;
 }
 
 .login-label {
-    color: #000; /* Cor das labels */
+    color: #000;
 }
 
 .login-link {
-    color: #6c757d; /* Cor do texto */
-    font-size: 16px; /* Tamanho da fonte */
-    text-align: center; /* Centralizar o texto */
-    margin-top: 20px; /* Espaçamento superior */
+    color: #6c757d;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 20px;
 }
 
 .login-link a {
-    color: #007bff; /* Cor dos links */
-    text-decoration: none; /* Remover sublinhado padrão */
-    transition: color 0.3s; /* Suavizar a transição de cor */
-    margin: 0 5px; /* Adicionar espaçamento entre os links */
+    color: #409094;
+    text-decoration: none;
+    transition: color 0.3s;
+    margin: 0 5px;
 }
 
 .login-link a:hover {
-    color: #0056b3; /* Mudar a cor ao passar o mouse */
+    color: #409094;
 }
 
-/* Estilos para os links "Cadastre-se" e "Recuperar senha" */
 .login-link a.btn {
-    padding: 10px 20px; /* Adicionar preenchimento */
-    background-color: #007bff; /* Cor de fundo */
-    border: none; /* Remover borda */
-    border-radius: 5px; /* Arredondar bordas */
-    color: #fff; /* Cor do texto */
-    text-decoration: none; /* Remover sublinhado */
-    transition: background-color 0.3s; /* Suavizar a transição de cor de fundo */
+    padding: 10px 20px;
+    background-color: #409094;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s;
 }
 
 .login-link a.btn:hover {
-    background-color: #0056b3; /* Mudar a cor de fundo ao passar o mouse */
+    background-color: #409094;
 }
 
-/* Estilos para o texto "Ainda não tem uma conta?" */
 .login-link.new-account {
-    margin-bottom: 10px; /* Espaçamento inferior */
+    margin-bottom: 10px;
 }
 
-/* Estilos para o texto "Esqueceu a senha?" */
 .login-link.forgot-password {
-    margin-top: 10px; /* Espaçamento superior */
+    margin-top: 10px;
 }
 
-/* Estilos para os inputs */
 .login-container .form-group input[type="text"],
 .login-container .form-group input[type="password"] {
-    width: 100%; /* Ocupar toda a largura disponível */
-    padding: 10px; /* Espaçamento interno */
-    margin-top: 5px; /* Espaçamento superior */
-    margin-bottom: 10px; /* Espaçamento inferior */
-    border: 1px solid #ced4da; /* Borda */
-    border-radius: 5px; /* Bordas arredondadas */
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
 }
 
 .login-container .form-group input[type="text"]:focus,
 .login-container .form-group input[type="password"]:focus {
-    outline: none; /* Remover o contorno ao focar */
-    border-color: #007bff; /* Cor da borda ao focar */
+    outline: none;
+    border-color: #007bff;
+}
+
+.login-container .btn-login {
+    background-color: #409094;
+    border-color: #409094;
+    color: #fff;
+}
+
+.login-container .btn-login:hover {
+    background-color: #2e727d;
+    border-color: #2e727d;
 }
 
 
 /* Estilos para o formulário de cadastro */
-.form-label {
-    color: #495057; /* Cor do texto do rótulo */
+.cadastro-usuario .form-label {
+    color: #495057;
 }
 
-.form-control {
-    border-color: #ced4da; /* Cor da borda do campo de entrada */
+.cadastro-usuario .form-control {
+    border-color: #ced4da;
 }
 
-.form-control:focus {
-    border-color: #80bdff; /* Cor da borda quando o campo de entrada está em foco */
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Sombra ao redor do campo de entrada quando está em foco */
+.cadastro-usuario .form-control:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
-.invalid-feedback {
-    color: #dc3545; /* Cor do texto de feedback de erro */
+.cadastro-usuario .invalid-feedback {
+    color: #dc3545;
 }
 
-.form-text {
-    color: #6c757d; /* Cor do texto de ajuda */
+.cadastro-usuario .form-text {
+    color: #6c757d;
 }
 
-.btn-primary {
-    background-color: #007bff; /* Cor de fundo do botão primário */
-    border-color: #007bff; /* Cor da borda do botão primário */
+.cadastro-usuario .btn-primary {
+    background-color: #409094;
+    border-color: #409094;
 }
 
-.btn-primary:hover {
-    background-color: #0056b3; /* Cor de fundo do botão primário ao passar o mouse */
-    border-color: #0056b3; /* Cor da borda do botão primário ao passar o mouse */
+.cadastro-usuario .btn-primary:hover {
+    background-color: #2e727d;
+    border-color: #2e727d;
 }
 
-.link-primary {
-    color: #007bff; /* Cor do texto do link primário */
+.cadastro-usuario .cadastro-login-link {
+    color: #409094;
 }
 
-.link-primary:hover {
-    color: #0056b3; /* Cor do texto do link primário ao passar o mouse */
+.cadastro-usuario .cadastro-login-link:hover {
+    color: #20545c;
 }
+
+
+
 
 /* Estilos para o texto "Já tem uma conta?" */
 .account-query {
-    margin-top: 20px; /* Espaçamento superior */
-    color: #6c757d; /* Cor do texto */
-    text-align: center; /* Centralizar o texto */
+    margin-top: 20px;
+    color: #6c757d;
+    text-align: center;
 }
 
 .account-query a {
-    color: #007bff; /* Cor do texto do link */
-    text-decoration: none; /* Remover sublinhado */
-    transition: color 0.3s; /* Suavizar a transição de cor */
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s;
 }
 
 .account-query a:hover {
-    color: #0056b3; /* Mudar a cor do link ao passar o mouse */
+    color: #0056b3;
 }
-
-
 
 /* Estilos para a página de lista de receitas */
 .listagem-receitas .admin-actions {
     margin-top: 10px;
+}
+
+.btn-pesquisar,
+.btn-favoritos {
+    background-color: #409094;
+    border-color: #409094;
+}
+
+/* Estilo para o botão de pesquisa quando hover */
+.btn-pesquisar:hover,
+.btn-favoritos:hover {
+    background-color: #327d7d;
+    border-color: #327d7d;
+}
+
+.listagem-receitas .btn-favoritos {
+    background-color: #409094;
+    border-color: #409094;
+    color: #fff;
+}
+
+.listagem-receitas .btn-favoritos:hover {
+    background-color: #307a7a;
+    border-color: #307a7a;
 }
 
 .listagem-receitas .admin-actions .btn {
@@ -447,32 +486,31 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Estilos para a pagina de cadastro de receitas */
 
-/* Estilos para o card de cadastro de receita */
 .cadastro-receita-card {
-    max-width: 500px; /* Largura máxima do card */
-    border-radius: 10px; /* Borda arredondada */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .cadastro-receita-card .card-title {
-    color: #409094; /* Cor do título */
+    color: #409094;
 }
 
 .cadastro-receita-card .card-text {
-    color: #6c757d; /* Cor do texto do parágrafo */
-    margin-bottom: 20px; /* Espaçamento inferior */
+    color: #6c757d;
+    margin-bottom: 20px;
 }
 
 .cadastro-receita-card .form-group {
-    margin-bottom: 20px; /* Espaçamento inferior entre os campos do formulário */
+    margin-bottom: 20px;
 }
 
 .cadastro-receita-card .form-label {
-    color: #409094; /* Cor do rótulo do campo */
+    color: #409094;
 }
 
 .cadastro-receita-card .form-control {
-    border-radius: 20px; /* Borda arredondada para os campos de entrada */
+    border-radius: 20px;
 }
 
 .cadastro-receita-card .col-12 input[type="text"] {
@@ -486,18 +524,26 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cadastro-receita-card .form-text {
-    color: #6c757d; /* Cor do texto de ajuda */
+    color: #6c757d;
 }
 
 .cadastro-receita-card .btn-primary {
-    border-radius: 20px; /* Borda arredondada para o botão de cadastro */
+    border-radius: 20px;
 }
 
 .cadastro-receita-card .form-group label {
     color: black;
 }
 
+.btn-cadastrar {
+    background-color: #409094;
+    border-color: #409094;
+}
 
+.btn-cadastrar:hover {
+    background-color: #327d7d;
+    border-color: #327d7d;
+}
 
 
 /* Estilos para a página de receitas recomendadas */
@@ -527,7 +573,6 @@ h1, h2, h3, h4, h5, h6 {
 .receitas-recomendadas-container .list-group-item:hover {
     background-color: #f8f9fa;
 }
-
 
 
 /* Estilos para a página de receitas favoritas */
@@ -589,9 +634,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .mercado-list .list-group-item.mercado-item {
-    color: #000; /* Define a cor do texto como preto */
+    color: #000;
 }
 
+.btn-add-remove {
+    background-color: #409094;
+    border-color: #409094;
+}
 
 
 /* Estilos para a página Minha Dispensa */
@@ -631,12 +680,6 @@ h1, h2, h3, h4, h5, h6 {
     margin-left: 10px;
 }
 
-
-
-
-
-
-
 /* Estilos para a página de Configurações */
 .configuracoes-container {
     margin-top: 40px;
@@ -648,7 +691,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .configuracoes-container .card-header {
-    background-color: #007bff;
+    background-color: #409094;
     color: #fff;
     text-align: center;
 }
@@ -667,13 +710,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .configuracoes-container .btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
+    background-color: #409094;
+    border-color: #409094;
 }
 
 .configuracoes-container .btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #0056b3;
+    background-color: #409094;
+    border-color: #409094;
 }
 
 /* Estilos para a página de Trocar Email */
@@ -687,7 +730,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .trocar-email-container .card-header {
-    background-color: #007bff;
+    background-color: #409094;
     color: #fff;
     text-align: center;
 }
@@ -698,16 +741,17 @@ h1, h2, h3, h4, h5, h6 {
 
 .trocar-email-container .form-label {
     font-weight: bold;
+    color: #000;
 }
 
 .trocar-email-container .btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
+    background-color: #409094;
+    border-color: #409094;
 }
 
 .trocar-email-container .btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #0056b3;
+    background-color: #409094;
+    border-color: #409094;
 }
 
 
@@ -722,7 +766,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .trocar-senha-container .card-header {
-    background-color: #007bff;
+    background-color: #409094;
     color: #fff;
     text-align: center;
 }
@@ -737,6 +781,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .trocar-senha-container .form-label {
     font-weight: bold;
+    color: #000;
 }
 
 .trocar-senha-container .form-control {
@@ -745,13 +790,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .trocar-senha-container .btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
+    background-color: #409094;
+    border-color: #409094;
 }
 
 .trocar-senha-container .btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #0056b3;
+    background-color: #409094;
+    border-color: #409094;
 }
 
 
@@ -802,10 +847,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .receitas-pendentes-container .no-receitas-message {
-    color: #000000; /* Cor preta */
+    color: #000000;
 }
-
-
 
 
 /* Estilos para a página de Cadastro de Ingrediente */
@@ -840,28 +883,27 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cadastrar-ingrediente-container .btn-primary {
-    background-color: #409094; /* Cor #409094 */
-    border-color: #409094; /* Cor #409094 */
+    background-color: #409094;
+    border-color: #409094;
 }
 
 .cadastrar-ingrediente-container .btn-primary:hover {
-    background-color: #2b686b; /* Cor #2b686b */
-    border-color: #2b686b; /* Cor #2b686b */
+    background-color: #2b686b;
+    border-color: #2b686b;
 }
 
 .cadastrar-ingrediente-container .text-black {
-    color: #000000; /* Cor preta */
+    color: #000000;
 }
 
 .cadastrar-ingrediente-container .text-danger {
-    color: #dc3545; /* Cor vermelha */
+    color: #dc3545;
 }
 
 .cadastrar-ingrediente-container input[type="text"] {
     width: 100%;
     border-radius: 20px;
 }
-
 
 
 /* Estilos para a página de lista de ingredientes */
@@ -929,7 +971,6 @@ h1, h2, h3, h4, h5, h6 {
 .lista-ingredientes-pagination .pagination .step-links a:hover {
     text-decoration: underline;
 }
-
 
 /* Estilos para a página de Gestão de Usuários */
 .gestao-usuarios-card .table-responsive {
@@ -1006,7 +1047,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .detalhes-ingrediente-container .btn-editar {
-    background-color: #ffc107; /* Amarelo */
+    background-color: #ffc107;
     border-color: #ffc107;
     border-radius: 5px;
     color: #000;
@@ -1016,12 +1057,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .detalhes-ingrediente-container .btn-editar:hover {
-    background-color: #ffca2c; /* Amarelo mais claro */
+    background-color: #ffca2c;
     border-color: #ffca2c;
 }
 
 .detalhes-ingrediente-container .btn-excluir {
-    background-color: #dc3545; /* Vermelho */
+    background-color: #dc3545;
     border-color: #dc3545;
     border-radius: 5px;
     color: #fff;
@@ -1031,14 +1072,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .detalhes-ingrediente-container .btn-excluir:hover {
-    background-color: #c82333; /* Vermelho mais escuro */
+    background-color: #c82333;
     border-color: #bd2130;
 }
 
 
 /* editar ingredientes*/
-
-/* Adicione este código ao seu arquivo CSS */
 
 .editar-ingrediente-container {
     margin: 4rem auto;
@@ -1070,15 +1109,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .editar-ingrediente-container .button-space {
-    width: 10px; /* Espaço entre os botões */
+    width: 10px;
 }
 
 .editar-ingrediente-container .btn {
-    border-radius: 5px; /* Arredonda todos os cantos */
+    border-radius: 5px;
 }
 
 .editar-ingrediente-container .btn-success {
-    background-color: #28a745; /* Verde */
+    background-color: #28a745;
     border-color: #28a745;
     color: #fff;
     padding: 10px 20px;
@@ -1087,12 +1126,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .editar-ingrediente-container .btn-success:hover {
-    background-color: #218838; /* Verde mais escuro */
+    background-color: #218838;
     border-color: #1e7e34;
 }
 
 .editar-ingrediente-container .btn-danger {
-    background-color: #dc3545; /* Vermelho */
+    background-color: #dc3545;
     border-color: #dc3545;
     color: #fff;
     padding: 10px 20px;
@@ -1101,14 +1140,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .editar-ingrediente-container .btn-danger:hover {
-    background-color: #c82333; /* Vermelho mais escuro */
+    background-color: #c82333;
     border-color: #bd2130;
 }
 
 
 /* admin dashboard */
-
-/* Adicione este código ao seu arquivo CSS */
 
 .admin-panel-container {
     margin-top: 4rem;
@@ -1130,8 +1167,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .admin-panel-container .btn-primary {
-    background-color: #409094; /* Cor #409094 */
-    border-color: #409094; /* Cor #409094 */
+    background-color: #409094;
+    border-color: #409094;
     color: #fff;
     padding: 10px 20px;
     margin-bottom: 10px;
@@ -1140,15 +1177,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .admin-panel-container .btn-primary:hover {
-    background-color: #2b686b; /* Cor #2b686b */
-    border-color: #2b686b; /* Cor #2b686b */
+    background-color: #2b686b;
+    border-color: #2b686b;
 }
 
 
 
 /* gestao usuario css */
-
-/* Adicione este código ao seu arquivo CSS */
 
 .gestao-usuarios-container {
     margin-top: 4rem;
@@ -1180,42 +1215,40 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .gestao-usuarios-card .btn-action.btn-warning {
-    background-color: #ffc107; /* Amarelo */
+    background-color: #ffc107;
     border-color: #ffc107;
-    color: #212529; /* Cor escura */
+    color: #212529;
 }
 
 .gestao-usuarios-card .btn-action.btn-warning:hover {
-    background-color: #e0a800; /* Amarelo mais escuro */
+    background-color: #e0a800;
     border-color: #d39e00;
 }
 
 .gestao-usuarios-card .btn-action.btn-success {
-    background-color: #28a745; /* Verde */
+    background-color: #28a745;
     border-color: #28a745;
     color: #fff;
 }
 
 .gestao-usuarios-card .btn-action.btn-success:hover {
-    background-color: #218838; /* Verde mais escuro */
+    background-color: #218838;
     border-color: #1e7e34;
 }
 
 .gestao-usuarios-card .btn-action.btn-excluir {
-    background-color: #dc3545; /* Vermelho */
+    background-color: #dc3545;
     border-color: #dc3545;
     color: #fff;
 }
 
 .gestao-usuarios-card .btn-action.btn-excluir:hover {
-    background-color: #c82333; /* Vermelho mais escuro */
+    background-color: #c82333;
     border-color: #bd2130;
 }
 
 
 /* cadastro de usuario css */
-
-/* Adicione este código ao seu arquivo CSS */
 
 .cadastro-usuario {
     margin-top: 4rem;
@@ -1240,13 +1273,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cadastro-usuario .btn-primary {
-    background-color: #409094; /* Cor #409094 */
-    border-color: #409094; /* Cor #409094 */
+    background-color: #409094;
+    border-color: #409094;
 }
 
 .cadastro-usuario .btn-primary:hover {
-    background-color: #2b686b; /* Cor #2b686b */
-    border-color: #2b686b; /* Cor #2b686b */
+    background-color: #2b686b;
+    border-color: #2b686b;
 }
 
 .cadastro-usuario .cadastro-link {
@@ -1255,11 +1288,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cadastro-usuario .cadastro-link a {
-    color: #007bff; /* Cor do link padrão */
+    color: #007bff;
 }
 
 .cadastro-usuario .cadastro-link a:hover {
-    color: #0056b3; /* Cor do link ao passar o mouse */
+    color: #0056b3;
 }
 
 .invalid-feedback {
@@ -1267,45 +1300,43 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     margin-top: .25rem;
     font-size: 80%;
-    color: #dc3545; /* Cor vermelha */
+    color: #dc3545;
 }
 
 
 /* Estilos para o card de navegação de páginas */
 .pagination-card {
-    max-width: 300px; /* Defina a largura máxima do card */
-    margin: 0 auto; /* Centralize o card horizontalmente */
-    border: none; /* Remova a borda do card */
-    background-color: transparent; /* Torne o card transparente */
+    max-width: 300px;
+    margin: 0 auto;
+    border: none;
+    background-color: transparent;
 }
 
 .pagination-card .card-body {
-    padding: 0; /* Remova todo o preenchimento interno do corpo do card */
+    padding: 0;
 }
 
 .pagination-card .pagination-list {
-    list-style: none; /* Remova os marcadores de lista */
-    padding: 0; /* Remova o preenchimento padrão da lista */
-    margin: 0; /* Remova as margens padrão da lista */
-    display: flex; /* Use flexbox para alinhar os itens horizontalmente */
-    justify-content: space-between; /* Alinhe os itens horizontalmente com espaçamento igual */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
 }
 
 .pagination-card .pagination-list .page-item {
-    margin-right: 5px; /* Adicione um pequeno espaçamento entre os itens da lista */
+    margin-right: 5px;
 }
 
 .pagination-card .pagination-list .page-item:last-child {
-    margin-right: 0; /* Remova a margem direita do último item da lista */
-    flex-grow: 1; /* Faça o último item ocupar todo o espaço disponível */
+    margin-right: 0;
+    flex-grow: 1;
 }
 
 .pagination-card .pagination-list .page-item.disabled .page-link {
-    color: #6c757d; /* Cor do link desativado */
+    color: #6c757d;
 }
 
 .pagination-card .pagination-list .page-item.disabled .page-link:hover {
-    text-decoration: none; /* Remova o sublinhado no hover do link desativado */
+    text-decoration: none;
 }
-
-/* Se desejar, você pode adicionar mais estilos para personalizar ainda mais o card de navegação de páginas */

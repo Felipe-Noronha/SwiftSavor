@@ -11,7 +11,7 @@
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Buscar ingredientes..." name="q" value="{{ query }}" aria-label="Buscar ingredientes">
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="submit" aria-label="Buscar"><i class="fas fa-search"></i></button>
+                                <button class="btn btn-primary btn-pesquisar" type="submit" aria-label="Buscar"><i class="fas fa-search"></i></button>
                             </div>
                         </div>
                     </form>
@@ -22,7 +22,7 @@
                                 <form method="post" action="{% url 'selecionar_ingredientes' %}?page={{ ingredientes.number }}" aria-label="Selecionar ingrediente">
                                     {% csrf_token %}
                                     <input type="hidden" name="ingrediente_id" value="{{ ingrediente.id }}">
-                                    <button type="submit" class="btn {% if ingrediente.id in usuario_ingredientes %}btn-secondary{% else %}btn-primary{% endif %}" aria-label="Adicionar ou remover do carrinho">
+                                    <button type="submit" class="btn {% if ingrediente.id in usuario_ingredientes %}btn-secondary{% else %}btn-primary{% endif %} btn-add-remove" aria-label="Adicionar ou remover do carrinho">
                                         {% if ingrediente.id in usuario_ingredientes %}
                                             <i class="fas fa-trash-alt"></i>
                                         {% else %}

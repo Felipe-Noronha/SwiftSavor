@@ -9,7 +9,7 @@
             <form method="get" action="{% url 'lista_receitas' %}" class="form-group-listar">
                 <div class="input-group d-flex">
                     <input type="text" name="pesquisa" id="id_pesquisa" class="form-control" placeholder="Pesquisar" aria-label="Pesquisar" aria-describedby="botao-pesquisar">
-                    <button type="submit" class="btn btn-primary" id="botao-pesquisar">
+                    <button type="submit" class="btn btn-primary btn-pesquisar" id="botao-pesquisar">
                         <i class="fas fa-search"></i>
                     </button>
                 </div>
@@ -35,11 +35,11 @@
                                 {% csrf_token %}
                                 {% if receita.id in receitas_favoritas_ids %}
                                     <input type="hidden" name="receita_id" value="{{ receita.id }}">
-                                    <button type="submit" formaction="{% url 'favorites:remover_favorito' receita.id %}" class="btn btn-primary btn-sm align-self-center" aria-label="Remover dos favoritos">
+                                    <button type="submit" formaction="{% url 'favorites:remover_favorito' receita.id %}" class="btn btn-primary btn-sm align-self-center btn-favoritos" aria-label="Remover dos favoritos">
                                         <i class="fas fa-heart" aria-hidden="true"></i>
                                     </button>
                                 {% else %}
-                                    <button type="submit" formaction="{% url 'favorites:adicionar_favoritos' receita.id %}" class="btn btn-primary btn-sm align-self-center" aria-label="Adicionar aos favoritos">
+                                    <button type="submit" formaction="{% url 'favorites:adicionar_favoritos' receita.id %}" class="btn btn-primary btn-sm align-self-center btn-favoritos" aria-label="Adicionar aos favoritos">
                                         <i class="far fa-heart" aria-hidden="true"></i>
                                     </button>
                                 {% endif %}
