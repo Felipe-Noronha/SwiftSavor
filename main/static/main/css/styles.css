@@ -1394,7 +1394,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .editar-receita-card .col-12 input[type="text"],
 .editar-receita-card .col-12 textarea,
-.editar-receita-card .col-12 input[type="url"] { /* Adicionando para os inputs do tipo url */
+.editar-receita-card .col-12 input[type="url"] {
     width: 100%;
     border-radius: 20px;
 }

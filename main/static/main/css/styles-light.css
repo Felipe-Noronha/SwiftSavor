@@ -6,8 +6,8 @@
 }
 
 body {
-    background-color: #ffffff; /* Fundo branco */
-    color: #333333; /* Texto preto */
+    background-color: #ffffff;
+    color: #333333;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 1rem;
     line-height: 1.6;
@@ -17,13 +17,13 @@ body {
 }
 
 a {
-    color: #007bff; /* Azul */
+    color: #007bff;
     text-decoration: none;
 }
 
 a:hover,
 a:focus {
-    color: #0056b3; /* Azul mais escuro */
+    color: #0056b3;
     text-decoration: underline;
 }
 
@@ -36,18 +36,18 @@ a:focus {
 }
 
 .footer {
-    background-color: #f0f0f0; /* Cinza claro */
-    color: #333333; /* Texto preto */
+    background-color: #f0f0f0;
+    color: #333333;
     padding: 10px 0;
     text-align: center;
-    border-top: 3px solid #007bff; /* Azul */
+    border-top: 3px solid #007bff;
     font-size: 0.9rem;
 }
 
 .errorlist {
-    color: #dc3545; /* Vermelho */
-    background-color: #f8d7da; /* Vermelho claro */
-    border: 1px solid #dc3545; /* Vermelho */
+    color: #dc3545;
+    background-color: #f8d7da;
+    border: 1px solid #dc3545;
     padding: 5px;
     border-radius: 5px;
     margin-bottom: 10px;
@@ -66,21 +66,21 @@ a:focus {
 }
 
 .success {
-    color: #155724; /* Verde */
-    background-color: #d4edda; /* Verde claro */
-    border-color: #c3e6cb; /* Verde mais claro */
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
 }
 
 .error {
-    color: #721c24; /* Vermelho escuro */
-    background-color: #f8d7da; /* Vermelho claro */
-    border-color: #f5c6cb; /* Vermelho mais claro */
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
 }
 
 .info {
-    color: #0c5460; /* Azul escuro */
-    background-color: #d1ecf1; /* Azul claro */
-    border-color: #bee5eb; /* Azul mais claro */
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
 }
 
 
@@ -93,13 +93,13 @@ a:focus {
 .configuracoes-container .card {
     border: none;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff; /* Fundo branco */
-    color: #333333; /* Texto preto */
+    background-color: #ffffff;
+    color: #333333;
 }
 
 .configuracoes-container .card-header {
-    background-color: #f0f0f0; /* Cinza claro para cabeçalho do card */
-    color: #333333; /* Texto preto */
+    background-color: #f0f0f0;
+    color: #333333;
     text-align: center;
 }
 
@@ -113,25 +113,25 @@ a:focus {
 }
 
 .configuracoes-container #pBlack {
-    color: #666666; /* Cinza um pouco mais escuro */
+    color: #666666;
 }
 
 .configuracoes-container .btn-primary {
-    background-color: #333333; /* Botão cinza escuro */
-    border-color: #333333; /* Borda cinza escuro */
-    color: #ffffff; /* Texto branco */
+    background-color: #333333;
+    border-color: #333333;
+    color: #ffffff;
 }
 
 .configuracoes-container .btn-primary:hover {
-    background-color: #555555; /* Cinza um pouco mais claro */
-    border-color: #555555; /* Borda cinza mais clara */
+    background-color: #555555;
+    border-color: #555555;
 }
 
 
 /* Navbar - Tema Light */
 .navbar {
-    background-color: #f8f9fa; /* Fundo cinza claro */
-    border-bottom: 3px solid #007bff; /* Linha azul na parte inferior */
+    background-color: #f8f9fa; 
+    border-bottom: 3px solid #007bff;
     min-height: 80px;
     width: 100%;
     display: flex;
@@ -143,7 +143,7 @@ a:focus {
 .navbar .nav-link,
 .navbar .dropdown-item,
 .navbar .nav-item.dropdown > .nav-link {
-    color: #333333; /* Texto preto */
+    color: #333333;
     transition: color 0.3s ease-in-out;
 }
 
@@ -151,18 +151,18 @@ a:focus {
 .navbar .nav-link:focus,
 .navbar .dropdown-item:hover,
 .navbar .nav-item.dropdown > .nav-link:hover {
-    color: #0056b3; /* Azul mais escuro */
+    color: #0056b3;
     background-color: transparent;
 }
 
 .navbar .dropdown-menu .dropdown-item {
-    color: #333333; /* Texto preto */
+    color: #333333;
     font-size: 18px;
 }
 
 .navbar .dropdown-menu .dropdown-item:hover {
-    background-color: #007bff; /* Azul */
-    color: #ffffff; /* Texto branco */
+    background-color: #007bff;
+    color: #ffffff;
 }
 
 .navbar .dropdown-menu {
@@ -192,7 +192,7 @@ a:focus {
 }
 
 .navbar .nav-link.px3 {
-    color: #333333; /* Texto preto */
+    color: #333333;
     font-weight: bold;
     font-size: 25px;
     text-decoration: none;
@@ -202,12 +202,12 @@ a:focus {
 
 .navbar .nav-link.px3:hover,
 .navbar .nav-link.px3:focus {
-    color: #0056b3; /* Azul mais escuro */
+    color: #0056b3;
 }
 
 /* Estilos h */
 h1, h2, h3, h4, h5, h6 {
-    color: #333333; /* Texto preto */
+    color: #333333;
     line-height: 1.2;
 }
 
@@ -244,15 +244,15 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Estilos para Detalhes da Receita - Tema Light */
 .detalhes-receita .card {
-    background-color: #ffffff; /* Fundo branco */
+    background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
 }
 
 .detalhes-receita .card-header {
-    background-color: #007bff; /* Azul */
-    color: #ffffff; /* Texto branco */
+    background-color: #007bff;
+    color: #ffffff;
     border-bottom: none;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -260,7 +260,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .detalhes-receita .card-body {
-    color: #333333; /* Texto preto */
+    color: #333333;
     text-align: center;
     padding: 20px;
 }
@@ -270,13 +270,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .detalhes-receita .card-body p {
-    color: #333333; /* Texto preto */
+    color: #333333;
     margin-bottom: 10px;
 }
 
 .detalhes-receita .card-title {
     font-size: 1.5rem;
-    color: #007bff; /* Azul */
+    color: #007bff;
 }
 
 .detalhes-receita .custom-carousel {
@@ -291,8 +291,8 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Estilos para Compartilhar Whatsapp */
 .btn-whatsapp {
-    background-color: #25d366; /* Verde */
-    color: #ffffff; /* Texto branco */
+    background-color: #25d366;
+    color: #ffffff;
     padding: 8px 16px;
     border-radius: 5px;
     text-decoration: none;
@@ -302,37 +302,37 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-whatsapp:hover {
-    background-color: #128C7E; /* Verde mais escuro */
+    background-color: #128C7E;
 }
 
 /* Estilos para o Jumbotron na página inicial */
 .index-jumbotron {
-    background-color: #ffffff; /* Fundo branco */
+    background-color: #ffffff;
     padding: 3rem;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .index-jumbotron h1 {
-    color: #007bff; /* Azul */
+    color: #007bff;
 }
 
 .index-jumbotron p {
-    color: #333333; /* Texto preto */
+    color: #333333;
 }
 
 .index-jumbotron hr {
-    border-color: #333333; /* Linha preta */
+    border-color: #333333; 
 }
 
 .index-jumbotron a.btn-primary {
-    background-color: #007bff; /* Azul */
-    border-color: #007bff; /* Azul */
+    background-color: #007bff;
+    border-color: #007bff;
 }
 
 .index-jumbotron a.btn-primary:hover {
-    background-color: #0056b3; /* Azul mais escuro */
-    border-color: #0056b3; /* Azul mais escuro */
+    background-color: #0056b3;
+    border-color: #0056b3;
 }
 
 
@@ -343,50 +343,50 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .login-card {
-    background-color: #ffffff; /* Fundo branco */
+    background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .login-title {
-    color: #333333; /* Texto preto */
+    color: #333333;
     text-align: center;
 }
 
 .login-label {
-    color: #333333; /* Texto preto */
+    color: #333333;
 }
 
 .login-link {
-    color: #333333; /* Texto preto */
+    color: #333333;
     font-size: 16px;
     text-align: center;
     margin-top: 20px;
 }
 
 .login-link a {
-    color: #007bff; /* Azul */
+    color: #007bff;
     text-decoration: none;
     transition: color 0.3s;
     margin: 0 5px;
 }
 
 .login-link a:hover {
-    color: #0056b3; /* Azul mais escuro */
+    color: #0056b3;
 }
 
 .login-link a.btn {
     padding: 10px 20px;
-    background-color: #007bff; /* Azul */
+    background-color: #007bff;
     border: none;
     border-radius: 5px;
-    color: #fff; /* Texto branco */
+    color: #fff;
     text-decoration: none;
     transition: background-color 0.3s;
 }
 
 .login-link a.btn:hover {
-    background-color: #0056b3; /* Azul mais escuro */
+    background-color: #0056b3;
 }
 
 .login-container .form-group input[type="text"],
@@ -395,43 +395,43 @@ h1, h2, h3, h4, h5, h6 {
     padding: 10px;
     margin-top: 5px;
     margin-bottom: 10px;
-    border: 1px solid #007bff; /* Azul */
+    border: 1px solid #007bff;
     border-radius: 5px;
-    color: #333333; /* Texto preto */
+    color: #333333;
 }
 
 .login-container .form-group input[type="text"]:focus,
 .login-container .form-group input[type="password"]:focus {
     outline: none;
-    border-color: #0056b3; /* Azul mais escuro */
+    border-color: #0056b3;
 }
 
 .login-container .btn-login {
-    background-color: #007bff; /* Azul */
-    border-color: #007bff; /* Azul */
-    color: #fff; /* Texto branco */
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
 }
 
 .login-container .btn-login:hover {
-    background-color: #0056b3; /* Azul mais escuro */
-    border-color: #0056b3; /* Azul mais escuro */
+    background-color: #0056b3;
+    border-color: #0056b3;
 }
 
 /* Estilos para o texto "Já tem uma conta?" */
 .account-query {
     margin-top: 20px;
-    color: #6c757d; /* Cinza */
+    color: #6c757d;
     text-align: center;
 }
 
 .account-query a {
-    color: #007bff; /* Azul */
+    color: #007bff;
     text-decoration: none;
     transition: color 0.3s;
 }
 
 .account-query a:hover {
-    color: #0056b3; /* Azul mais escuro */
+    color: #0056b3;
 }
 
 /* Estilos para a página de lista de receitas - Tema Light */
@@ -441,27 +441,27 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn-pesquisar,
 .btn-favoritos {
-    background-color: #007bff; /* Azul */
-    border-color: #007bff; /* Azul */
-    color: #ffffff; /* Texto branco */
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #ffffff;
 }
 
 /* Estilo para o botão de pesquisa quando hover */
 .btn-pesquisar:hover,
 .btn-favoritos:hover {
-    background-color: #0056b3; /* Azul mais escuro */
-    border-color: #0056b3; /* Azul mais escuro */
+    background-color: #0056b3;
+    border-color: #0056b3;
 }
 
 .listagem-receitas .btn-favoritos {
-    background-color: #007bff; /* Azul */
-    border-color: #007bff; /* Azul */
-    color: #ffffff; /* Texto branco */
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #ffffff;
 }
 
 .listagem-receitas .btn-favoritos:hover {
-    background-color: #0056b3; /* Azul mais escuro */
-    border-color: #0056b3; /* Azul mais escuro */
+    background-color: #0056b3;
+    border-color: #0056b3;
 }
 
 .listagem-receitas .admin-actions .btn {
@@ -496,7 +496,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cadastro-receita-card .card-title {
-    color: #333333; /* Texto preto */
+    color: #333333;
 }
 
 .cadastro-receita-card .card-text {
@@ -509,7 +509,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cadastro-receita-card .form-label {
-    color: #333333; /* Texto preto */
+    color: #333333;
 }
 
 .cadastro-receita-card .form-control {
@@ -531,21 +531,21 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cadastro-receita-card .btn-primary {
-    background-color: #007bff; /* Azul */
-    border-color: #007bff; /* Azul */
+    background-color: #007bff;
+    border-color: #007bff;
     border-radius: 20px;
-    color: #ffffff; /* Texto branco */
+    color: #ffffff;
 }
 
 .btn-cadastrar {
-    background-color: #007bff; /* Azul */
-    border-color: #007bff; /* Azul */
-    color: #ffffff; /* Texto branco */
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #ffffff;
 }
 
 .btn-cadastrar:hover {
-    background-color: #0056b3; /* Azul mais escuro */
-    border-color: #0056b3; /* Azul mais escuro */
+    background-color: #0056b3;
+    border-color: #0056b3;
 }
 
 .form-group.row input[type="file"] {
@@ -557,8 +557,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .form-group.row input[type="file"]::file-selector-button {
-    background-color: #007bff; /* Azul */
-    border: 2px solid #007bff; /* Azul */
+    background-color: #007bff;
+    border: 2px solid #007bff;
     color: #201e1e;
     padding: 8px 12px;
     cursor: pointer;
@@ -568,14 +568,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .form-group.row input[type="file"]::file-selector-button:hover {
-    background-color: #0056b3; /* Azul mais escuro */
-    border-color: #0056b3; /* Azul mais escuro */
-    color: #ffffff; /* Texto branco */
+    background-color: #0056b3;
+    border-color: #0056b3;
+    color: #ffffff;
 }
 
 .form-group.row input[type="file"]::file-selector-button:active {
-    background-color: #004080; /* Azul mais escuro */
-    border-color: #004080; /* Azul mais escuro */
+    background-color: #004080;
+    border-color: #004080;
 }
 
 
@@ -588,7 +588,7 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 30px;
     text-align: center;
     font-size: 24px;
-    color: #333333; /* Texto preto */
+    color: #333333;
 }
 
 .receitas-recomendadas-container .messages {
@@ -605,7 +605,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .receitas-recomendadas-container .list-group-item:hover {
-    background-color: #ffffff; /* Fundo branco */
+    background-color: #ffffff;
 }
 
 /* Estilos para a página de receitas favoritas - Tema Light */
@@ -617,14 +617,14 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 30px;
     text-align: center;
     font-size: 32px;
-    color: #333333; /* Texto preto */
+    color: #333333;
 }
 
 .receitas-favoritas-container .list-group-item {
     border: none;
     border-radius: 5px;
     margin-bottom: 10px;
-    background-color: #ffffff; /* Fundo branco */
+    background-color: #ffffff;
 }
 
 .receitas-favoritas-container .list-group-item a {
@@ -646,14 +646,14 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 30px;
     text-align: center;
     font-size: 32px;
-    color: #333333; /* Texto preto */
+    color: #333333;
 }
 
 .mercado-list .list-group-item {
     border: none;
     border-radius: 5px;
     margin-bottom: 10px;
-    background-color: #ffffff; /* Fundo branco */
+    background-color: #ffffff;
 }
 
 .mercado-list .list-group-item a {
@@ -662,22 +662,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .mercado-list .list-group-item:hover {
-    background-color: #ffffff; /* Fundo branco */
+    background-color: #ffffff;
 }
 
 .mercado-list .list-group-item.mercado-item {
-    color: #000000; /* Texto preto */
+    color: #000000;
 }
 
 .btn-add-remove {
-    background-color: #007bff; /* Azul */
-    border-color: #007bff; /* Azul */
-    color: #ffffff; /* Texto branco */
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #ffffff;
 }
 
 .btn-add-remove:hover {
-    background-color: #0056b3; /* Azul mais escuro */
-    border-color: #0056b3; /* Azul mais escuro */
+    background-color: #0056b3;
+    border-color: #0056b3;
 }
 
 /* Estilos para a página Minha Dispensa - Tema Light */
@@ -686,14 +686,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .minha-dispensa-content {
-    background-color: #ffffff; /* Fundo branco */
+    background-color: #ffffff;
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .minha-dispensa-title {
-    color: #333333; /* Texto preto */
+    color: #333333;
 }
 
 .minha-dispensa-list {
@@ -703,10 +703,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .minha-dispensa-item {
     margin-bottom: 10px;
-    background-color: #ffffff; /* Fundo branco */
+    background-color: #ffffff;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    color: #000000; /* Texto preto */
+    color: #000000;
 }
 
 .minha-dispensa-form {
@@ -728,8 +728,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .trocar-email-container .card-header {
-    background-color: #007bff; /* Azul */
-    color: #ffffff; /* Texto branco */
+    background-color: #007bff;
+    color: #ffffff;
     text-align: center;
 }
 
@@ -739,17 +739,17 @@ h1, h2, h3, h4, h5, h6 {
 
 .trocar-email-container .form-label {
     font-weight: bold;
-    color: #000000; /* Texto preto */
+    color: #000000;
 }
 
 .trocar-email-container .btn-primary {
-    background-color: #007bff; /* Azul */
-    border-color: #007bff; /* Azul */
+    background-color: #007bff;
+    border-color: #007bff;
 }
 
 .trocar-email-container .btn-primary:hover {
-    background-color: #0056b3; /* Azul mais escuro */
-    border-color: #0056b3; /* Azul mais escuro */
+    background-color: #0056b3;
+    border-color: #0056b3;
 }
 
 
@@ -764,8 +764,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .trocar-senha-container .card-header {
-    background-color: #007bff; /* Azul */
-    color: #ffffff; /* Texto branco */
+    background-color: #007bff;
+    color: #ffffff;
     text-align: center;
 }
 
@@ -779,7 +779,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .trocar-senha-container .form-label {
     font-weight: bold;
-    color: #000000; /* Texto preto */
+    color: #000000;
 }
 
 .trocar-senha-container .form-control {
@@ -788,13 +788,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .trocar-senha-container .btn-primary {
-    background-color: #007bff; /* Azul */
-    border-color: #007bff; /* Azul */
+    background-color: #007bff;
+    border-color: #007bff;
 }
 
 .trocar-senha-container .btn-primary:hover {
-    background-color: #0056b3; /* Azul mais escuro */
-    border-color: #0056b3; /* Azul mais escuro */
+    background-color: #0056b3;
+    border-color: #0056b3;
 }
 
 /* Estilos para a página de Receitas Pendentes de Aprovação - Tema Light */
@@ -814,18 +814,18 @@ h1, h2, h3, h4, h5, h6 {
 .receitas-pendentes-container .card-title {
     font-size: 1.2rem;
     margin-bottom: 10px;
-    color: #333333; /* Texto preto */
+    color: #333333;
 }
 
 .receitas-pendentes-container .list-group-item {
     border: none;
     border-radius: 5px;
     margin-bottom: 10px;
-    background-color: #ffffff; /* Fundo branco */
+    background-color: #ffffff;
 }
 
 .receitas-pendentes-container .list-group-item a {
-    color: #333333; /* Texto preto */
+    color: #333333;
     font-weight: bold;
     text-decoration: none;
 }
@@ -835,18 +835,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .receitas-pendentes-container .btn-success {
-    background-color: #007bff; /* Azul */
-    border-color: #007bff; /* Azul */
-    color: #ffffff; /* Texto branco */
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #ffffff;
 }
 
 .receitas-pendentes-container .btn-success:hover {
-    background-color: #0056b3; /* Azul mais escuro */
-    border-color: #0056b3; /* Azul mais escuro */
+    background-color: #0056b3;
+    border-color: #0056b3;
 }
 
 .receitas-pendentes-container .no-receitas-message {
-    color: #000000; /* Texto preto */
+    color: #000000;
 }
 
 
@@ -868,7 +868,7 @@ h1, h2, h3, h4, h5, h6 {
 .cadastrar-ingrediente-container .card-title {
     font-size: 1.2rem;
     margin-bottom: 10px;
-    color: #333333; /* Texto preto */
+    color: #333333;
 }
 
 .cadastrar-ingrediente-container .form-group {
@@ -877,7 +877,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .cadastrar-ingrediente-container .form-label {
     font-weight: bold;
-    color: #000000; /* Texto preto */
+    color: #000000;
 }
 
 .cadastrar-ingrediente-container .form-control {
@@ -885,23 +885,23 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cadastrar-ingrediente-container .btn-primary {
-    background-color: #007bff; /* Azul */
-    border-color: #007bff; /* Azul */
-    color: #000000; /* Texto preto */
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #000000;
 }
 
 .cadastrar-ingrediente-container .btn-primary:hover {
-    background-color: #0056b3; /* Azul mais escuro */
-    border-color: #0056b3; /* Azul mais escuro */
-    color: #000000; /* Texto preto */
+    background-color: #0056b3;
+    border-color: #0056b3;
+    color: #000000;
 }
 
 .cadastrar-ingrediente-container .text-black {
-    color: #000000; /* Texto preto */
+    color: #000000;
 }
 
 .cadastrar-ingrediente-container .text-danger {
-    color: #dc3545; /* Vermelho */
+    color: #dc3545;
 }
 
 .cadastrar-ingrediente-container input[type="text"] {
@@ -919,7 +919,7 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 30px;
     text-align: center;
     font-size: 32px;
-    color: #333333; /* Texto preto */
+    color: #333333;
 }
 
 .list-group-item {
@@ -939,11 +939,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .lista-ingredientes-list .list-group-item {
     border: none;
-    background-color: #ffffff; /* Fundo branco */
+    background-color: #ffffff;
 }
 
 .lista-ingredientes-list .list-group-item a {
-    color: #333333; /* Texto preto */
+    color: #333333;
     font-weight: bold;
     text-decoration: none;
 }
@@ -983,16 +983,16 @@ h1, h2, h3, h4, h5, h6 {
 
 .gestao-usuarios-card .btn-action {
     margin-right: 5px;
-    background-color: #007bff; /* Azul */
-    border-color: #007bff; /* Azul */
-    color: #000000; /* Texto preto */
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #000000;
 }
 
 .gestao-usuarios-card .btn-excluir {
     margin-left: 5px;
-    background-color: #dc3545; /* Vermelho */
-    border-color: #dc3545; /* Vermelho */
-    color: #ffffff; /* Texto branco */
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: #ffffff;
 }
 
 
@@ -1012,7 +1012,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .detalhes-ingrediente-container .detalhes-ingrediente-container {
-    background-color: #ffffff; /* Fundo branco */
+    background-color: #ffffff;
     border: 1px solid #ced4da;
     border-radius: 5px;
     padding: 20px;
@@ -1020,13 +1020,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .detalhes-ingrediente-container .card-title {
-    color: #333333; /* Texto preto */
+    color: #333333;
     font-size: 24px;
     margin-bottom: 20px;
 }
 
 .detalhes-ingrediente-container .black-text {
-    color: #000000; /* Texto preto */
+    color: #000000;
 }
 
 .detalhes-ingrediente-container .text-center {
@@ -1034,33 +1034,33 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .detalhes-ingrediente-container .btn-editar {
-    background-color: #007bff; /* Azul */
-    border-color: #007bff; /* Azul */
+    background-color: #007bff;
+    border-color: #007bff;
     border-radius: 5px;
-    color: #000000; /* Texto preto */
+    color: #000000;
     padding: 10px 20px;
     text-transform: uppercase;
     font-weight: bold;
 }
 
 .detalhes-ingrediente-container .btn-editar:hover {
-    background-color: #0056b3; /* Azul mais escuro */
-    border-color: #0056b3; /* Azul mais escuro */
+    background-color: #0056b3;
+    border-color: #0056b3;
 }
 
 .detalhes-ingrediente-container .btn-excluir {
-    background-color: #dc3545; /* Vermelho */
-    border-color: #dc3545; /* Vermelho */
+    background-color: #dc3545;
+    border-color: #dc3545;
     border-radius: 5px;
-    color: #ffffff; /* Texto branco */
+    color: #ffffff;
     padding: 10px 20px;
     text-transform: uppercase;
     font-weight: bold;
 }
 
 .detalhes-ingrediente-container .btn-excluir:hover {
-    background-color: #c82333; /* Vermelho mais escuro */
-    border-color: #bd2130; /* Vermelho mais escuro */
+    background-color: #c82333;
+    border-color: #bd2130;
 }
 
 
@@ -1069,14 +1069,14 @@ h1, h2, h3, h4, h5, h6 {
     margin: 4rem auto;
     padding: 2rem;
     max-width: 600px;
-    background-color: #ffffff; /* Fundo branco */
-    border: 1px solid #ddd; /* Borda cinza */
+    background-color: #ffffff;
+    border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .editar-ingrediente-container h2 {
-    color: #333333; /* Texto preto */
+    color: #333333;
     font-size: 24px;
     margin-bottom: 20px;
 }
@@ -1086,7 +1086,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .editar-ingrediente-container .black-text {
-    color: #000000; /* Texto preto */
+    color: #000000;
 }
 
 .editar-ingrediente-container .btn-group {
@@ -1103,31 +1103,31 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .editar-ingrediente-container .btn-success {
-    background-color: #28a745; /* Verde */
-    border-color: #28a745; /* Verde */
-    color: #ffffff; /* Texto branco */
+    background-color: #28a745;
+    border-color: #28a745;
+    color: #ffffff;
     padding: 10px 20px;
     text-transform: uppercase;
     font-weight: bold;
 }
 
 .editar-ingrediente-container .btn-success:hover {
-    background-color: #218838; /* Verde mais escuro */
-    border-color: #1e7e34; /* Verde mais escuro */
+    background-color: #218838;
+    border-color: #1e7e34;
 }
 
 .editar-ingrediente-container .btn-danger {
-    background-color: #dc3545; /* Vermelho */
-    border-color: #dc3545; /* Vermelho */
-    color: #ffffff; /* Texto branco */
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: #ffffff;
     padding: 10px 20px;
     text-transform: uppercase;
     font-weight: bold;
 }
 
 .editar-ingrediente-container .btn-danger:hover {
-    background-color: #c82333; /* Vermelho mais escuro */
-    border-color: #bd2130; /* Vermelho mais escuro */
+    background-color: #c82333;
+    border-color: #bd2130;
 }
 
 
@@ -1152,9 +1152,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .admin-panel-container .btn-primary {
-    background-color: #096b66; /* Verde escuro */
-    border-color: #096b66; /* Verde escuro */
-    color: #ffffff; /* Texto branco */
+    background-color: #096b66;
+    border-color: #096b66;
+    color: #ffffff;
     padding: 10px 20px;
     margin-bottom: 10px;
     text-transform: uppercase;
@@ -1162,14 +1162,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .admin-panel-container .btn-primary:hover {
-    background-color: #0b968f; /* Verde mais escuro */
-    border-color: #0b968f; /* Verde mais escuro */
+    background-color: #0b968f;
+    border-color: #0b968f;
 }
 
 
 /* Estilos específicos para a página de cadastro de usuário - Tema Light */
 .cadastro-usuario .cadastro-card {
-    background-color: #ffffff; /* Fundo branco */
+    background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -1179,44 +1179,44 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cadastro-usuario .cadastro-titulo {
-    color: #ffbe4f; /* Amarelo */
+    color: #ffbe4f;
     text-align: center;
 }
 
 .cadastro-usuario .form-label {
-    color: #d3d3d3; /* Cinza claro */
+    color: #d3d3d3;
 }
 
 .cadastro-usuario .cadastro-link {
-    color: #d3d3d3; /* Cinza claro */
+    color: #d3d3d3;
     font-size: 16px;
     text-align: center;
     margin-top: 20px;
 }
 
 .cadastro-usuario .cadastro-link a {
-    color: #ffbe4f; /* Amarelo */
+    color: #ffbe4f;
     text-decoration: none;
     transition: color 0.3s;
     margin: 0 5px;
 }
 
 .cadastro-usuario .cadastro-link a:hover {
-    color: #e3a01d; /* Amarelo mais escuro */
+    color: #e3a01d;
 }
 
 .cadastro-usuario .cadastro-link a.btn {
     padding: 10px 20px;
-    background-color: #ffbe4f; /* Amarelo */
+    background-color: #ffbe4f;
     border: none;
     border-radius: 5px;
-    color: #fff; /* Texto branco */
+    color: #fff;
     text-decoration: none;
     transition: background-color 0.3s;
 }
 
 .cadastro-usuario .cadastro-link a.btn:hover {
-    background-color: #e3a01d; /* Amarelo mais escuro */
+    background-color: #e3a01d;
 }
 
 .cadastro-usuario .cadastro-input {
@@ -1224,25 +1224,25 @@ h1, h2, h3, h4, h5, h6 {
     padding: 10px;
     margin-top: 5px;
     margin-bottom: 10px;
-    border: 1px solid #ffbe4f; /* Amarelo */
+    border: 1px solid #ffbe4f;
     border-radius: 5px;
-    color: #000; /* Texto preto */
+    color: #000;
 }
 
 .cadastro-usuario .cadastro-input:focus {
     outline: none;
-    border-color: #e3a01d; /* Amarelo mais escuro */
+    border-color: #e3a01d;
 }
 
 .cadastro-usuario .cadastro-btn {
-    background-color: #ffbe4f; /* Amarelo */
-    border-color: #ffbe4f; /* Amarelo */
-    color: #fff; /* Texto branco */
+    background-color: #ffbe4f;
+    border-color: #ffbe4f;
+    color: #fff;
 }
 
 .cadastro-usuario .cadastro-btn:hover {
-    background-color: #e3a01d; /* Amarelo mais escuro */
-    border-color: #e3a01d; /* Amarelo mais escuro */
+    background-color: #e3a01d;
+    border-color: #e3a01d;
 }
 
 /* Estilos para o card de navegação de páginas - Tema Light */
@@ -1275,7 +1275,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .pagination-card .pagination-list .page-item.disabled .page-link {
-    color: #6c757d; /* Cinza */
+    color: #6c757d;
 }
 
 .pagination-card .pagination-list .page-item.disabled .page-link:hover {
