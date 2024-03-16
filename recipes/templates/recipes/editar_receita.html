@@ -1,14 +1,76 @@
 {% extends 'main/base.html' %}
 
-{% block title %}Editar Receita{% endblock %}
-
 {% block content %}
-    <div class="container mt-4 edit-receita">
-        <h1 class="mb-4 edit-receita-title">Editar Receita</h1>
-        <form method="post" class="edit-receita-form">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-primary edit-receita-btn">Salvar Alterações</button>
-        </form>
+<div class="container-fluid mt-4 d-flex justify-content-center align-items-center">
+    <div class="card mb-4 editar-receita-card">
+        <div class="card-body">
+            <h1 class="card-title mb-4">Editar Receita</h1>
+            
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ formset_imagem.management_form }}
+                {% for field in form %}
+                <div class="form-group row">
+                    <label for="{{ field.id_for_label }}" class="col-12 form-label" id="label-receita-form">{{ field.label }}:</label>
+                    <div class="col-12">
+                        {{ field }}
+                    </div>
+                    {% if field.help_text %}
+                    <small class="col-12 form-text text-muted">{{ field.help_text }}</small>
+                    {% endif %}
+                    {{ field.errors }}
+                </div>
+                {% endfor %}
+
+                <input type="text" id="search-ingredient" class="form-control col-12" placeholder="Pesquisar ingredientes" aria-label="Pesquisar ingredientes" aria-describedby="search-ingredient-desc">
+                <small id="search-ingredient-desc" class="col-12 form-text text-muted">Use este campo para pesquisar ingredientes.</small>
+                
+                {% for formset_form in formset_imagem %}
+                <div class="form-group row">
+                    <div class="col-12">
+                        {{ formset_form.as_p }}
+                    </div>
+                    {% for field in formset_form %}
+                        {{ field.errors }}
+                    {% endfor %}
+                </div>
+                {% endfor %}
+                
+                <div class="form-group row">
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary btn-cadastrar" aria-label="Cadastrar">Salvar Alterações</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#search-ingredient").on("input", function() {
+            var searchTerm = $(this).val().toLowerCase();
+
+            if (searchTerm === "") {
+                $("div[id^='id_ingredientes'] > div").hide();
+                $("input[name='ingredientes']:checked").each(function() {
+                    $(this).closest('div').show();
+                });
+            } else {
+                $("div[id^='id_ingredientes'] > div").hide();
+
+                $("div[id^='id_ingredientes'] > div:contains-ci(" + searchTerm + ")").show();
+            }
+        });
+
+        $.extend($.expr[":"], {
+            "contains-ci": function(elem, i, match, array) {
+                return (elem.textContent || elem.innerText || "").toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
+            }
+        });
+
+        $("div[id^='id_ingredientes'] > div").hide();
+    });
+</script>
 {% endblock %}

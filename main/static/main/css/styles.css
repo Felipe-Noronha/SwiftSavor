@@ -377,13 +377,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .account-query a {
-    color: #007bff;
+    color: #409094;
     text-decoration: none;
     transition: color 0.3s;
 }
 
 .account-query a:hover {
-    color: #0056b3;
+    color: #409094;
 }
 
 /* Estilos para a página de lista de receitas */
@@ -632,6 +632,10 @@ h1, h2, h3, h4, h5, h6 {
 .btn-add-remove {
     background-color: #409094;
     border-color: #409094;
+}
+.btn-add-remove:hover {
+    background-color: #6fa5a5;
+    border-color: #6fa5a5;
 }
 
 
@@ -1348,50 +1352,66 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-/* Estilos específicos para a página de edição de receita */
-.edit-receita {
-    max-width: 600px; /* Define a largura máxima do contêiner */
-    margin: 0 auto; /* Centraliza o contêiner na página */
-    padding: 20px; /* Adiciona um pouco de espaço interno */
-}
-
-.edit-receita .edit-receita-title {
-    color: #ffbe4f;
-    text-align: center;
-    margin-bottom: 20px; /* Adiciona espaço abaixo do título */
-}
-
-.edit-receita .edit-receita-form {
-    background-color: #0f4c49;
+/* Estilos para a página de edição de receitas */
+.editar-receita-card {
+    max-width: 500px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
 }
 
-.edit-receita .edit-receita-form label {
-    color: #d3d3d3;
+.editar-receita-card .card-title {
+    color: #ffbe4f;
 }
 
-.edit-receita .edit-receita-form input[type="text"],
-.edit-receita .edit-receita-form textarea {
+.editar-receita-card .card-body {
+    color: #6c757d;
+    margin-bottom: 20px;
+}
+
+.editar-receita-card .form-group {
+    margin-bottom: 20px;
+}
+
+.editar-receita-card .form-label {
+    color: #0f4c49;
+}
+
+.editar-receita-card .form-control {
+    border-radius: 20px;
+}
+
+.editar-receita-card .col-12 input[type="text"],
+.editar-receita-card .col-12 textarea,
+.editar-receita-card .col-12 input[type="url"] { /* Adicionando para os inputs do tipo url */
     width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    margin-bottom: 10px;
-    border: 1px solid #ffbe4f;
-    border-radius: 5px;
-    color: #000;
-    box-sizing: border-box;
+    border-radius: 20px;
 }
 
-.edit-receita .edit-receita-form .btn-primary {
+.editar-receita-card .form-text {
+    color: #6c757d;
+}
+
+.editar-receita-card .btn-primary,
+.editar-receita-card .btn-salvar,
+.editar-receita-card .btn-secondary {
+    width: 100%;
+    background-color: #0f4c49;
+    border-color: #0f4c49;
+    border-radius: 20px;
+}
+
+.editar-receita-card .btn-salvar:hover {
     background-color: #ffbe4f;
     border-color: #ffbe4f;
-    color: #fff;
-    width: 100%;
 }
 
-.edit-receita .edit-receita-form .btn-primary:hover {
-    background-color: #e3a01d;
-    border-color: #e3a01d;
+.editar-receita-card .btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    margin-right: 10px;
+}
+
+.editar-receita-card .btn-secondary:hover {
+    background-color: #495057;
+    border-color: #495057;
 }

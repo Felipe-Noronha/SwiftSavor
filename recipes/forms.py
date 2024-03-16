@@ -26,3 +26,20 @@ ImagemReceitaFormSet = modelformset_factory(
 
 class PesquisaReceitaForm(forms.Form):
     pesquisa = forms.CharField(max_length=100, required=False, label='Pesquisar')
+
+
+class EditarReceitaForm(forms.ModelForm):
+    ingredientes = forms.ModelMultipleChoiceField(
+        queryset=Ingrediente.objects.all(),
+        widget=forms.CheckboxSelectMultiple(),
+        required=False
+    )
+
+    class Meta:
+        model = Receita
+        fields = ['nome', 'instruções', 'ingredientes']
+
+class EditarImagemReceitaForm(forms.ModelForm):
+    class Meta:
+        model = ImagemReceita
+        fields = ['imagem', 'url']

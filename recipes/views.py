@@ -2,12 +2,15 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib import messages
 from .models import Receita, ImagemReceita
-from .forms import PesquisaReceitaForm, ReceitaForm, ImagemReceitaFormSet
+from .forms import EditarImagemReceitaForm, EditarReceitaForm, PesquisaReceitaForm, ReceitaForm, ImagemReceitaFormSet
 from ingredients.models import Ingrediente,UsuarioIngrediente
 from urllib.parse import quote
 from django.urls import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from favorites.models import ReceitaFavorita
+from django.forms import modelformset_factory
+from django.forms import inlineformset_factory
+
 
 @login_required
 def lista_receitas(request):
@@ -69,23 +72,28 @@ def cadastrar_receita(request):
 
     return render(request, 'recipes/cadastrar_receita.html', {'form': form, 'formset': formset})
 
-def editar_receita(request, receita_id):
-    if not request.user.is_authenticated or not request.user.is_staff:
-        messages.error(request, 'Você não tem permissão para acessar esta página.')
-        return redirect('lista_receitas')
 
-    receita = get_object_or_404(Receita, pk=receita_id)
+@login_required
+def editar_receita(request, receita_id):
+    receita = get_object_or_404(Receita, id=receita_id)
+    ImagemReceitaFormSet = inlineformset_factory(Receita, ImagemReceita, form=EditarImagemReceitaForm, extra=1, can_delete=True)
 
     if request.method == 'POST':
-        form = ReceitaForm(request.POST, instance=receita)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Receita editada com sucesso!')
-            return redirect('lista_receitas')
-    else:
-        form = ReceitaForm(instance=receita)
+        form = EditarReceitaForm(request.POST, instance=receita)
+        formset_imagem = ImagemReceitaFormSet(request.POST, request.FILES, instance=receita)
 
-    return render(request, 'recipes/editar_receita.html', {'form': form})
+        if form.is_valid() and formset_imagem.is_valid():
+            form.save()
+            formset_imagem.save()
+            messages.success(request, 'Receita editada com sucesso.')
+            return redirect('detalhes_receita', receita_id=receita_id)
+    else:
+        form = EditarReceitaForm(instance=receita)
+        formset_imagem = ImagemReceitaFormSet(instance=receita)
+
+    return render(request, 'recipes/editar_receita.html', {'form': form, 'formset_imagem': formset_imagem, 'receita': receita})
+
+
 
 
 @user_passes_test(lambda u: u.is_staff, login_url='index')
