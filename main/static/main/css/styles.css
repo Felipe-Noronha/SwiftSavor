@@ -369,49 +369,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-/* Estilos para o formulário de cadastro */
-.cadastro-usuario .form-label {
-    color: #495057;
-}
-
-.cadastro-usuario .form-control {
-    border-color: #ced4da;
-}
-
-.cadastro-usuario .form-control:focus {
-    border-color: #80bdff;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
-
-.cadastro-usuario .invalid-feedback {
-    color: #dc3545;
-}
-
-.cadastro-usuario .form-text {
-    color: #6c757d;
-}
-
-.cadastro-usuario .btn-primary {
-    background-color: #409094;
-    border-color: #409094;
-}
-
-.cadastro-usuario .btn-primary:hover {
-    background-color: #2e727d;
-    border-color: #2e727d;
-}
-
-.cadastro-usuario .cadastro-login-link {
-    color: #409094;
-}
-
-.cadastro-usuario .cadastro-login-link:hover {
-    color: #20545c;
-}
-
-
-
-
 /* Estilos para o texto "Já tem uma conta?" */
 .account-query {
     margin-top: 20px;
@@ -1272,60 +1229,85 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-/* cadastro de usuario css */
-
-.cadastro-usuario {
-    margin-top: 4rem;
+/* Estilos específicos para a página de cadastro de usuário */
+.cadastro-usuario .cadastro-card {
+    background-color: #0f4c49;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.cadastro-usuario .card {
-    border: none;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-}
-
-.cadastro-usuario .card-body {
+.cadastro-usuario .cadastro-card .card-body {
     padding: 20px;
 }
 
-.cadastro-usuario .card-title {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
+.cadastro-usuario .cadastro-titulo {
+    color: #ffbe4f;
+    text-align: center;
 }
 
-.cadastro-usuario .cadastro-input {
-    border-radius: 5px;
-}
-
-.cadastro-usuario .btn-primary {
-    background-color: #409094;
-    border-color: #409094;
-}
-
-.cadastro-usuario .btn-primary:hover {
-    background-color: #2b686b;
-    border-color: #2b686b;
+.cadastro-usuario .form-label {
+    color: #d3d3d3;
 }
 
 .cadastro-usuario .cadastro-link {
-    margin-top: 1rem;
-    font-size: 0.9rem;
+    color: #d3d3d3;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 20px;
 }
 
 .cadastro-usuario .cadastro-link a {
-    color: #2b686b;
+    color: #ffbe4f;
+    text-decoration: none;
+    transition: color 0.3s;
+    margin: 0 5px;
 }
 
 .cadastro-usuario .cadastro-link a:hover {
-    color: #2b686b;
+    color: #e3a01d;
 }
 
-.invalid-feedback {
-    display: block;
-    width: 100%;
-    margin-top: .25rem;
-    font-size: 80%;
-    color: #dc3545;
+.cadastro-usuario .cadastro-link a.btn {
+    padding: 10px 20px;
+    background-color: #ffbe4f;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s;
 }
+
+.cadastro-usuario .cadastro-link a.btn:hover {
+    background-color: #e3a01d;
+}
+
+.cadastro-usuario .cadastro-input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ffbe4f;
+    border-radius: 5px;
+    color: #000;
+}
+
+.cadastro-usuario .cadastro-input:focus {
+    outline: none;
+    border-color: #e3a01d;
+}
+
+.cadastro-usuario .cadastro-btn {
+    background-color: #ffbe4f;
+    border-color: #ffbe4f;
+    color: #fff;
+}
+
+.cadastro-usuario .cadastro-btn:hover {
+    background-color: #e3a01d;
+    border-color: #e3a01d;
+}
+
+
 
 
 /* Estilos para o card de navegação de páginas */

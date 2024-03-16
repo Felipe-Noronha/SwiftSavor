@@ -4,7 +4,7 @@
 <div class="container-fluid mt-4 cadastro-usuario">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <div class="card">
+            <div class="card cadastro-card">
                 <div class="card-body">
                     <h1 class="card-title mb-4 text-center cadastro-titulo">Cadastro de Usuário</h1>
                     <form method="post">
@@ -42,10 +42,11 @@
                         <button type="submit" class="btn btn-primary btn-block cadastro-btn">Cadastrar</button>
                     </form>
                     <hr>
-                    <p class="mt-2 account-query text-dark cadastro-link">Já tem uma conta? <a href="{% url 'login' %}" class="cadastro-login-link">Faça login</a>.</p>
+                    <p class="mt-2 account-query cadastro-link">Já tem uma conta? <a href="{% url 'login' %}" class="cadastro-login-link">Faça login</a>.</p>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 {% endblock %}
