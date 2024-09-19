@@ -416,6 +416,18 @@ h1, h2, h3, h4, h5, h6 {
     border-color: #327d7d;
 }
 
+.btn-remove-favoritos {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: white;
+}
+
+.btn-remove-favoritos:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+    color: white;
+}
+
 .listagem-receitas .btn-favoritos {
     background-color: #409094;
     border-color: #409094;
@@ -641,15 +653,29 @@ h1, h2, h3, h4, h5, h6 {
     color: #000;
 }
 
-.btn-add-remove {
+.btn-add {
     background-color: #409094;
     border-color: #409094;
-}
-.btn-add-remove:hover {
-    background-color: #6fa5a5;
-    border-color: #6fa5a5;
+    color: white;
 }
 
+.btn-add:hover {
+    background-color: #6fa5a5;
+    border-color: #6fa5a5;
+    color: white;
+}
+
+.btn-remove {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: white;
+}
+
+.btn-remove:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+    color: white;
+}
 
 /* Estilos para a página Minha Dispensa */
 .minha-dispensa-container {

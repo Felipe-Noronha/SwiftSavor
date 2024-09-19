@@ -22,7 +22,7 @@
                                 <form method="post" action="{% url 'selecionar_ingredientes' %}?page={{ ingredientes.number }}" aria-label="Selecionar ingrediente">
                                     {% csrf_token %}
                                     <input type="hidden" name="ingrediente_id" value="{{ ingrediente.id }}">
-                                    <button type="submit" class="btn {% if ingrediente.id in usuario_ingredientes %}btn-secondary{% else %}btn-primary{% endif %} btn-add-remove" aria-label="Adicionar ou remover do carrinho">
+                                    <button type="submit" class="btn {% if ingrediente.id in usuario_ingredientes %}btn-remove{% else %}btn-add{% endif %} btn-add-remove" aria-label="Adicionar ou remover do carrinho">
                                         {% if ingrediente.id in usuario_ingredientes %}
                                             <i class="fas fa-trash-alt"></i>
                                         {% else %}

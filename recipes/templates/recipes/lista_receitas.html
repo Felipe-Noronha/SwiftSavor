@@ -35,7 +35,7 @@
                                 {% csrf_token %}
                                 {% if receita.id in receitas_favoritas_ids %}
                                     <input type="hidden" name="receita_id" value="{{ receita.id }}">
-                                    <button type="submit" formaction="{% url 'favorites:remover_favorito' receita.id %}" class="btn btn-primary btn-sm align-self-center btn-favoritos" aria-label="Remover dos favoritos">
+                                    <button type="submit" formaction="{% url 'favorites:remover_favorito' receita.id %}" class="btn btn-primary btn-sm align-self-center btn-remove-favoritos" aria-label="Remover dos favoritos">
                                         <i class="fas fa-heart" aria-hidden="true"></i>
                                     </button>
                                 {% else %}
