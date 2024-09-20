@@ -22,7 +22,7 @@
                             {% if receita.id in receitas_favoritas_ids %}
                                 <form method="post" action="{% url 'favorites:remover_favorito' receita.id %}" class="d-inline">
                                     {% csrf_token %}
-                                    <button type="submit" formaction="{% url 'favorites:remover_favorito' receita.id %}" class="btn btn-primary btn-sm float-right align-self-center btn-favoritos" aria-label="Remover dos favoritos">
+                                    <button type="submit" formaction="{% url 'favorites:remover_favorito' receita.id %}" class="btn btn-primary btn-sm float-right align-self-center btn-remove-favoritos" aria-label="Remover dos favoritos">
                                         <i class="fas fa-heart"></i>
                                     </button>
                                 </form>
