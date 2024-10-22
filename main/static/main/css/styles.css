@@ -714,6 +714,35 @@ h1, h2, h3, h4, h5, h6 {
     margin-left: 10px;
 }
 
+/* Estilos para o botão de pesquisa */
+.input-group .form-control {
+    border: 1px solid #ced4da;
+    border-radius: 5px 0 0 5px;
+}
+
+.input-group .btn {
+    background-color: #ffbe4f; /* Cor de fundo do botão */
+    border-color: #ffbe4f; /* Cor da borda do botão */
+    color: #000; /* Cor do texto do botão */
+    border-radius: 5 5px 5px 0; /* Borda arredondada à direita do botão */
+    margin-left: 10px; /* Espaço entre a barra de pesquisa e o botão */
+}
+
+
+.input-group .btn:hover {
+    background-color: #e6a83a; /* Cor de fundo ao passar o mouse */
+    border-color: #e6a83a; /* Cor da borda ao passar o mouse */
+}
+
+.input-group {
+    margin-bottom: 20px; /* Espaçamento inferior do grupo de entrada */
+}
+
+.minha-dispensa-pagination-current {
+    color: #000;
+}
+
+
 /* Estilos para a página de Configurações */
 .configuracoes-container {
     margin-top: 40px;

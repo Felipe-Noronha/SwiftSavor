@@ -127,8 +127,12 @@ def meus_ingredientes(request):
     ingredientes = [ui.ingrediente for ui in usuario_ingredientes]
     ingredientes_selecionados = sorted(ingredientes, key=lambda x: x.nome)
 
+    query = request.GET.get('q', '')
+    if query:
+        ingredientes_selecionados = [ingrediente for ingrediente in ingredientes_selecionados if query.lower() in ingrediente.nome.lower()]
+
     page = request.GET.get('page', 1)
-    paginator = Paginator(ingredientes_selecionados, 10) 
+    paginator = Paginator(ingredientes_selecionados, 10)
     try:
         ingredientes_selecionados = paginator.page(page)
     except PageNotAnInteger:
@@ -145,7 +149,11 @@ def meus_ingredientes(request):
             ).delete()
             return redirect('meus_ingredientes')
 
-    return render(request, 'ingredients/meus_ingredientes.html', {'ingredientes_selecionados': ingredientes_selecionados})
+    return render(request, 'ingredients/meus_ingredientes.html', {
+        'ingredientes_selecionados': ingredientes_selecionados,
+        'query': query 
+    })
+
 
 
 

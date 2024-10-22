@@ -7,6 +7,15 @@
             <div class="card minha-dispensa-card">
                 <div class="card-body">
                     <h1 class="mb-4 text-center">Minha Dispensa</h1>
+                    
+                    <!-- Formulário de Pesquisa -->
+                    <form method="GET" action="{% url 'meus_ingredientes' %}" class="mb-3">
+                        <div class="input-group">
+                            <input type="text" name="q" class="form-control" placeholder="Buscar ingrediente pelo nome" value="{{ request.GET.q }}">
+                            <button class="btn btn-primary" type="submit">Buscar</button>
+                        </div>
+                    </form>
+                    
                     {% if ingredientes_selecionados %}
                         <ul class="list-group minha-dispensa-list" aria-label="Ingredientes selecionados">
                             {% for ingrediente in ingredientes_selecionados %}
@@ -25,27 +34,29 @@
                     {% else %}
                         <p class="text-center">Você ainda não selecionou nenhum ingrediente.</p>
                     {% endif %}
+
+                    <!-- Paginação -->
+                    <div class="pagination justify-content-center mt-4 minha-dispensa-pagination" aria-label="Navegação de páginas">
+                        <span class="step-links minha-dispensa-pagination-links">
+                            {% if ingredientes_selecionados.has_previous %}
+                                <a href="?page=1&q={{ request.GET.q }}" class="minha-dispensa-pagination-link">&laquo; Primeira</a>
+                                <a href="?page={{ ingredientes_selecionados.previous_page_number }}&q={{ request.GET.q }}" class="minha-dispensa-pagination-link">Anterior</a>
+                            {% endif %}
+
+                            <span class="current minha-dispensa-pagination-current">
+                                Página {{ ingredientes_selecionados.number }} de {{ ingredientes_selecionados.paginator.num_pages }}.
+                            </span>
+
+                            {% if ingredientes_selecionados.has_next %}
+                                <a href="?page={{ ingredientes_selecionados.next_page_number }}&q={{ request.GET.q }}" class="minha-dispensa-pagination-link">Próxima</a>
+                                <a href="?page={{ ingredientes_selecionados.paginator.num_pages }}&q={{ request.GET.q }}" class="minha-dispensa-pagination-link">Última &raquo;</a>
+                            {% endif %}
+                        </span>
+                    </div>
+                    <!-- Fim da Paginação -->
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-<div class="pagination justify-content-center mt-4 minha-dispensa-pagination" aria-label="Navegação de páginas">
-    <span class="step-links minha-dispensa-pagination-links">
-        {% if ingredientes_selecionados.has_previous %}
-            <a href="?page=1" class="minha-dispensa-pagination-link">&laquo; Primeira</a>
-            <a href="?page={{ ingredientes_selecionados.previous_page_number }}" class="minha-dispensa-pagination-link">Anterior</a>
-        {% endif %}
-
-        <span class="current minha-dispensa-pagination-current">
-            Página {{ ingredientes_selecionados.number }} de {{ ingredientes_selecionados.paginator.num_pages }}.
-        </span>
-
-        {% if ingredientes_selecionados.has_next %}
-            <a href="?page={{ ingredientes_selecionados.next_page_number }}" class="minha-dispensa-pagination-link">Próxima</a>
-            <a href="?page={{ ingredientes_selecionados.paginator.num_pages }}" class="minha-dispensa-pagination-link">Última &raquo;</a>
-        {% endif %}
-    </span>
 </div>
 {% endblock %}
