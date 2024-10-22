@@ -1031,6 +1031,44 @@ h1, h2, h3, h4, h5, h6 {
     color: #fff;
 }
 
+/* Estilos para a paginação específica da página de Gestão de Usuários */
+.gestao-usuarios-container .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.gestao-usuarios-container .pagination .page-item {
+    margin: 0 5px;
+}
+
+.gestao-usuarios-container .pagination .page-item .page-link {
+    background-color: #ffbe4f;
+    color: #000;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.gestao-usuarios-container .pagination .page-item .page-link:hover {
+    background-color: #ffc66b;
+}
+
+.gestao-usuarios-container .pagination .page-item.active .page-link {
+    background-color: #343a40;
+    color: #fff;
+    border: none;
+}
+
+.gestao-usuarios-container .pagination .page-item.disabled .page-link {
+    background-color: #e9ecef;
+    color: #6c757d;
+    border: none;
+}
+
+
 
 /* Estilos para a página de Detalhes do Ingrediente */
 .detalhes-ingrediente-container .container-fluid {

@@ -6,6 +6,7 @@ from .forms import CustomUserCreationForm, ChangeEmailForm, ChangePasswordForm
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth import update_session_auth_hash
+from django.core.paginator import Paginator
 
 
 
@@ -31,10 +32,14 @@ def gestao_usuarios(request):
     if not request.user.is_authenticated or not request.user.is_staff:
         messages.error(request, 'Você não tem permissão para acessar esta página.')
         return redirect('index')
-    
-    usuarios = User.objects.all()
 
-    return render(request, 'users/gestao_usuarios.html', {'usuarios': usuarios})
+    usuarios_list = User.objects.all()  # Obtenha todos os usuários
+    paginator = Paginator(usuarios_list, 10)  # Exiba 10 usuários por página
+
+    page_number = request.GET.get('page')  # Obtenha o número da página da URL
+    page_obj = paginator.get_page(page_number)  # Pegue a página desejada
+
+    return render(request, 'users/gestao_usuarios.html', {'page_obj': page_obj})
 
 
 
