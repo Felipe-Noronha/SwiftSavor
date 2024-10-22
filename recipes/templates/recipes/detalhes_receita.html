@@ -46,6 +46,14 @@
                                             <li class="list-group-item detalhes-receita-item">{{ ingrediente.nome }}</li>
                                         {% endfor %}
                                     </ul>
+
+                                    <!-- Botão para compartilhar a lista de compras pelo WhatsApp -->
+                                    <div class="text-center mt-3">
+                                        <a href="https://api.whatsapp.com/send?text=Para%20preparar%20a%20receita%20{{ receita.nome }},%20você%20precisa%20dos%20seguintes%20ingredientes:%0A{% for ingrediente in ingredientes_faltando %}{{ ingrediente.nome }}%0A{% endfor %}" class="btn btn-whatsapp">
+                                            Compartilhar Lista de Compras no WhatsApp
+                                        </a>
+                                    </div>
+                                    
                                 {% else %}
                                     <p>Você tem todos os ingredientes para fazer esta receita!</p>
                                 {% endif %}
